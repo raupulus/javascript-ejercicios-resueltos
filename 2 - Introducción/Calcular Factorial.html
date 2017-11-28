@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<HTML lang="es">
+    <HEAD>
+	    <TITLE>Ejercicio 1</TITLE>
+	    <META charset="utf-8"/>
+    </HEAD>
+
+    <BODY>
+	    <H1 id="titulo1">Ejercicio 1</H1>
+	    <DIV class="ejercicio">
+            Realiza un script que le pregunte al usuario la nota obtenida en un examen, y en función del resultado devuelva “Suspenso”, “Aprobado”, “Notable” o “Sobresaliente”. Realiza otra versión utilizando el operador condicional ?:
+	    </DIV>
+        
+        <SCRIPT>
+            var x = Number(prompt("Introduce la nota del examen"));
+            switch (x) {
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+                    alert("Estas suspenso");
+                    break;
+                case 5:
+                case 6:
+                    alert("Estas Aprobado");
+                    break;
+                case 7:
+                case 8:
+                    alert("Tienes Notable");
+                    break;
+                case 9:
+                case 10:
+                    alert("Tienes un Sobresaliente, enhorabuena");
+                    break;
+            };
+        </SCRIPT>
+    </BODY>
+</HTML>
