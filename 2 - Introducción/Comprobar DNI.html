@@ -19,3 +19,38 @@ Si el número es válido, se calcula la letra que le corresponde según el méto
 
 Una vez calculada la letra, se debe comparar con la letra indicada por el usuario. Si no coinciden, se muestra un mensaje al usuario diciéndole que la letra que ha indicado no es correcta. En otro caso, se muestra un mensaje indicando que el número y la letra de DNI son correctos.
 -->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Comprobar DNI</title>
+    </head>
+    <body>
+        <h1>Comprobar DNI</h1>
+
+        <script>
+           var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+
+           var dni, letra_in, letra_calculada;
+
+           function input_dni() {
+               dni = parseInt(prompt('Introduce el número del DNI'));
+               letra_in = prompt('Introduce la letra').toUpperCase();
+
+               if ((dni >= 0) && (dni <= 99999999)) {
+                   letra_calculada = letras[dni%23];
+                   if (letra_in == letra_calculada) {
+                       document.getElementById('resultado').innerHTML = "<p style='color:red;font-size:1.6em'>El dni es " + dni + " con letra " + letra_calculada + '</p>';
+                       alert('El dni es ' + dni + ' con letra ' + letra_calculada);
+                   } else {
+                       alert('La letra ' + letra_in + ' no coincide con la calculada → ' + letra_calculada) ;
+                   }
+               } else {
+                   alert('No es correcto el valor introducido');
+               }
+           }
+           input_dni();
+        </script>
+
+        <div id="resultado"></div>
+    </body>
+</html>
