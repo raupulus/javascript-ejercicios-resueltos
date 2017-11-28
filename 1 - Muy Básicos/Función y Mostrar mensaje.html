@@ -12,3 +12,25 @@
 
     Muestra con un alert la variable y comprueba su valor
 -->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Variable Dentro y fuera de una función</title>
+    </head>
+    <body>
+        <h1>Variable Dentro y fuera de una función</h1>
+
+        <script>
+            var mensaje = "Primer mensaje"
+
+            function creaMensaje() {
+                var mensaje = "Segundo mensaje modificado";
+                alert('Dentro de la función → ' + mensaje);
+            }
+            creaMensaje();
+
+            alert('Fuera de la función → ' + mensaje);
+        </script>
+
+    </body>
+</html>
