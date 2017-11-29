@@ -18,3 +18,38 @@ Por ejemplo, si se ingresa 'casa' debemos mostrar el texto 'house' en la página
 
 Para salir escribe <STRONG>salir</STRONG>.
 -->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Mini Diccionario con Switch</title>
+    </head>
+    <body>
+        <h1>Mini Diccionario con Switch</h1>
+
+        <script>
+        var salir = false;
+        while (!salir) {
+            input = prompt('Introduce un valor de la lista (casa, mesa, perro, gato)\n\nPara salir escribe → salir').toLowerCase();
+            switch (input) {
+                case 'casa':
+                    alert('house');
+                    break;
+                case 'perro':
+                    alert('dog');
+                    break;
+                case 'mesa':
+                    alert('table');
+                    break;
+                case 'gato':
+                    alert('cat');
+                    break;
+                case 'salir':
+                    salir = true;
+                    break;
+                default:
+                    alert('No es un valor correcto');
+            }
+        }
+        </script>
+    </body>
+</html>
