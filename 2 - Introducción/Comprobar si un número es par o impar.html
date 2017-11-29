@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+    Realiza un script que pida al usuario un número, e indique si es par o impar.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Comprobar si un número es par o impar</title>
+    </head>
+    <body>
+        <h1>Comprobar si un número es par o impar</h1>
+
+        <script>
+            // Pedir introducir número
+            var x = Number(prompt('Introduce el número a comprobar'));
+
+            // Comprobar si se ha introducido un valor correcto
+            if (isNaN(x)) {
+                alert('No es un valor valido')
+            } else {
+                if (x%2 == 0) {
+                    alert('El número → ' + x + ' es par');
+                } else {
+                    alert('El número → ' + x + ' es impar');
+                }
+            }
+        </script>
+    </body>
+</html>

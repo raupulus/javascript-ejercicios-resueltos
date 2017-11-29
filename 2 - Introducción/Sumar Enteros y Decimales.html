@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Realiza un script en el que un usuario introduzca un número, y vaya sumando cada una de sus cifras y devuelva el resultado.
+
+Modificaciones:
+    - Si el número es entero suma solo la parte entera
+    - Si el número es decimal suma la parte entera y la decimal
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Sumar Enteros y Decimales</title>
+    </head>
+    <body>
+        <h1>Sumar Enteros y Decimales</h1>
+
+        <h2>Funcionamiento:</h2>
+
+        <ul>
+            <li>Si el número es entero suma solo la parte entera</li>
+            <li>Si el número es decimal suma la parte entera y la decimal</li>
+        </ul>
+
+        <div id="resultado" style="color:red;font-size:1.6em"></div>
+
+        <script>
+            var input = prompt('Sr Usuario introduce el numero');
+            var resultado_entero = 0;
+            var resultado_decimal = 0;
+
+            document.getElementById('resultado').innerHTML += 'Numero introducido → ' + input + '<br />';
+
+            if ((Number(input)%1) == 0) { //No es decimal
+                for(i=0;i<input.length;i++) {
+                    resultado_entero += parseInt(input.charAt(i));
+                }
+            } else if (!isNaN(Number(input))) { //Es decimal
+                for(i=0;i<input.length;i++) {
+                    if (input.charAt(i) == ".") {
+                        i++;
+                        for(i;i<input.length;i++) {
+                            resultado_decimal += Number(input.charAt(i));
+                        }
+                        break;
+                    } else {
+                        resultado_entero += parseInt(input.charAt(i));
+                    }
+                }
+                document.getElementById('resultado').innerHTML += 'El resultado decimal es → ' + resultado_decimal + '<br />';
+            }
+            else {
+               alert('No es valido');
+            }
+
+            document.getElementById('resultado').innerHTML += 'El resultado entero es → ' + resultado_entero;
+        </script>
+    </body>
+</html>

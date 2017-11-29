@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+El cálculo de la letra del Documento Nacional de Identidad (DNI) es un proceso matemático sencillo que se basa en obtener el resto de la división entera del número de DNI y el número 23. A partir del resto de la división, se obtiene la letra seleccionándola dentro de un array de letras. El array de letras es:
+
+    var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+
+    Por tanto si el resto de la división es 0, la letra del DNI es la T y si el resto es 3 la letra es la A. Con estos datos, elaborar un pequeño script que:- Almacene en una variable el número de DNI indicado por el usuario y en otra variable la letra del DNI que se ha indicado.
+
+En primer lugar se debe comprobar si el número es menor que 0 o mayor que 99999999. Si ese es el caso, se muestra un mensaje al usuario indicando que el número proporcionado no es válido y el programa no muestra más mensajes.
+
+Si el número es válido, se calcula la letra que le corresponde según el método explicado anteriormente.
+
+Una vez calculada la letra, se debe comparar con la letra indicada por el usuario. Si no coinciden, se muestra un mensaje al usuario diciéndole que la letra que ha indicado no es correcta. En otro caso, se muestra un mensaje indicando que el número y la letra de DNI son correctos.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Comprobar DNI</title>
+    </head>
+    <body>
+        <h1>Comprobar DNI</h1>
+
+        <script>
+           var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+
+           var dni, letra_in, letra_calculada;
+
+           function input_dni() {
+               dni = parseInt(prompt('Introduce el número del DNI'));
+               letra_in = prompt('Introduce la letra').toUpperCase();
+
+               if ((dni >= 0) && (dni <= 99999999)) {
+                   letra_calculada = letras[dni%23];
+                   if (letra_in == letra_calculada) {
+                       document.getElementById('resultado').innerHTML = "<p style='color:red;font-size:1.6em'>El dni es " + dni + " con letra " + letra_calculada + '</p>';
+                       alert('El dni es ' + dni + ' con letra ' + letra_calculada);
+                   } else {
+                       alert('La letra ' + letra_in + ' no coincide con la calculada → ' + letra_calculada) ;
+                   }
+               } else {
+                   alert('No es correcto el valor introducido');
+               }
+           }
+           input_dni();
+        </script>
+
+        <div id="resultado"></div>
+    </body>
+</html>

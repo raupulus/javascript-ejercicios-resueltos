@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+    Realiza un script que muestre en el documento los múltiplos de 8 comprendidos entre dos números que se solicitarán al usuario.
+
+    No importa el orden en el que los inserte el usuario, siempre se presentarán de menor al mayor, ambos inclusive.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Calcular múltiplos de 8 del valor introducido</title>
+    </head>
+    <body>
+        <h1>Calcular múltiplos de 8 del valor introducido</h1>
+
+        <script>
+            var x = Number(prompt('Introduce el primer número'));
+            var y = Number(prompt('Introduce el segundo número'));
+            var mayor, menor;
+
+            if ((!isNaN(x)) && (!isNaN(y))) {
+                if (x > y) {
+                    mayor = x;
+                    menor = y;
+                } else {
+                    mayor = y;
+                    menor = x;
+                }
+                var resultado = '<P style=\'font-size:1.4em;text-align:center\'>El número mayor es ' + mayor + ' y el menor es ' + menor + '<BR/>Los múltiplos de 8 comprendidos son:</P>';
+
+                while (mayor > menor) {
+                    if ((mayor % 8) == 0) {
+                        resultado += '<P style=\'color:red;font-size:1.6em;text-align:center\'>' + mayor + "</P>";
+                    }
+                    mayor--;
+                }
+                document.getElementById('resultado').innerHTML = resultado;
+            } else {
+                alert('No ha introducido un valor correcto');
+            }
+        </script>
+    </body>
+</html>

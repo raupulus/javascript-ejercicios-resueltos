@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+    Realiza un script que le pregunte al usuario la nota obtenida en un examen, y en función del resultado devuelva:
+            "Suspenso", "Aprobado", "Notable" o "Sobresaliente".
+
+    Realiza otra versión utilizando el operador condicional ?:
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Mostrar nota según valor Introducido</title>
+    </head>
+    <body>
+        <h1>Mostrar nota según valor Introducido</h1>
+
+        <script>
+            // Pide introducir la nota y la almacena
+            var nota = Number(prompt("Introduce la nota del examen"));
+
+            // Comprueba la nota introducida
+            switch (nota) {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    alert("Estas suspenso");
+                    break;
+                case 5:
+                case 6:
+                    alert("Estas Aprobado");
+                    break;
+                case 7:
+                case 8:
+                    alert("Tienes Notable");
+                    break;
+                case 9:
+                case 10:
+                    alert("Tienes un Sobresaliente, enhorabuena");
+                    break;
+            }
+        </script>
+    </body>
+</html>

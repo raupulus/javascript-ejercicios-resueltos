@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+    Solicita un número y muestra al usuario su tabla de multiplicar.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Crear Tabla de Multiplicar dado un número</title>
+    </head>
+    <body>
+        <h1>Crear Tabla de Multiplicar dado un número</h1>
+
+        <div>
+           <table id="tabla" style="border: 4px solid red;text-align:center; vertical-align:middle;min-width: 300px;margin:auto;">
+               <tr><td></td><td></td></tr>
+           </table>
+        </div>
+
+        <script>
+            // Pide introducir el número sobre el que generar la tabla
+            var input = parseInt(prompt("Introduce el número sobre el cual crear la tabla"));
+
+            // Introduce encabezados de la tabla
+            var resultado = "<TR><TH>Multiplicación</TH><TH>Resultado</TH></TR>";
+
+            // Bucle que recorre hasta multiplicar por 10
+            for (i=0;i<=10;i++) {
+                resultado += '<tr><td>' + input + 'x' + i + '</td><td>' + (input * i) + '</td></tr>';
+            }
+
+            // Muestra el resultado por pantalla
+            document.getElementById('tabla').innerHTML = resultado;
+        </script>
+    </body>
+</html>

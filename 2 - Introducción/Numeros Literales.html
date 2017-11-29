@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+    Realiza un script que muestre mediante mensajes los literales de los números entre 1 y 5
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Numeros Literales</title>
+    </head>
+    <body>
+        <h1>Numeros Literales</h1>
+
+        <div id="resultado" style="color: red;font-size: 1.8em"></div>
+
+        <script>
+            // Declaración de variables
+            comienzo = 1;
+            fin = 5;
+            resultado = 0;
+
+            // Bucle que suma según la condición de comienzo a si mismo
+            while (comienzo <= fin) {
+                resultado += comienzo++;
+                document.write(resultado + '<br />');
+            }
+
+            // Muestra el resultado
+            document.getElementById('resultado').innerHTML = "El sumatorio resulta → " + resultado;
+            alert("El sumatorio resulta → " + resultado);
+        </script>
+    </body>
+</html>

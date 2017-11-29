@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Realiza un script que muestre por pantalla un menú (utiliza console.log());
+
+    Pulse 1 para sumar
+    Pulse 2 para restar
+    Pulse 3 para multiplicar
+    Pulse 4 para dividir
+    Pulse 5 para obtener el módulo
+    Pulse 6 para salir
+
+En función de la opción seleccionada realizará la o peración y si pulsa la opción 6, con el botón confirm preguntar si está seguro de salir, si es que si cerrará la ventana si es que no, se volverá a elegir una opción del menú.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Calculadora Básica</title>
+
+        <script>
+            function operacion() {
+                var x = Number(prompt("Sr. usuario, introduce una opcion"));
+                var w = document.getElementById('resultado');
+                switch (x) {
+                    case 1 :
+                        w.innerHTML = input1 + input2;
+                        break;
+                    case 2 :
+                        w.innerHTML = input1 - input2;
+                        break;
+                    case 3 :
+                        w.innerHTML = input1 / input2;
+                        break;
+                    case 4 :
+                        w.innerHTML = input1 * input2;
+                        break;
+                    case 5 :
+                        w.innerHTML = input1 % input2;
+                        break;
+                    case 6 :
+                        document.body.innerHTML = "¡Se ha salido!";
+                        break;
+                }
+            }
+
+            function iniciar() {
+                input1 = Number(prompt("Sr. usuario, introduce un valor"));
+                input2 = Number(prompt("Sr. usuario, introduce el segundo valor"));
+
+                document.getElementById('entrada1').innerHTML = "Primer valor → " + input1;
+                document.getElementById('entrada2').innerHTML = "Segundo valor → " + input2;
+            }
+        </script>
+    </head>
+
+    <body onload="iniciar()">
+        <h1>Calculadora básica</h1>
+
+        <h2>Funcionamiento de la Calculadora</h2>
+
+        <ul>
+            <li>Pulse 1 para sumar</li>
+            <li>Pulse 2 para restar</li>
+            <li>Pulse 3 para multiplicar</li>
+            <li>Pulse 4 para dividir</li>
+            <li>Pulse 5 para obtener el módulo</li>
+            <li>Pulse 6 para salir</li>
+        </ul>
+        <p>
+            En función de la opción seleccionada realizará la o peración y si pulsa la opción 6, con el botón confirm preguntar si está seguro de salir, si es que si cerrará la ventana si es que no, se volverá a elegir una opción del menú.
+        </p>
+
+        <div id="entrada1" style="color:red;font-size:1.6em"></div>
+        <div id="entrada2" style="color:red;font-size:1.6em"></div>
+
+        <form style="margin: auto;text-align: center">
+            <input type="button" value="Operacion" onclick="operacion()" />
+        </form>
+
+        <div id="resultado" style="color:green;font-size:1.6em;margin:auto;text-align:center;">
+            Pulsa para realizar una operacion
+        </div>
+    </body>
+</html>

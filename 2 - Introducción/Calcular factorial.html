@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+    El factorial de un número entero n es una operación matemática que consiste en multiplicar todos los factores n x (n-1) x (n-2) x ... x 1.
+
+    Crea un script que calcule el factorial de un número entero.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Calcular Factorial</title>
+    </head>
+    <body>
+        <h1>Calcular Factorial</h1>
+
+        <script>
+            // Pedir introducir el número
+            var x = Number(prompt("Introduce el numero"));
+            var y = x;
+
+            /// Comprobar si es válido lo introducido y calcular
+            if (isNaN(x)) {
+                alert('No es un numero, no se hace nada');
+                document.getElementById('resultado').innerHTML = "<H2>Adivina quien ha introducido un valor inválido</H2>";
+            } else {
+                while (x>1) {
+                    y = y * (x-1);
+                    x--;
+                }
+
+                document.getElementById('resultado').innerHTML = "<BR/><BR/><H2 style='color:red'>El factorial es → " + y + "</H2>";
+            }
+        </script>
+    </body>
+</html>
