@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Dado un array, con 6 elementos, dos valores booleanos, dos valores numéricos y dos cadenas de caracteres.
+
+Realizar un script que devuelva la siguiente información:
+
+Ejemplo: A partir del siguiente array que se proporciona:
+        var valores = [true, 5, false, "hola", "adios", 2];
+
+    - Determinar cuál de los dos elementos de texto es mayor
+    - Determinar  el  resultado  de  dos  operaciones  lógicas realizadas  con  los  elementos booleanos
+    - Determinar el resultado de dos operaciones aritméticas realizadas con los elementos numéricos
+-->
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Filtrar Array</title>
+    </head>
+    <body>
+        <h1>Filtrar Array</h1>
+
+        <script>
+            var valores = [true, 5, false, 'hola', 'adios', 2];
+            var numeros_suma = 0;
+            var numeros_multi = 1;
+            var cadena_mayor = "";
+
+            // Comprueba cada valor en el array
+            for (x in valores) {
+                if ((!isNaN(valores[x])) && (valores[x] >= 0) && (valores[x] != true) && (valores[x] !=false)) {
+                    numeros_suma += valores[x];
+                    numeros_multi *= valores[x];
+                    document.body.innerHTML += valores[x] + ' Es un numero<br />';
+                } else if ((valores[x] == true) || (valores[x] == false)){
+                    document.body.innerHTML += valores[x] + ' Es un booleano<br />';
+                } else {
+                    document.body.innerHTML += valores[x] + ' Es una cadena<br />';
+                    if (valores[x] > cadena_mayor) {
+                        cadena_mayor = valores[x];
+                    }
+                }
+            }
+
+            alert('Suma = ' + numeros_suma + ' y multiplicacion = ' + numeros_multi);
+            alert('La mayor cadena es → ' + cadena_mayor);
+        </script>
+    </body>
+</html>

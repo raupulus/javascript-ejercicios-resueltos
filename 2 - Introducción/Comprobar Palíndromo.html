@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Realiza un script que determine si la cadena de texto que se le pide al usuario es un palíndromo, es decir, si se lee de la misma forma desde la izquierda y desde la derecha.
+
+Ejemplo de palíndromo complejo: "La ruta nos aporto otro paso natural".
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Comprobar Palíndromo</title>
+        <style>
+            table {
+                margin: auto;
+                width: 300px;
+                text-align: center;
+                border: 1px solid #000000;
+                color: #ff0000;
+                box-shadow: 3px 3px 3px #000000
+            }
+            table tr th {
+                border: 1px solid black;
+            }
+            table tr td {
+                border-bottom: 1px solid #000000;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Comprobar Palíndromo</h1>
+
+        <table cellspacing="0">
+            <tr>
+                <th>Normal</th>
+                <th>Invertida</th>
+            </tr>
+
+            <script>
+                var input = prompt('Introduzca la frase:');
+                var input_limpia = input.toLowerCase().trim().replace(/\s/g,'');
+
+                document.write('<br />La frase introducida es → ' + input + '<br /><br />');
+                document.write('<br />La frase limpia es → ' + input_limpia + '<br /><br />');
+
+                for (i=0, j=(input_limpia.length-1); i<input_limpia.length; i++, j--) {
+                    document.write('<tr><td>' + input_limpia[i] + '</td>' + '<td>' + input_limpia[j] + '</td></tr>');
+                    if (input_limpia[i] == input_limpia[j]) {
+                        continue;
+                    } else {
+                        alert('No coincide');
+                        break;
+                    }
+                }
+            </script>
+        </table>
+    </body>
+</html>

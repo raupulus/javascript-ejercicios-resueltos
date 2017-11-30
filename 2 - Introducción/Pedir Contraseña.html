@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Realiza un script que pida la contraseña de acceso a una página web y compruebe si es la misma que la almacenada en una variable. Si es correcta, le dará la bienvenida, sino se la volverá a pedir.
+-->
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Pedir Contraseña</title>
+    </head>
+    <body>
+        <h1>Pedir Contraseña</h1>
+
+        <script>
+            var input = prompt('Sr. Usuario, introduzca la contraseña de acceso');
+
+            if (input == 1234) {
+                document.write('ACCESO CONCEDIDO<br />');
+                document.write('Se ha conseguido acceder correctamente');
+            } else {
+                document.write('ACCESO DENEGADO');
+            }
+        </script>
+    </body>
+</html>
