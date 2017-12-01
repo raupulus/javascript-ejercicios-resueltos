@@ -20,8 +20,21 @@ del nuevo array del nuevo array.
 
         <script>
             var mi_array = [-2,1,3,4,5];
+            document.write('El array principal es → ' + mi_array);
 
-            //alert('¿Son todos positivos? → ' + mi_array.every???????);
+            var triple = [];
+            var multiplicado = 1;
+
+            for (let x of mi_array) {
+                if (x < 0) {
+                    document.write('<br />Existe un valor negativo, es → ' + x);
+                }
+                triple.push(x*3);
+                multiplicado *= x;
+            }
+
+            document.write('<br />El array con triples es → ' + triple);
+            document.write('<br />El resultado de multiplicar todo es → ' + multiplicado);
         </script>
     </head>
     <body>
