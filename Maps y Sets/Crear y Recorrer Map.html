@@ -17,3 +17,55 @@ Añade la información con posterioridad a la creación de la estructura :
     e.Consulta si está el módulo "DAW"
     f.Si está, elimínalo.
 -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Crear y Recorrer Map</title>
+
+        <script>
+            // Añadiendo valores al map
+            var mi_map = new Map();
+            mi_map.set('DWECL', 'Desarrollo Web en Entorno Cliente');
+            mi_map.set('DWESE', 'Desarrollo Web en Entorno Servidor');
+            mi_map.set('DWDE', 'Desarrollo Web Despliegue');
+            mi_map.set('DAW', 'Desarrollo Aplicaciones Web');
+
+            // Mostrar cantidad de módulos
+            document.write('El tamaño es → ' + mi_map.size);
+
+            // Mostrar el contenido de la estructura
+            mi_map.forEach((value, key) => {
+                document.write('<br />La clave → ' + key + ' y su valor → ' + value + '<br />');
+            });
+
+            // Devolver abrebiaturas de todos los módulos
+            document.write('<br />Los siguientes son abreviaturas:<br />')
+            for (x of mi_map.keys()) {
+                document.write(x + '<br />');
+            }
+
+            // Devuelve el nombre completo de todos los módulos
+            document.write('<br />Los siguientes son nombres completos:<br />')
+            for (x of mi_map.values()) {
+                document.write(x + '<br />');
+            }
+
+            // Consulta si está el módulo “DAW”
+            document.write('<br />¿Está el módulo DAW → ' + mi_map.has('DAW'));
+
+            // Si está, elimínalo.
+            if (mi_map.has('DAW')) {
+                mi_map.delete('DAW')
+            }
+
+            // Mostrar el contenido de la estructura de nuevo
+            mi_map.forEach((value, key) => {
+                document.write('<br />La clave → ' + key + ' y su valor → ' + value + '<br />');
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>Crear y Recorrer Map</h1>
+    </body>
+</html>
