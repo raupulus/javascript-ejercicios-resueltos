@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Realiza un script en el que un usuario introduzca un número, y vaya sumando cada una de sus cifras y devuelva el resultado.
+
+Modificaciones:
+    - Si el número es entero suma solo la parte entera
+    - Si el número es decimal suma la parte entera y la decimal
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Sumar cifras de un array</title>
+    </head>
+    <body>
+        <h1>Sumar cifras de un array</h1>
+
+        <script>
+            var mi_array = [];
+
+            // Llenar array de valores aleatorios
+            for (let i = 0; i < 10; i++) {
+                mi_array[i] = parseInt(Math.random() * 11);
+            }
+
+            var mi_array_menor = mi_array.filter(elem => elem <= 8);
+
+            alert('Array solo menor de 8 → ' + mi_array_menor);
+
+            // Compruebo por cada elemento si es impar y lo marco
+            mi_array.forEach(function(element, index) {
+                if (element%2 != 0) {
+                    mi_array[index] = 'impar';
+                }
+            });
+
+            alert(mi_array);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Ahora de cada módulo se desea guardar su nombre, duración y alumnos matriculados (módulo, numAlumnos).
+
+Utiliza la estructura que sea más conveniente.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Matriculación con Sets</title>
+
+        <script>
+            var mi_set = new Set();
+                        //Módulo //Horas //Alumnos
+            mi_set.add('DWECL', ['420', '25']);
+            mi_set.add('DWESE', ['370', '22']);
+            mi_set.add('DWDE', ['255', '28']);
+            mi_set.add('DAW', ['433', '16']);
+
+            for (let x of mi_set) {
+                //mi_set.values();
+                document.write('<br />' + x);
+                document.write('<br />' + mi_set.values(x));
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Matriculación con Sets</h1>
+    </body>
+</html>
