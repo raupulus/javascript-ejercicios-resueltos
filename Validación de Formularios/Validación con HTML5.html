@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Valida el siguiente formulario con atributos de HTML5
+
+    - DNI (99.999.999-X)
+    - Nombre (Mínimo 1 nombre y 1 apellido, Máximo 2 nombre y 2 apellidos)
+    - Fecha de Nacimiento (dd/mm/yyyy)
+    - Email (xxxxxx@yyyyy.zzz)
+    - WEB (http://www.xxxx.yyy)
+    - Contraseña (Entre 8 y 10 carácteres)
+
+Valide también que no puedan dejarse en blanco
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Validación con HTML5</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+    </head>
+    <body>
+        <h1>Validación con HTML5</h1>
+        <div>
+            <form>
+                <fieldset>
+                    <legend>Introduce los datos y pulsa Comprobar</legend>
+
+                    <label for="dni">DNI:</label>
+                    <input id="dni" type="text" name="dni" pattern="^[0-9]{2}\.[0-9]{3}\.[0-9]{3}-[a-zA-Z]$" required />
+
+                    <br /><br />
+
+                    <label for="nombre">Nombre:</label>
+                    <input id="nombre" type="text" name="nombre" size="40" maxlength="150" pattern="^[a-zA-Z]+[ ][a-zA-Z]+([ ][a-zA-Z]+){0,2}$" required/>
+
+                    <br /><br />
+
+                    <label for="edad">Fecha de Nacimiento:</label>
+                    <input id="edad" type="date" name="edad" required />
+
+                    <br /><br />
+
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" name="email" size="40" maxlength="132" pattern="^[a-zA-Z0-9_-]{2,63}@[a-zA-Z0-9]{2,63}[\.][a-z]{2,4}$" required />
+
+                    <br /><br />
+
+                    <label for="sitioweb">Página WEB:</label>
+                    <input id="sitioweb" type="url" name="sitioweb" pattern="^(http(s)?:\/\/)+([w]{3}[\.])+[a-z0-9]+[\.][a-z]{2,3}$" />
+
+                    <br /><br />
+
+                    <label for="passwd">Contraseña:</label>
+                    <input id="passwd" type="password" name="passwd" pattern="^.{8,10}$" required />
+                </fieldset>
+
+                <button type="button">Comprobar</button>
+            </form>
+        </div>
+    </body>
+</html>

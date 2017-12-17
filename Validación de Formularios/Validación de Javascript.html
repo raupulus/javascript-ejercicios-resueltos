@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Modifique el ejercicio anterior para que recoja información el número de hijos (puede estar entre 0 y 10).
+
+Validar el formulario ayudándote de los atributos de html5.
+
+La validación se debe realizar poco a poco según el usuario vaya rellenando los campos.
+
+En caso de introducir un valor incorrecto, limpiar el campo.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Validación de Javascript</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+
+        <script>
+            function test_patron(patron, valor) {
+                if (valor !== '' && valor !== null) {
+                    return patron.test(valor);
+                }
+                return false;
+            }
+
+            // Recibe como parámetros la cadena con el error, el patrón y la cadena a comprobar
+            function ver_error(error, patron, valor) {
+                if (test_patron(patron, valor)) {
+                    cajaMensajes.innerHTML = '';
+                } else {
+                    cajaMensajes.innerHTML = error;
+                }
+            }
+
+            function test_input() {
+                var input_id = this.id;
+                var input_valor = this.value;
+
+                // Patrones
+                var dni_test = new RegExp("^[0-9]{2}\.[0-9]{3}\.[0-9]{3}-[a-zA-Z]$");
+                var nombre_test = new RegExp("^[a-zA-Z]+[ ][a-zA-Z]+([ ][a-zA-Z]+){0,2}$");
+                var edad_test = new RegExp(".*");
+                var hijos_test = new RegExp("^([0-9]+|(10)+)+$");
+                var email_test = new RegExp("^[a-zA-Z0-9_-]{2,63}@[a-zA-Z0-9]{2,63}[\.][a-z]{2,4}$");
+                var sitioweb_test = new RegExp("^(http(s)?:\/\/)+([w]{3}[\.])+[a-z0-9]+[\.][a-z]{2,3}$");
+                var passwd_test = new RegExp("^.{8,10}$");
+
+                switch (input_id) {
+                    case 'dni':
+                        ver_error('Dni Incorrecto (99.999.999-X)', dni_test, input_valor);
+                        break;
+                    case 'nombre':
+                        ver_error('Nombre Incorrecto (Mínimo 1 nombre y 1 apellido, Máximo 2 nombre y 2 apellidos)', nombre_test, input_valor);
+                        break;
+                    case 'edad':
+                        ver_error('Edad no puede estar vacía', edad_test, input_valor);
+                        break;
+                    case 'hijos':
+                        ver_error('Hijos Incorrecto (0-10)', hijos_test, input_valor);
+                        break;
+                    case 'email':
+                        ver_error('Email Incorrecto (xxxxxx@yyyyy.zzz)', email_test, input_valor);
+                        break;
+                    case 'sitioweb':
+                        ver_error('Web Incorrecta (http://www.xxxx.yyy)', sitioweb_test, input_valor);
+                        break;
+                    case 'passwd':
+                        ver_error('Longitud de contraseña incorrecta (Entre 8 y 10 carácteres)', passwd_test, input_valor);
+                        break;
+                }
+            }
+
+            function iniciar() {
+                var inputs = document.getElementsByTagName('input');
+
+                for (x of inputs) {
+                    // Poner al perder el foco del input
+                    x.addEventListener('blur', test_input);
+                }
+            }
+
+            window.onload = iniciar;
+        </script>
+    </head>
+    <body>
+        <div>
+            <form>
+                <fieldset>
+                    <legend>Introduce los datos y pulsa Comprobar</legend>
+
+                    <label for="dni">DNI:</label>
+                    <input id="dni" type="text" name="dni" pattern="^[0-9]{2}\.[0-9]{3}\.[0-9]{3}-[a-zA-Z]$" required />
+
+                    <br /><br />
+
+                    <label for="nombre">Nombre:</label>
+                    <input id="nombre" type="text" name="nombre" size="40" maxlength="150" pattern="^[a-zA-Z]+[ ][a-zA-Z]+([ ][a-zA-Z]+){0,2}$" required/>
+
+                    <br /><br />
+
+                    <label for="edad">Fecha de Nacimiento:</label>
+                    <input id="edad" type="date" name="edad" required />
+
+                    <br /><br />
+
+                    <label for="hijos">Número de hijos</label>
+                    <input id="hijos" type="number" name="hijos" min="0" max="10" required />
+
+                    <br /><br />
+
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" name="email" size="40" maxlength="132" pattern="^[a-zA-Z0-9_-]{2,63}@[a-zA-Z0-9]{2,63}[\.][a-z]{2,4}$" required />
+
+                    <br /><br />
+
+                    <label for="sitioweb">Página WEB:</label>
+                    <input id="sitioweb" type="url" name="sitioweb" pattern="^(http(s)?:\/\/)+([w]{3}[\.])+[a-z0-9]+[\.][a-z]{2,3}$" />
+
+                    <br /><br />
+
+                    <label for="passwd">Contraseña:</label>
+                    <input id="passwd" type="password" name="passwd" pattern="^.{8,10}$" required />
+                </fieldset>
+
+                <button type="button">Comprobar</button>
+            </form>
+        </div>
+
+        <div id="cajaMensajes"></div>
+    </body>
+</html>
