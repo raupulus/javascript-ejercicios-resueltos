@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Realizar un script que permita mover una caja dentro de la ventana del navegador tanto con las teclas de desplazamiento del teclado central como con las del teclado numérico.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mover caja con teclado</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+        <style>
+            #cajaCubo {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100px;
+                height: 100px;
+                background-color: #ff0000;
+            }
+        </style>
+
+        <script>
+            var v_width = window.innerWidth;
+            var y_height = window.innerHeight;
+
+            var box_top = 0;
+            var box_left = 0;
+
+
+            function mover(e) {
+                v_width = window.innerWidth;
+                y_height = window.innerHeight;
+
+                switch (e.code) {
+                    case 'ArrowLeft':
+                        if ((box_left - 10) > 0) {
+                            box_left -= 10;
+                            cajaCubo.style.left = box_left + 'px';
+                        } else {
+                            cajaCubo.style.left = 0 + 'px';
+                        }
+                        break;
+                    case 'ArrowRight':
+                        if ((box_left + 110) < v_width) {
+                            box_left += 10;
+                            cajaCubo.style.left = box_left + 'px';
+                        } else {
+                            cajaCubo.style.top = (v_width -100) + 'px';
+                        }
+                        break;
+                    case 'ArrowDown':
+                        if ((box_top + 110) < y_height) {
+                            box_top += 10;
+                            cajaCubo.style.top = box_top + 'px';
+                        } else {
+                            cajaCubo.style.top = (y_height -100) + 'px';
+                        }
+                        break;
+                    case 'ArrowUp':
+                        if ((box_top - 10) > 0) {
+                            box_top -= 10;
+                            cajaCubo.style.top = box_top + 'px';
+                        } else {
+                            cajaCubo.style.top = 0 + 'px';
+                        }
+                        break;
+                }
+            }
+
+            window.onkeydown = mover;
+        </script>
+    </head>
+    <body>
+        <div id="cajaCubo"></div>
+    </body>
+</html>

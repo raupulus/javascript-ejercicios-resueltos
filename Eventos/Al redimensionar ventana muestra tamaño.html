@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Cada vez que el usuario redimensione la ventana nos indique  el ancho
+y alto de la ventana del navegador.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Al redimensionar ventana muestra tamaño</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+
+        <script>
+            function verPosicion(e) {
+                var v_width = 'El ancho es → ' + window.innerWidth;
+                var y_height = 'El alto es → ' + window.innerHeight;
+
+                alert(v_width + y_height);
+            }
+
+            window.onresize = verPosicion;
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Realizar un script que cuando pulse el usuario con el botón del ratón en cualquier sitio de la pantalla, identifique si ha pulsado con el botón derecho o con el izquierdo.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Identificar Click</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+        <script>
+            function muestraBoton(e) {
+                var boton = e;
+
+                if (e.button == 0) {
+                    boton = 'Izquierdo';
+                } else if (e.button == 1) {
+                    boton = 'Central';
+                } else if (e.button == 2) {
+                    boton = 'Derecho';
+                } else {
+                    boton = 'No reconocido';
+                }
+
+                alert('Se ha producido el evento → ' + e.type +
+                            '\nBotón usado → ' + boton);
+            }
+
+            window.onload = function () {
+                document.addEventListener('click', muestraBoton);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Identificar Click</h1>
+        <p>
+            Pulsa en cualquier lugar del documento para ver el botón del ratón que has usado.
+        </p>
+    </body>
+</html>

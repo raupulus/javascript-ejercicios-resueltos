@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Coloque en la aplicación una imagen:
+    - Mientras se mantenga click pulsado cambiar por otra imagen
+    - Cuando se suelta el click debe volver a la primera imagen
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cambiar Imagen mientras se pulse click</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+        <style>
+            #cajaImagen {
+                margin: auto;
+                min-width: 400px;
+                max-width: 800px;
+
+            }
+
+            #cajaImagen #imagen {
+                width: 100%;
+            }
+        </style>
+
+        <script>
+            // Muestra imagen oculta
+            function mostrarOculta() {
+                imagen.src = './images/img2.jpg';
+            }
+
+            // Muestra imagen original
+            function mostrarOriginal() {
+                imagen.src = './images/img1.jpg';
+            }
+
+            // Preparar eventos
+            function preparar() {
+                imagen.addEventListener('mousedown', mostrarOculta);
+                imagen.addEventListener('mouseup', mostrarOriginal);
+            }
+
+            // Inicializar tras cargar página
+            window.onload = preparar;
+        </script>
+    </head>
+    <body>
+        <div id="cajaImagen">
+            <img id="imagen" src="./images/img1.jpg" />
+        </div>
+    </body>
+</html>

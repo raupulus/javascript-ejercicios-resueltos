@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Realizar un script que responda estos eventos:
+    - Al pulsar botón del ratón el color de fondo del cuadro de mensaje debe ser amarillo (#FFFF00).
+    - Cuando se pulsa una tecla, el color de fondo debe ser azul (#CCE6FF).
+    - Al volver a mover el ratón, el color de fondo vuelve a ser blanco.
+
+Modifica el ejemplo anterior para que cuando se pulse sobre el ratón se muestren las coordenadas respecto del navegador y la pantalla.
+
+Cuando se pulse una tecla se deberá mostrar tanto el carácter como su código ascii.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cambiar fondo al mover ratón</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+        <style media="screen">
+            body {
+                padding-top: 40px;
+            }
+
+            .cajaImagen {
+                margin: auto;
+                min-width: 400px;
+                max-width: 800px;
+
+            }
+
+            .cajaImagen img {
+                width: 100%;
+            }
+
+            #cajaSource {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                font-size: 1.4em;
+                color: #ffffff;
+                background-color: #000000;
+            }
+        </style>
+
+        <script>
+            // Pinta la ruta de la imagen
+            function mostrarSource() {
+                cajaSource.innerHTML = this.src;
+            }
+
+            // Quita ruta de imagen y da información
+            function ocultarSource() {
+                cajaSource.innerHTML = 'Pasa sobre una imagen';
+            }
+
+            function escucharEvento(e) {
+                switch (e.type) {
+                    case 'click':
+                        cajaSource.style.backgroundColor = '#FFFF00';
+                        alert('X es → ' + e.clientX + '\nY es → ' + e.clientY);
+                        break;
+                    case 'keydown':
+                        cajaSource.style.backgroundColor = '#CCE6FF';
+                        alert('Key → ' + e.key + '\nCódigo → ' + e.code);
+                        break;
+                    case 'mouseover':
+                        cajaSource.style.backgroundColor = '#000000';
+                        break;
+                }
+            }
+
+            // Asigna los eventos al terminar de cargar la página
+            function agregarEvento() {
+                window.onclick = escucharEvento;
+                window.onkeydown = escucharEvento;
+                window.onmouseover = escucharEvento;
+
+                var images = document.getElementsByTagName('img');
+
+                for (x of images) {
+                    x.addEventListener('mouseover', mostrarSource);
+                    x.addEventListener('mouseout', ocultarSource);
+                }
+            }
+
+            // Inicializar asignación de eventos desde "agregarEvento()"
+            window.onload = agregarEvento;
+        </script>
+    </head>
+    <body>
+        <!--La siguiente caja muestra el source de la imagen-->
+        <div id="cajaSource">Pasa sobre una imagen</div>
+
+        <div class="cajaImagen">
+            <img src="./images/img1.jpg" alt="imagen" />
+        </div>
+
+        <div class="cajaImagen">
+            <img src="./images/img2.jpg" alt="imagen" />
+        </div>
+
+        <div class="cajaImagen">
+            <img src="./images/img3.jpg" alt="imagen" />
+        </div>
+    </body>
+    </html>
