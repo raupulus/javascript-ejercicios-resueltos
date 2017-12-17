@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Desarrolla una aplicación web que funcione de alarma.
+
+Mostrar hora actual y preguntar al usuario a qué hora sonará.
+
+Una vez que llegue a la hora introducida por el usuario, debe preguntarle si quiere descansar un poco más y vuelva a mostrar el mensaje a los dos minutos.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Despertador Temporizador</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+
+        <style>
+            @font-face {
+                font-family:digital;
+                font-weight:4em;
+                font-style: normal;
+                src:url(./digital.ttf);
+            }
+        </style>
+
+        <script>
+            var reloj;
+            var temporizador;
+
+            function inicializar() {
+                reloj = setInterval(hora,1000);
+            }
+
+            function hora() {
+                var actualHora = new Date();
+                var horas = actualHora.getHours();
+                if (horas < 10) {
+                    horas = "0" + horas;
+                }
+
+                var minutos = actualHora.getMinutes();
+                if (minutos < 10) {
+                    minutos = "0" + minutos;
+                }
+
+                var segundos = actualHora.getSeconds();
+                if (segundos < 10) {
+                    segundos = "0" + segundos;
+                }
+
+                var horaLimpia = horas + ":" + minutos + ":" + segundos;
+                document.getElementById('hora').innerHTML = horaLimpia;
+            }
+
+            function mensajeAlarma() {
+                var parar = confirm('RIIIIIIIIIIIIN!!!!!!!!!!!\nSoy una alarma\nSi el sueño apreta, puedes cancelar y dormir 2 minutos más');
+                if (! parar) {
+                    desactivarAlarma()
+                    temporizador = setTimeout(mensajeAlarma, (2000*60)); //Repite a los 2m
+                }
+            }
+
+            //Calculos
+            function activarAlarma(in_horas, in_minutos) {
+                var actualHora = new Date().getTime();
+                var horaAlarma = new Date().setHours(in_horas, in_minutos, 00, 00);
+                var tiemporestante = horaAlarma - actualHora;
+
+                if (horaAlarma < actualHora) {
+                    alert('[!] Has asignado la alarma a una hora anterior a la actual');
+                } else {
+                    temporizador = setTimeout(mensajeAlarma, tiemporestante)
+                }
+            }
+
+            function limpiarAlarma() {
+                document.getElementsByName('hora')[0].value = "00"
+                document.getElementsByName('minutos')[0].value = "00"
+            }
+
+            //Función que compruebo los valores introducidos a modo cortocircuito
+            function comprobarAlarma() {
+                var hora = document.getElementsByName('hora')[0].value;
+                var minutos = document.getElementsByName('minutos')[0].value;
+
+                //Comprobar que se cumplen todas las condiciones
+                if ((isNaN(hora)) || (isNaN(minutos))) {
+                    alert('Tienen que ser números enteros los valores');
+                    limpiarAlarma();
+                } else if ((hora < 0) | (hora > 23)) {
+                    alert('La hora está mal introducida. Inserta valor entero comprendido entre 0 y 23');
+                    limpiarAlarma();
+                } else if ((minutos < 0) | (minutos > 59)) {
+                    alert('Los minutos no pueden ser menores de 0 ni mayor a 59');
+                    limpiarAlarma();
+                } else {
+                    //Si no hay cortocircuito se establece alarma
+                    activarAlarma(hora, minutos);
+                }
+
+                menorCero();
+            }
+
+            function desactivarAlarma() {
+                clearTimeout(temporizador);
+            }
+
+            function menorCero() {
+                var hora = document.getElementsByName('hora')[0].value;
+                var minutos = document.getElementsByName('minutos')[0].value;
+                if (hora < 10) {
+                    document.getElementsByName('hora')[0].value = "0" + parseInt(hora);
+                }
+
+                if (minutos < 10) {
+                    document.getElementsByName('minutos')[0].value = "0" + parseInt(minutos);
+                }
+            }
+        </script>
+    </head>
+
+    <body onload="inicializar();">
+        <h1 id="titulo1">Despertador Temporizador</h1>
+        <div>
+            Desarrolla una aplicación web que funcione de alarma. Ésta tendrá que mostrar la hora actual y preguntar al usuario la hora que quiere que te avise. Una vez que llegue a la hora introducida por el usuario, debe preguntarle si quiere descansar un poco más y vuelva a mostrar el mensaje a los dos minutos.
+        </div>
+
+        <br /><br />
+
+        <div style="margin: auto; max-width: 600px; border:4px groove black; background-color:darkslateblue; border-radius: 5px;">
+            <hr />
+            <div style="font-size:3em; text-align:center; color:greenyellow; text-shadow:2px 2px 2px white; background-color: black">HORA ACTUAL</div>
+            <hr />
+            <div id="hora" style="padding-top: 12px; padding-bottom: 18px; font-size:8em; font-family: digital,sans-serif,monospace; text-align:center; color:red; background-color: black">00:00:00</div>
+            <hr />
+        </div>
+
+       <br /><br />
+
+        <div style="max-width: 500px; margin: auto; text-align: center;">
+            <form>
+                <input name="hora" type="text" value="00" size="2"
+                       minlength="2" maxlength="2" onmouseout="menorCero();" />
+                <input name="minutos" type="text" value="00" size="2"
+                       minlength="2" maxlength="2" onmouseout="menorCero();" />
+                <br /><br />
+                <input type="button" value="Activar"
+                       onclick="comprobarAlarma();" />
+                <input type="button" value="Desactivar"
+                       onclick="desactivarAlarma();" />
+            </form>
+        </div>
+    </body>
+</html>

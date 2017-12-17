@@ -1,0 +1,22 @@
+<?xml version="1.0"?><svg width="475" height="475" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Search without text</title>
+ <defs>
+  <linearGradient id="linearGradient12975">
+   <stop stop-color="#ffffff" id="stop12977" offset="0"/>
+   <stop stop-color="#d2d5d8" id="stop12979" offset="1"/>
+  </linearGradient>
+  <filter id="filter12971">
+   <feGaussianBlur id="feGaussianBlur12973" stdDeviation="3.225"/>
+  </filter>
+  <linearGradient y2="1.236288" x2="0.162791" y1="0.166667" x1="0.5" id="linearGradient12981" xlink:href="#linearGradient12975"/>
+ </defs>
+ <metadata id="metadata12220">image/svg+xmlSergio Luiz Araujo Silvasearchiconsinformaticcomputer</metadata>
+ <g>
+  <title>Layer 1</title>
+  <g externalResourcesRequired="false" id="layer1">
+   <rect fill="#000000" fill-rule="nonzero" stroke-width="2.116" filter="url(#filter12971)" transform="matrix(4.77199 0 0 4.77199 896.756 -2714.75)" id="rect12945" width="92.14286" height="92.14286" x="-183.042204" y="574.354897" ry="12.857142"/>
+   <rect fill="url(#linearGradient12981)" fill-rule="nonzero" stroke="#cccccc" stroke-width="10.097527" stroke-miterlimit="4" ry="61.354134" y="9.02079" x="9.64647" height="439.70462" width="439.70462" id="rect12943"/>
+   <path fill="#454040" stroke-width="9.756173" id="path12423" d="m127.939003,120.085999c-43.2733,43.272003 -43.3787,114.158997 -0.106003,157.432007c36.663002,36.662994 93.202003,42.25 135.920998,16.765991l76.343994,74.235016c10.507019,10.197998 27.085022,9.820984 37.118011,-0.844025c10.031982,-10.664978 9.768982,-27.445984 -0.739014,-37.643982l-75.182983,-72.864014c26.360992,-42.846985 21.007996,-100.044998 -16.028015,-137.080994c-43.272995,-43.2733 -114.054993,-43.2733 -157.326988,0l0,0zm31.738991,31.738998c26.102005,-26.101997 67.746002,-26.101997 93.848007,0c26.10199,26.102005 26.10199,67.746002 0,93.848007c-26.102005,26.10199 -67.746002,26.10199 -93.848007,0c-26.10199,-26.102005 -26.10199,-67.746002 0,-93.848007z"/>
+  </g>
+ </g>
+</svg>
