@@ -17,3 +17,167 @@ Modifícalo para que distinga entre mayúsculas y minúsculas.
 
 Comprueba que le método existe en el navegador, en caso contrario, avisa al usuario.
 -->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Buscador de Palabras</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+        <style>
+            img:hover {
+                cursor: pointer;
+            }
+            form {
+                width: 100%;
+                padding: 0;
+                background-color: black;
+                text-align: center;
+            }
+        </style>
+
+        <script>
+            var busqueda;
+
+            function iniciar() {
+                busqueda = document.getElementById('buscar');
+            }
+
+            function buscar() {
+                var buscando = busqueda.value;
+
+                limpiarCajaBusqueda();
+
+                if (window.find(buscando)) {
+                    alert('Se ha encontrado → ' + buscando);
+                } else {
+                    alert('No se ha encontrado → ' + buscando);
+                }
+            }
+
+            function limpiarCajaBusqueda() {
+                if (busqueda.value == 'Buscar...') {
+                    busqueda.value = ''
+                }
+            }
+
+            function reescribirCajaBusqueda() {
+                if (busqueda.value == '') {
+                    busqueda.value = 'Buscar...'
+                }
+            }
+        </script>
+    </head>
+
+    <body onload="iniciar();">
+        <h1 id="titulo1" style="text-align: center;">Buscador de Palabras</h1>
+        <div>
+            Crea un buscador para que tus visitantes puedan encontrar un texto cualquiera en tus páginas.
+            <br /><br />
+            Pide al usuario que introduzca la cadena a buscar. Una vez hallado, pregunta si se desea continuar la búsqueda y repite el proceso hasta que se le diga que pare o no encuentre más coincidencias.
+            <br /><br />
+            Modifícalo para que solo busque palabras completas.
+            <br /><br />
+            Modifícalo para que distinga entre mayúsculas y minúsculas
+            <br /><br />
+            Comprueba que le método existe en el navegador, en caso contrario, avisa al usuario.
+
+            <h1 style="color:red">
+                Lo más claro que encuentro sobre "find()" es lo siguiente:
+                <br />
+                <a href="https://developer.mozilla.org/es/docs/Web/API/Window/find"
+                title="info find()">
+                    https://developer.mozilla.org/es/docs/Web/API/Window/find
+                </a>
+                <br />
+                en el mismo sitio dice que solo devuelve boolean y que algunos fallan( <strong>tienen bugs</strong> )
+            </h1>
+            <br /><br />
+            <p>
+                Más abajo tengo lo que he intentado hacer.
+            </p>
+        </div>
+
+        <br /><br />
+
+       <div>
+          <hr />
+           <form>
+               <input id="buscar" type="search" value="Buscar..." size="15" autofocus onfocus="limpiarCajaBusqueda()" onblur="reescribirCajaBusqueda()" />
+               <img src="./lupa.svg" style="width: 40px; vertical-align: middle;" onclick="buscar()" />
+           </form>
+           <hr />
+       </div>
+
+       <br /><br />
+
+        <div>
+            <h2 style="text-align: center; color: red; font-size: 2em; text-shadow: 2px 2px 3px black">Receta Pollo al Ajillo</h2>
+            <hr />
+            <p>
+                Fuente:
+                <a
+                    href="http://www.recetasderechupete.com/pollo-al-ajillo-receta-casera-y-facil/9272/"
+                    title="Recetas de rechupete">
+                    www.recetasderechupete.com
+                </a>
+            </p>
+
+            <hr />
+
+            Cómo preparar pollo al ajillo, un clásico dentro de la cocina tradicional española, tanto es así que raro es el bar o restaurante que no cuenta con este plato en su carta, bien como tapa o como sugerencia en la mesa.
+            <br /><br />
+            El pollo es el ingrediente estrella, aromatizado con hierbas y, cómo no, con ajo. En el blog tenéis un montón de recetas de pollo, soy el fan número uno de este tipo de recetas, la mayoría son muy sencillas y sobre todo baratas. Quizás esta receta con pollo es una de las más visitadas junto con el pollo al horno con patatas.
+            <br /><br />
+            El pollo debe tener un color uniforme, blanco o ligeramente amarillento, sin manchas, lo que será indicativo de una pieza fresca. Se trata de una carne baja en grasa, de gran valor nutricional. Muy fácil de digerir y que además se puede preparar de mil maneras.
+            <br /><br />
+            Como veis tenemos en esta receta un par de ingredientes muy saludables, os animo a prepararla ya que, además de muy sencilla y rápida, estoy seguro de que os enganchará. Ya me contaréis.
+            Preparación del pollo guisado al ajillo
+            <ol>
+                <li>
+                    Lo primero que hacemos al comprar el pollo es pedirle al carnicero que nos lo trocee. Ya en casa limpiamos bien los trozos de restos de grasa y les retiramos la piel salvo a las alitas.
+                </li>
+
+                <li>
+                    Eliminar la piel es opcional, pero considero que añade al plato un exceso de grasa innecesaria.
+                </li>
+
+                <li>
+                    Salpimentamos los trozos ligeramente.
+                </li>
+
+                <li>
+                    En una cazuela ancha ponemos a calentar abundante aceite de oliva y echamos los ajos sin pelar.
+                </li>
+
+                <li>
+                     Los cocinamos a fuego medio, estando pendientes de que no se nos quemen. La idea es que queden caramelizados y que sirvan de aromatizante de nuestro aceite.
+                </li>
+
+                <li>
+                    Cuando vemos que están blanditos tras unos 5 minutos, los retiramos y reservamos.
+                </li>
+
+                <li>
+                    Añadimos los trozos de pollo a la cazuela con el aceite aromatizado de los ajos, junto con la hojita de laurel, la rama de romero y el tomillo.
+                </li>
+
+                <li>
+                    El pollo debe de quedar bien frito, lo cual nos llevará unos 15 a 20 minutos por lo menos. Tenemos que estar pendientes de darle la vuelva a los trozos de vez en cuando para procurar que quede tostadito por todas partes.
+                </li>
+
+                <li>
+                    No se trata simplemente de dorarlo y sellarlo como cuando lo preparamos para un guiso. Lo que queremos es que el pollo quede perfectamente cocinado y tierno por dentro y tostadito por fuera.
+                </li>
+            </ol>
+        </div>
+
+        <script>iniciar();</script>
+
+        <br /><br />
+
+        <div style="margin: auto; text-align: center;">
+            <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/i_-DfqBMDkQ"
+                    frameborder="0" allowfullscreen></iframe>
+        </div>
+    </body>
+</html>
