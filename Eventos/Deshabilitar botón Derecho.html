@@ -9,3 +9,17 @@
 ↓ INSTRUCCIONES DEL EJERCICIO ↓
 Deshabilitar el botón derecho del ratón de tu aplicación web.
 -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Deshabilitar botón Derecho</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+        <script>
+            // Dato → No funciona directamente false como valor
+            document.oncontextmenu = function () {return false};
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
