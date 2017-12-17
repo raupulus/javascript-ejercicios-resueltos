@@ -8,3 +8,31 @@
 <!--
 ↓ INSTRUCCIONES DEL EJERCICIO ↓
 Realice un script que permita llevar un contador de todas las veces que se ha visitado una página. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Contador de visitas</title>
+        <script src="./cookies.js"></script>
+
+        <script>
+            // Al cargar la página comprueba si existe cookie o la crea, suma 1
+            window.onload = function() {
+                var c = getCookie('contador');
+
+                if (c === null) {
+                    setCookie('contador', 1);
+                } else {
+                    setCookie('contador', ++c);
+                }
+
+                var pintar = document.getElementById('resultado');
+                pintar.innerHTML = 'Visita actual → ' + c;
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>Contador de visitas</h1>
+        <p id="resultado"></p>
+    </body>
+</html>
