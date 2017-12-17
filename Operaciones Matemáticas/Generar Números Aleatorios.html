@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Generar 10 números aleatorios y dibujarlos
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Generar Números Aleatorios</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+
+        <script type="text/javascript">
+            function generarAleatorio() {
+                return parseInt((Math.random()+0.01)*20);
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1 id="titulo1">Generar Números Aleatorios</h1>
+        <div class="resultado">
+            Genera 10 números aleatorios comprendidos entre 0 y 20, todos enteros.
+        </div>
+
+        <script>
+            for (let i=1; i<=10; i++) {
+                document.write(generarAleatorio() + "<br />");
+            }
+        </script>
+    </body>
+</html>

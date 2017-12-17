@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Calcula el área de un círculo.
+
+El usuario debe indicar el valor del radio y debes mostrar por pantalla el siguiente mensaje bien formateado “El área de un círculo es XX.XX cm2”.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Calcular área de círculo</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+    </head>
+
+    <body>
+        <h1 id="titulo1">Calcular área de círculo</h1>
+        <div class="resultado"></div>
+
+        <script>
+            var area = Math.pow(prompt("Introduce el radio del circulo"),2)* Math.PI;
+            document.write("El area del circulo es → " + area.toFixed(2) + "cm2");
+        </script>
+    </body>
+</html>
