@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Añadir al objeto Array un método que permita eliminar del un array un determinado valor.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Quitar elemento de Array mediante Prototype</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+
+        <script>
+            mi_array = new Array(1,2,3,4,5,6,4,8,2);
+
+            document.write(mi_array);
+
+            Array.prototype.sacar = function(quitar) {
+                while (this.indexOf(quitar) != -1) {
+                    this.splice([this.indexOf(quitar)], 1);
+                }
+            };
+
+            function quitando() {
+                var valor = parseInt(entrada.value);
+                mi_array.sacar(valor);
+                pintar.innerHTML = mi_array;
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>Quitar elemento de Array mediante Prototype</h1>
+
+        <div>
+            <form>
+                <input type="text" id="entrada" />
+                <input type="button" value="Calcular" onclick="quitando()" />
+            </form>
+        </div>
+
+        <div id="pintar"></div>
+    </body>
+</html>

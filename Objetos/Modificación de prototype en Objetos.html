@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Haz uso de los prototipos (prototype) de JavaScript.
+Define la siguiente jerarquía de objetos:
+    • Objeto Persona con las propiedades nombre, edad y género. Además incorpora el método obtDetalles(), el cual mostrará las propiedades de la persona.
+
+    • Objeto Estudiante, que hereda de Persona, e incluye las propiedades curso y grupo. Además incorpora el método registrar().
+
+    • Objeto Profesor, que hereda de Persona, e incluye las propiedades asignatura y nivel. Además incorpora el método asignar().
+
+Crear los objetos y casos de prueba necesarios para comprobar el correcto funcionamiento de la jerarquía.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Modificación de prototype en Objetos</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+        <script>
+// --------------------------------- PERSONA ---------------------------------
+            // PseudoClase Persona, será clase padre de Estudiante y Profesor
+            function Persona(nombre, edad, genero) {
+                this.nombre = nombre;
+                this.edad = edad;
+                this.genero = genero;
+            }
+
+            // Añadiendo al prototype de persona la función obtDetalles()
+            Persona.prototype.obtDetalles = function () {
+                // Mostrar todas las propiedades de la persona
+                document.write('<br />Nombre → ' + this.nombre);
+                document.write('<br />Edad → ' + this.edad);
+                document.write('<br />Género → ' + this.genero);
+            };
+
+
+// -------------------------------- ESTUDIANTE --------------------------------
+            // PseudoClase Estudiante, será hija de Persona
+            function Estudiante(nombre, edad, genero, curso, grupo) {
+                this.curso = curso;
+                this.grupo = grupo;
+                Persona.call(this, nombre, edad, genero);
+            }
+
+            // Herencia desde Persona en el prototype
+            Estudiante.prototype = new Persona();
+
+            // Asigno constructor de Estudiante en el prototype
+            Estudiante.prototype.constructor = Persona;
+
+            // Añadiendo al prototype de Estudiante la función registrar()
+            Estudiante.prototype.registrar = function () {
+                document.write('<br />El estudiante ' + this.nombre + ' ha registrado algo')
+            };
+
+
+// --------------------------------- PROFESOR ---------------------------------
+            // PseudoClase Profesor, será hija de Persona
+            function Profesor(nombre, edad, genero, asignatura, nivel) {
+                this.asignatura = asignatura;
+                this.nivel = nivel;
+                Persona.call(this, nombre, edad, genero);
+            }
+
+            // Herencia desde Persona en el prototype
+            Profesor.prototype = new Persona();
+
+            // Asigno constructor de Profesor en el prototype
+            Profesor.prototype.constructor = Persona;
+
+            // Añadiendo al prototype de Profesor la función asignar()
+            Profesor.prototype.asignar = function () {
+                document.write('<br />El Profesor ' + this.nombre + ' ha asignado algo')
+            };
+
+
+// ------------------------------- INSTANCIANDO -------------------------------
+            // Creando Objeto de Estudiante
+            var estudiante1 = new Estudiante(
+                'Carmelito',
+                16,
+                'Masculino',
+                'Cuarto E.S.O.',
+                2,
+            );
+
+            // Creando Objeto de Profesor
+            var profesor1 = new Profesor(
+                'Oliva',
+                38,
+                'Femenino',
+                'Matemáticas',
+                99,
+            );
+
+
+// --------------------------------- MOSTRAR ----------------------------------
+            // Mostrando Objeto estudiante1
+            document.write('<br />------------ ESTUDIANTE ------------');
+            estudiante1.obtDetalles();
+            document.write('<br />Curso → ' + estudiante1.curso);
+            document.write('<br />Grupo → ' + estudiante1.grupo);
+            estudiante1.registrar();
+
+            // Mostrando Objeto profesor1
+            document.write('<br /><br />------------- PROFESOR -------------');
+            profesor1.obtDetalles();
+            document.write('<br />Asignatura → ' + profesor1.asignatura);
+            document.write('<br />Nivel → ' + profesor1.nivel);
+            profesor1.asignar();
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Crear una pseudoclase llamada Factura que permita instanciar objetos de ese tipo de la siguiente forma:
+
+Factura(cliente,elementos)Cliente es un objeto que guarda los datos del cliente ( nombre, dirección, teléfono y nif ) y elementos es un array que contiene la siguiente información por cada uno de los ítems que puede tener la factura: descripción, cantidad y precio.
+
+Además sobre cada factura se desea guardar los siguientes datos: base imponible,iva, total y forma de pago. Por defecto, tendrán como valores 0,21,0,"contado" respectivamente.
+
+Añade con posterioridad a la pseudoclase Factura:
+• Propiedad empresa que guardará información sobre la empresa que emite la factura ( nombre, dirección, teléfono y cif ).
+• Método que calcule el total de la factura (con el IVA aplicado);
+• Método que muestre el total.
+
+Realiza una instanciación de Factura y muestra su total.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Objetos Facturación</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+        <script>
+
+            // Pseudo clase para el cliente
+            function Cliente(nombre, direccion, telefono, nif) {
+                this.nombre = nombre;
+                this.direccion = direccion;
+                this.telefono = telefono;
+                this.nif = nif;
+            }
+
+            // Pseudo clase para la empresa
+            function Empresa(nombre, direccion, telefono, cif) {
+                this.nombre = nombre;
+                this.direccion = direccion;
+                this.telefono = telefono;
+                this.cif = cif;
+            }
+
+            function Factura(cliente, ...elementos) {
+                this.cliente = cliente;
+                this.elementos = elementos;
+
+                this.base_imponible = 0;
+                this.iva = 21;
+                this.total = 0;
+                this.forma_pago = 'contado';
+            }
+
+            // Creo Instancias de ejemplos
+            var cliente1 = new Cliente('Pepe', 'Avenida de los zurdos, 14', '612342787', '1829922323-D');
+
+            var empresa1 = new Empresa('9 Mares', 'Calle de las sardinas', '612123123', '2342342545234524525');
+
+            var factura1 = new Factura(cliente1, ['Chipirones en su tinta', 2, 5], ['Patas de Nécoras', 8, 30]);
+
+
+            // Muestro Cliente 1
+            document.write('<br /> CLIENTE 1: <br />');
+            for (x in cliente1) {
+                document.write(cliente1[x] + '<br />');
+            }
+
+
+            // Muestro Empresa 1
+            document.write('<br /> EMPRESA 1: <br />');
+            for (x in empresa1) {
+                document.write(empresa1[x] + '<br />');
+            }
+
+
+            // Añado empresa a las facturas
+            Factura.prototype.empresa = new Empresa();
+
+
+            // Asigno una empresa concreta a una factura
+            factura1.empresa = empresa1;
+
+
+            // Añado a Factura para calcular total sin IVA
+            Factura.prototype.totalsiniva = function() {
+                this.total = 0;
+                for (let x of this.elementos) {
+                    // Calculo el precio de todos los elementos x cantidad
+                    this.total += (x[2] * x[1]);
+                }
+                this.total += (this.total * this.base_imponible);
+                return this.total;
+            }
+
+
+            // Añado a Factura para calcular total con IVA
+            Factura.prototype.totalconiva = function() {
+                var resultado = this.total + (this.totalsiniva() * 0.21);
+                return resultado;
+            }
+
+
+            // Muestro Factura 1
+            document.write('<br />---------------------FACTURA 1--------------------- <br />');
+            for (let x in factura1) {
+                // Si es un array muestro cada elemento
+                if (Array.isArray(factura1[x])) {
+                    document.write('PRODUCTOS:<br />')
+                    for (y of factura1[x]) {
+                        document.write(y + '<br />');
+                    }
+                // Si es un objeto tipo el atributo nombre
+                } else if (factura1[x] instanceof Cliente) {
+                    document.write('Nombre del cliente→ ' + factura1[x].nombre + '<br /><br />');
+                } else if (factura1[x] instanceof Empresa) {
+                    document.write('Nombre de la empresa → ' + factura1[x].nombre + '<br /><br />');
+                // Si no es una función lo muestro normal
+                } else if (typeof factura1[x] != 'function') {
+                    document.write('<br />' + factura1[x] + '<br />');
+                }
+            }
+            document.write('<br /><br />Importe total es →' + factura1.totalsiniva() + '<br />');
+            document.write('Importe total con IVA es →' + factura1.totalconiva() + '<br /><br />');
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

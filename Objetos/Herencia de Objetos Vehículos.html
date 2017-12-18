@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Crea un objeto Furgoneta y un objeto Todoterreno, ambas tienen que heredar del objeto Vehiculo.
+
+El  objeto  Furgoneta  tiene  que  añadir  una propiedad  para  indicar  el  número  de pasajeros  y  el  objeto Todoterreno  debe  de  añadir  una  propiedad  que  indique  si  tiene tracción o no. Crea una instancia de cada uno de ellos y muestra los datos.
+
+↓ INSTRUCCIONES PARA → Crear PseudoClase Vehiculo ↓
+-Crear propiedades: marca, modelo, color y año fabricación
+-Crear el método mostrarDatos
+-Crear un método que tenga argumentos acelerar(velocidad). Mostrará por pantalla que el coche ha acelerado a la velocidad pasada.
+-Crear un método con función interna arrancar. Mostrará por pantalla que el coche de marca _, modelo_, de color_ ha arrancado.
+-Asignar una nueva propiedad cilindrada
+-Asignar  un  nuevo  método frenar que mostrará  por  pantalla  que  el  coche  de  marca_, modelo_, color_ ha parado)
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Herencia de Objetos Vehículos</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+    </head>
+
+    <script>
+        // Creando PseudoClase Padre Vehiculo
+        function Vehiculo(marca, modelo, color, fabricacion, cilindrada) {
+            this.marca = marca;
+            this.modelo = modelo;
+            this.color = color;
+            this.fabricacion = fabricacion;
+            this.cilindrada = cilindrada;
+
+            this.mostrarDatos = function() {
+                document.write(`
+                    La marca es → ${marca}
+                    <br />
+                    El modelo es → ${modelo}
+                    <br />
+                    Su color es → ${color}
+                    <br />
+                    Se fabricó el año → ${fabricacion}
+                    <br />
+                    Cilindrada → ${cilindrada}
+                `);
+            }
+
+            this.acelerar = function(acelerando) {
+                document.write(`<br />Se ha acelerado hasta → ${acelerando}`);
+            }
+
+            this.arrancar = function() {
+                document.write(`<br />El coche ${this.marca}, ${this.modelo}, de color ${this.color} ha arrancado.`)
+            }
+
+            this.frenar = function() {
+                document.write(`<br />El coche ${this.marca}, ${this.modelo}, de color ${this.color} ha parado)`);
+            }
+        }
+
+
+        // Creando PseudoClase Hija de Vehiculo
+        function Furgoneta(marca, modelo, color, fabricacion, cilindrada, pasajeros) {
+            this.pasajeros = pasajeros;
+            //Invocar al constructor de Vehiculo
+            Vehiculo.call(this, marca, modelo, color, fabricacion, cilindrada);
+        }
+
+        // Declara que hereda de la PseudoClase Vehiculo
+        Furgoneta.prototype = new Vehiculo();
+        // Declara que se usará el constructor de la PseudoClase Todoterreno
+        Furgoneta.prototype.constructor = Furgoneta;
+
+
+        // Creando PseudoClase Hija de Vehiculo
+        function Todoterreno(marca, modelo, color, fabricacion, cilindrada, traccion) {
+            this.traccion = traccion;
+            //Invocar al constructor de Vehiculo
+            Vehiculo.call(this, marca, modelo, color, fabricacion, cilindrada);
+        }
+
+        // Declara que hereda de la PseudoClase Vehiculo
+        Todoterreno.prototype = new Vehiculo();
+        // Declara que se usará el constructor de la PseudoClase Todoterreno
+        Todoterreno.prototype.constructor = Todoterreno;
+
+
+        // Muestra de un objeto vehículo
+        var vehiculo1 = new Vehiculo('BMW', 'CLK', 'rojo', 1992, '2400');
+        document.write('---------------Vehículo 1---------------<br />');
+        vehiculo1.mostrarDatos();
+        vehiculo1.arrancar();
+        vehiculo1.acelerar(140);
+        vehiculo1.frenar();
+
+
+        // Muestra de un objeto Furgoneta
+        var furgoneta1 = new Furgoneta('Mercedes', 'Kangoo', 'azul', 2014, '1800', 8);
+        document.write('<br /><br />---------------Furgoneta 1---------------<br />');
+        furgoneta1.mostrarDatos();
+        document.write('<br />Pasajeros → ' + furgoneta1.pasajeros);
+        furgoneta1.arrancar();
+        furgoneta1.acelerar(140);
+        furgoneta1.frenar();
+
+
+        // Muestra de un objeto Todoterreno
+        var todoterreno1 = new Todoterreno('Suzuki', 'fullpower', 'negro', 2016, '3600', 'si');
+        document.write('<br /><br />---------------Todoterreno 1---------------<br />');
+        todoterreno1.mostrarDatos();
+        document.write('<br />Traccion → ' + todoterreno1.traccion);
+        todoterreno1.arrancar();
+        todoterreno1.acelerar(140);
+        todoterreno1.frenar();
+    </script>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Queremos implementar la siguiente estructura:
+    - Un Empleado se define con las propiedades nombre (cuyo valor por defecto es una cadena vacía), y un departamento (cuyo valor por defecto es "General").
+
+    - Un Director está basado en Empleado. Añade la propiedad informes (cuyo valor por defecto es un array vacío).
+
+    - Un Trabajador está basado también en Empleado. Añade la propiedad proyectos (cuyo valor por defecto es un array vacío).
+
+    - Un Ingeniero está basado en Trabajador. Añade la propiedad máquina (cuyo valor por defecto es una cadena vacía) y sobreescribe la propiedad departamento con el valor "Ingeniería".
+
+Crear los objetos y casos de prueba necesarios para comprobar el correcto funcionamiento de la jerarquía.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Estructuras Objetos Empleados</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+        <script>
+// --------------------------------- Empleado ---------------------------------
+            // PseudoClase Padre
+            function Empleado(nombre) {
+                this.nombre = nombre || '';
+                this.departamento = 'General';
+            }
+
+// --------------------------------- Director ---------------------------------
+            // PseudoClase que hereda de Empleado
+            function Director(nombre) {
+                Empleado.call(this, nombre);
+                this.informes = [];
+            }
+
+            // Añade al prototipo que hereda de Empleado()
+            Director.prototype = new Empleado();
+
+            // Estabece el constructor de Director()
+            Director.prototype.constructor = Director;
+
+// -------------------------------- Trabajador --------------------------------
+            // PseudoClase que hereda de Empleado
+            function Trabajador(nombre) {
+                Empleado.call(this, nombre);
+                this.proyectos = [];
+            }
+
+            // Añade al prototipo que hereda de Empleado()
+            Trabajador.prototype = new Empleado();
+
+            // Estabece el constructor de Trabajador()
+            Trabajador.prototype.constructor = Trabajador;
+
+// --------------------------------- Ingeniero --------------------------------
+            // PseudoClase que hereda de Trabajador
+            function Ingeniero(nombre) {
+                Trabajador.call(this, nombre);
+
+                this.maquina = '';
+                this.departamento = 'Ingienería';
+            }
+
+            // Añade al prototipo que hereda de Trabajador()
+            Ingeniero.prototype = new Trabajador();
+
+            // Estabece el constructor de Ingeniero()
+            Ingeniero.prototype.constructor = Ingeniero;
+
+// ------------------------------- INSTANCIANDO -------------------------------
+            // Creando objetos del tipo Director
+            var director1 = new Director('Marcos');
+            var director2 = new Director('Rosario');
+            var director3 = new Director('Isabel');
+
+            // Añadiendo Informes a director3
+            director3.informes.push('Informe sobre Productividad de Sept.');
+            director3.informes.push('Informe sobre Productividad de Oct.');
+            director3.informes.push('Informe sobre Productividad de Nov.');
+
+
+            // Creando objetos del tipo Ingeniero
+            var ingeniero1 = new Ingeniero('Carmelito');
+            var ingeniero2 = new Ingeniero('José');
+            var ingeniero3 = new Ingeniero('María Teresa');
+
+            // Añadiendo maquinaria a cada Ingeniero
+            ingeniero1.maquina = 'Troqueladora';
+            ingeniero2.maquina = 'Sierra';
+            ingeniero3.maquina = 'Pluma';
+
+// --------------------------------- MOSTRAR ----------------------------------
+            // Mostrando Directores y sus informes (en el caso de que tengan)
+            var directores = [director1, director2, director3];
+            document.write('<br /><br />--------------DIRECTORES-------------')
+            for (x of directores) {
+                document.write('<br />Director → ' + x.nombre);
+                if (x.informes.length > 0) {
+                    document.write('<br />----→INFORMES de ' + x.nombre + ' :');
+                    for (y of x.informes) {
+                        document.write('<br />----------→ ' + y);
+                    }
+                }
+            }
+
+            // Mostrando Ingenieros y su maquinaria
+            var ingenieros = [ingeniero1, ingeniero2, ingeniero3]
+            document.write('<br /><br />--------------INGENIEROS-------------');
+            for (let x of ingenieros){
+                document.write('<br />El ingeniero ' + x.nombre + ' usa la maquina ' + x.maquina + ' en el departamento ' + x.departamento);
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
