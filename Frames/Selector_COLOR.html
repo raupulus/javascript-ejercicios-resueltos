@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Selector de colores para mostrar en la ventana principal como fondo
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Selector de colores</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+        <script>
+            function cambiarColor() {
+                color = document.getElementsByName('color')[0].value;
+                window.opener.document.getElementById('colorFondo').bgColor= color;
+                window.opener.document.getElementById('codigoColor').value = color;
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1 id="titulo1">Elige color</h1>
+        <div>
+            <form>
+                <input type="color" name="color" />
+                <input type="button" name="activar" value="Activar color"
+                       onclick="cambiarColor();" />
+            </form>
+        </div>
+    </body>
+</html>

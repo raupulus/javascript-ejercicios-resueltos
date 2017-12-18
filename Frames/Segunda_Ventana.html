@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Esta es la segunda ventana de: Abrir una nueva ventana
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Segunda ventana</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+
+        <script>
+            var desplazar;
+
+            function obtenerDesplazar() {
+                desplazar = window.opener.document.getElementsByName('desplazar')[0].value;
+            }
+
+            function izquierda() {
+                self.moveBy(-desplazar, 0);
+            }
+
+            function derecha() {
+                self.moveBy(desplazar, 0);
+            }
+        </script>
+    </head>
+
+    <body onload="obtenerDesplazar();">
+        <h1 id="titulo1">Actividad 1 Segunda Ventana</h1>
+        <div>
+            <form>
+                <input type="button" value="Izquierda" onclick="izquierda();" />
+                <input type="button" value="Derecha" onclick="derecha();" />
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Coloca en nuestra página un proyector de  imágenes con el que el visitante puede ir viendo una por una todas las imágenes de una serie.
+
+Las imágenes van cambiando cada cierto tiempo de modo automático.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Pase de Imágenes automático</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+
+       <style>
+           #cajaSlide {
+               display: block;
+               margin: 0;
+               width: 100%;
+               text-align: center;
+           }
+
+           #cajaSlide IMG {
+               max-width: 800px;
+               border: 10px solid black;
+               border-radius: 20px;
+               box-shadow: 10px 10px 10px black;
+               cursor: pointer;
+           }
+        </style>
+
+        <script>
+            var contador = 1;
+            var temporizador;
+
+            function iniciar() {
+                temporizador = setInterval(rotarImagenes, 3000);
+            }
+
+            function rotarImagenes() {
+                if (contador >= 10) {
+                    contador = 0;
+                }
+                var img = document.getElementById('imgSlide');
+                img.src = './images/img' + ++contador + '.jpg';
+            }
+        </script>
+    </head>
+
+    <body onload="iniciar();">
+        <h1 id="titulo1">Pase de Imágenes automático</h1>
+
+        <div id="cajaSlide">
+            <img id="imgSlide" src="./images/img1.jpg" title="Imagen"
+                 alt="Imagen" onclick="rotarImagenes();" />
+
+            <br /><br />
+
+            <form>
+                <input type="button" value="Parar"
+                       onclick="clearInterval(temporizador);" />
+                <input type="button" value="Continuar" onclick="iniciar();" />
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Añade un enlace que al ser pulsado lleve a una URL aleatoria
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>URL Aleatoria</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+
+        <script>
+            function viajarConSuerte() {
+                var x = Math.random() * 10;
+                var URL;
+                    if (x <= 3) {
+                        x = 0;
+                        URL = 'https://www.hotmail.com';
+                    } else if (x <= 6) {
+                        x = 1;
+                        URL = 'https://www.gmail.com';
+                    } else {
+                        x = 2;
+                        URL = 'https://www.yahoo.com';
+                    }
+                location.assign(URL);
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1 id="titulo1">URL Aleatoria</h1>
+        <div>
+            <a href="javascript:viajarConSuerte();" title="Viajando con suerte">Pulsa aquí para probar suerte</a>
+        </div>
+    </body>
+</html>

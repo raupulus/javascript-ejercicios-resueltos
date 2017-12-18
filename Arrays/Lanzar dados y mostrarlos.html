@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Lanzar dados y mostrar la salida de cada tirada en 2 input.
+
+En los input mostrar el más alto y el más bajo
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Lanzar dados y mostrarlos</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+
+        <script>
+            function lanzarDados() {
+                var x = parseInt((Math.random() + 0.1) * 6);
+                return x;
+            }
+
+            function iniciar() {
+                //Limpiando por si se repite lanzamiento
+                var arrayEstadisticas = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0);
+                document.getElementById('resultado').innerHTML = "";
+                console.clear();
+
+                //Bucle que suma 1 al array(12) para llevar estadísticas
+                for (let i=0; i<10; i++) {
+                    dadoA = lanzarDados();
+                    dadoB = lanzarDados();
+                    arrayEstadisticas[dadoA + dadoB] += 1;
+                    document.getElementById('nose1').value = dadoA;
+                    document.getElementById('nose2').value = dadoB;
+                    console.log('En esta tirada sale → ' + (dadoA + dadoB));
+                }
+
+                //Pintar array
+                for (let i=2; i<=12; i++) {
+                    document.getElementById('resultado').innerHTML += '<br />El número ' + i + ' ha salido →  ' + arrayEstadisticas[i];
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1 id="titulo1">Lanzar dados y mostrarlos</h1>
+        <div>
+            <input type="text" id="nose1" readonly size="2" />
+            <input type="text" id="nose2" readonly size="2" />
+            <input type="button" value="Lanzar" onclick="iniciar();" />
+        </div>
+
+        <div id="resultado"></div>
+    </body>
+</html>
