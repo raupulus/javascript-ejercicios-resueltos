@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Añade una función que permita devolver el menor de los valores de una la lista.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Mínimo valor de un array</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+
+        <script>
+            var mi_array = new Array(23,345,1,34756,2,3,4,5,6,7,8,9);
+
+            function esMenor(un_array) {
+                alert(Math.min(...un_array));
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1 id="titulo1">Mínimo valor de un array</h1>
+        <div>
+            <input type="button" value="Ver Menor" onclick="esMenor(mi_array);" />
+        </div>
+    </body>
+</html>
