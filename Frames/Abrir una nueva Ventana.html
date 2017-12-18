@@ -11,3 +11,29 @@ Añade a la página principal 1 input y 1 botón que al ser pulsado abra una nue
 
 La nueva ventana se desplazará izquierda y derecha el valor introducido en la principal.
 -->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Abrir una nueva Ventana</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+
+        <script>
+            var ventana;
+
+            function abrirVentana() {
+                ventana = open("1a.html", "Ventana del EJ 1", "width=600, height=300");
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1 id="titulo1">Abrir una nueva Ventana</h1>
+        <div>
+            <form>
+                <input type="text" name="desplazar" value="150" />
+                <input type="button" value="Abrir Ventana"
+                       onclick="abrirVentana();"/>
+            </form>
+        </div>
+    </body>
+</html>
