@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Calcula tu edad, sin utiliza ningún método,
+trabajando con los milisegundos.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Calcular Edad Milisegundos</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+    </head>
+
+    <body>
+        <h1 id="titulo1">Calcular Edad Milisegundos</h1>
+        <div class="resultado">
+            Calcula tu edad, sin utiliza ningún método, trabajando con los milisegundos.
+        </div>
+
+        <script>
+            var hoy = new Date();
+            var nacimiento = new Date('1989, 8, 5');
+
+            var dias = ((((hoy-nacimiento)/1000)/60)/60)/24;
+            var meses = parseInt((dias%365)/30);
+            var anios = parseInt(dias/365);
+            dias = parseInt((dias%365)%30);
+
+            document.write("Hoy es → " + hoy);
+            document.write("<br />Fecha de nacimiento → " + nacimiento);
+            document.write("<br /> " + anios + " años, " + meses + " meses, " + dias + " días.");
+        </script>
+    </body>
+</html>

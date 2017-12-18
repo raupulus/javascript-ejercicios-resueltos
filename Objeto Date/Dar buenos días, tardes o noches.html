@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Haz que el ordenador te salude educadamente dándote los buenos días, buenas tardes o buenas noches dependiendo de la hora que sea.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Dar buenos días, tardes o noches</title>
+        <meta name="author" content="Raúl Caro Pastorino" />
+    </head>
+
+    <body>
+        <h1 id="titulo1">Dar buenos días, tardes o noches</h1>
+        <div class="resultado">
+            Haz que el ordenador te salude educadamente dándote los buenos días, buenas tardes o buenas noches dependiendo de la hora que sea.
+        </div>
+
+        <script>
+            function saludar() {
+                var ahora = new Date().getHours();
+                if ((ahora >= 6) && (ahora <= 12)) {
+                    alert('Buenos días');
+                } else if ((ahora >= 13) && (ahora <= 20)) {
+                    alert('Buenas tardes');
+                } else {
+                    alert('Buenas Noches');
+                }
+            }
+            saludar();
+        </script>
+    </body>
+</html>
