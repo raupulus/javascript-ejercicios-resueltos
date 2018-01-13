@@ -22,15 +22,9 @@ Valida una matrícula moderna
             Valida una matrícula moderna
         </div>
 
-        <br /><br />
-
-        <div id="resultado"></div>
-
         <script>
-            // No terminado
-
-            var v_nombre        = new RegExp('', 'g');
-            var v_apellidos     = new RegExp('', 'g');
+            var v_nombre        = new RegExp('^[a-zA-Z]{5,40}( [a-zA-Z]{5,40})*$', 'g');
+            var v_apellidos     = new RegExp('^[a-zA-Z]{5,80}( [a-zA-Z]{5,80})*$', 'g');
             var v_edad          = new RegExp('', 'g');
             var v_email         = new RegExp('', 'g');
             var v_telefono      = new RegExp('', 'g');
@@ -39,7 +33,7 @@ Valida una matrícula moderna
             var v_anio          = new RegExp('', 'g');
             var v_observaciones = new RegExp('', 'g');
 
-            var nombre = "Manuel";
+            var nombre = "Manuel Antonio";
             var apellidos = "Gómez León";
             var edad = 23;
             var email = 'mgole@gmail.com';
