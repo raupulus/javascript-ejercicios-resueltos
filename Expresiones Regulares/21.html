@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+
+-->
+<HTML lang="es">
+    <HEAD>
+	    <TITLE>Actividad 21</TITLE>
+	    <META charset="utf-8"/>
+	    <META name="author" content="Raúl Caro Pastorino"/>
+    </HEAD>
+
+    <BODY>
+	    <H1 id="titulo1">Actividad 21</H1>
+	    <DIV>
+		    Confecciona una expresión regular que valide el ingreso del nombre de un día de la semana y un número de 1 o 2 dígitos
+	    </DIV>
+
+	    <BR/><BR/>
+
+	    <DIV id="resultado"></DIV>
+
+	    <SCRIPT>
+            /*
+            No me queda claro:
+            lunes0
+            lunes00
+            lunes | 0
+            lunes | 00
+            */
+
+            /*
+                Entiendo que permite un día en cadena del lunes al domingo
+                Entiendo que si no es una cadena, se admite un número del 0-6
+            */
+
+            //Validación solo de día de la semana
+            //var comprobar = new RegExp("^(lunes|martes|miércoles|jueves|sabado|domingo)$", "i");
+
+            //Validación de día de la semana o un número del 0-6
+            var comprobar = new RegExp("^((lunes|martes|miércoles|jueves|sabado|domingo)|[0-6])$", "i");
+
+            while (true) {
+                var dia = prompt("Introduce el día de la semana");
+                if (comprobar.test(dia)) {
+                    alert("Día correcto");
+                } else {
+                    alert("No coincide")
+                }
+            }
+	    </SCRIPT>
+    </BODY>
+</HTML>
