@@ -27,16 +27,50 @@ Valida una matrícula moderna
         <div id="resultado"></div>
 
         <script>
-            //Demasiado largo, dejo para el final por si me diese tiempo
+            // No terminado
+
+            var v_nombre        = new RegExp('', 'g');
+            var v_apellidos     = new RegExp('', 'g');
+            var v_edad          = new RegExp('', 'g');
+            var v_email         = new RegExp('', 'g');
+            var v_telefono      = new RegExp('', 'g');
+            var v_centro        = new RegExp('', 'g');
+            var v_curso         = new RegExp('', 'g');
+            var v_anio          = new RegExp('', 'g');
+            var v_observaciones = new RegExp('', 'g');
+
             var nombre = "Manuel";
-            var Apellidos = "Gómez León";
-            var Edad = 23;
+            var apellidos = "Gómez León";
+            var edad = 23;
             var email = 'mgole@gmail.com';
             var telefono = 9123123213;
-            var centro = "";
-            var curso = "";
-            var anio = "";
-            var observaciones = "";
+            var centro = "Castañero";
+            var curso = "1";
+            var anio = "1999";
+            var observaciones = "Todo Correcto";
+
+            /**
+             * Comprueba si el dato que le pasamos cumple con el patrón
+             * que también le hemos pasado, además pinta por pantalla
+             * el resultado booleano.
+             * @param  {String} titulo Nombre a mostrar cuando se pinta
+             * @param  {String} dato   Dato a comprobar
+             * @param  {RegExp} expr   Expresión regular que debe cumplirse.
+             */
+            function comprobar(titulo, dato, expr) {
+                document.write(titulo + ' → ' + expr.test(dato) + '<br />');
+            }
+
+            comprobar("Nombre", nombre, v_nombre);
+            comprobar("Apellidos", apellidos, v_apellidos);
+            comprobar("Edad", edad, v_edad);
+            comprobar("Email", email, v_email);
+            comprobar("Telefono", telefono, v_telefono);
+            comprobar("Centro", centro, v_centro);
+            comprobar("Curso", curso, v_curso);
+            comprobar("Anio", anio, v_anio);
+            comprobar("Observaciones", observaciones, v_observaciones);
+
         </script>
     </body>
 </html>
