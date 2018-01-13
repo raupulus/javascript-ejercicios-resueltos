@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Valida el ingreso de una hora con el formato hh:mm:ss o hh:mm
+-->
+<html lang="es">
+    <head>
+        <title>Validar Hora</title>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Raúl Caro Pastorino"/>
+    </head>
+
+    <body>
+        <h1 id="titulo1">Validar Hora</h1>
+        <div>
+            Valida el ingreso de una hora con el formato hh:mm:ss o hh:mm
+        </div>
+
+        <br /><br />
+
+        <div id="resultado"></div>
+
+        <script>
+            //En los segundos permite solo introducir un dígito, no consigo solucionarlo
+            var comprobar = new RegExp("^[0-9]{2}\:[0-9]{2}(\:[0-9]{2})?", "g");
+
+            while (true) {
+                var input = prompt('Introduce la hora en formato hh:mm:ss o hh:mm');
+                if (comprobar.test(input)) {
+                    alert('Hora bien formada');
+                } else {
+                    alert('No coincide')
+                }
+            }
+        </script>
+    </body>
+</html>
