@@ -20,6 +20,10 @@ Instancia un juego
         <title>Torneo de Cartas y Dados</title>
         <script src="cookies.js"></script>
         <script src="limpiar_nodos.js"></script>
+        <script src="JuegoCartas.js"></script>
+        <script src="JuegoDados.js"></script>
+        <script src="jugador.js"></script>
+        <script src="juego.js"></script>
 
         <script>
             // Clase padre de JuegoCartas y JuegoDados
@@ -61,8 +65,9 @@ Instancia un juego
                 }
             }
 
-            window.onload = buscar;
+            window.onload = limpiar_nodos;
         </script>
+    </head>
 
         <body>
             <h1>Torneo de Cartas y Dados</h1>
@@ -76,29 +81,29 @@ Instancia un juego
 
 
             jugador1 = new Jugador('Manuel');
-            jugador1.addPuntuacion(21);
-            jugador1.addPuntuacion(23);
-            jugador1.addPuntuacion(44);
-            jugador1.addPuntuacion(0);
+            jugador1.puntuacion = 21;
+            jugador1.puntuacion = 23;
+            jugador1.puntuacion = 44;
+            jugador1.puntuacion = 55;
 
 
             jugador2 = new Jugador('María');
-            jugador2.addPuntuacion(33);
-            jugador2.addPuntuacion(44);
-            jugador2.addPuntuacion(56);
-            jugador2.addPuntuacion(12);
+            jugador2.puntuacion = 33;
+            jugador2.puntuacion = 44;
+            jugador2.puntuacion = 56;
+            jugador2.puntuacion = 12;
 
             document.write('LISTADO DE JUGADORES' + '<br />');
-            document.write(jugador1.verNombre() + '<br />');
-            document.write(jugador1.mejorPuntuacion() + '<br />');
-            document.write(jugador1.puntuacionMedia() + '<br />');
-            document.write(jugador1.totalPuntos() + '<br />');
+            document.write(jugador1.nombre + '<br />');
+            document.write(jugador1.mejorPuntuacion + '<br />');
+            document.write(jugador1.puntuacionMedia + '<br />');
+            document.write(jugador1.totalPuntos + '<br />');
 
-            document.write(jugador2.verNombre() + '<br />');
-            document.write(jugador2.mejorPuntuacion() + '<br />');
-            document.write(jugador2.puntuacionMedia() + '<br />');
-            document.write(jugador2.totalPuntos() + '<br />');
+            document.write(jugador2.nombre + '<br />');
+            document.write(jugador2.mejorPuntuacion + '<br />');
+            document.write(jugador2.puntuacionMedia + '<br />');
+            document.write(jugador2.totalPuntos + '<br />');
         </script>
 
-        </body>
+    </body>
 </html>

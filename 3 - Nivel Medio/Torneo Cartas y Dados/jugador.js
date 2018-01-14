@@ -5,13 +5,13 @@
  */
 
 class Jugador {
-    constructor(nombre) {
-        this.nombre = nombre;
+    constructor(name) {
+        this.name = name;
         this.resultados = [];
     }
 
     get nombre() {
-        return this.nombre;
+        return this.name;
     }
 
     set puntuacion(puntos) {
@@ -23,8 +23,8 @@ class Jugador {
     }
 
     get totalPuntos() {
-        puntos = 0;
-        for (p of this.resultados) {
+        var puntos = 0;
+        for (let p of this.resultados) {
             puntos += p;
         }
         return "El total de puntos obtenidos es " + puntos;
@@ -41,6 +41,6 @@ class Jugador {
     }
 
     get puntuacionMedia() {
-        return "La puntuación media es " + this.totalPuntos() / this.resultados.lenght;
+        return "La puntuación media es " + this.totalPuntos / this.resultados.lenght;
     }
 }
