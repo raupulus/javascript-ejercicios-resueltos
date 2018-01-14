@@ -22,45 +22,6 @@ Instancia un juego
         <script src="limpiar_nodos.js"></script>
 
         <script>
-            function Jugador(nombre) {
-                this.nombre = nombre;
-                this.resultados = [];
-
-                function verNombre() {
-                    return this.nombre;
-                }
-
-                function addPuntuacion(puntos) {
-                    this.resultados.push(puntos);
-                }
-
-                function mejorPuntuacion() {
-                    return "La mejor puntuación ha sido " + (Math.max(...this.resultados));
-                }
-
-                function totalPuntos() {
-                    puntos = 0;
-                    for (p of this.resultados) {
-                        puntos += p;
-                    }
-                    return "El total de puntos obtenidos es " + puntos;
-                }
-
-                function algunCero() {
-                    var cero;
-                    if (this.resultados.find(0)) {
-                        cero = "Este jugador si ha obtenido 0 en alguna partida";
-                    } else {
-                        cero = "Este jugador no ha obtenido 0 en alguna partida";
-                    }
-                    return cero;
-                }
-
-                function puntuacionMedia() {
-                    return "La puntuación media es " + this.totalPuntos() / this.resultados.lenght;
-                }
-            }
-
             // Clase padre de JuegoCartas y JuegoDados
             function Juego(nombre, jugadores = 2) {
                 this.nombre = nombre;
