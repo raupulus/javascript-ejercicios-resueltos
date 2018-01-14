@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Solicita el ingreso de la cordenada de un punto.
+
+El formato a ingresar por teclado es (999,999)
+
+Los números pueden tener entre 1 y 3 dígitos.
+-->
+<html lang="es">
+    <head>
+        <title>Validar Coordenadas</title>
+        <meta charset="utf-8" />
+        <meta name="author" content="Raúl Caro Pastorino" />
+    </head>
+
+    <body>
+        <h1 id="titulo1">Validar Coordenadas</h1>
+        <div class="resultado">
+            Solicita el ingreso de la cordenada de un punto. El formato a ingresar por teclado es (999,999)
+            Los números pueden tener entre 1 y 3 dígitos.
+        </div>
+
+        <script>
+            var comprobar = new RegExp('^\([0-9]{1,3}\,[0-9]{1,3}\)$', 'g');
+
+            while (true) {
+                var input = prompt('Introduce la cadena a comprobar');
+                if (comprobar.test(input)) {
+                    alert('Este si coincide con el patrón');
+                } else {
+                    alert('No coincide')
+                }
+            }
+        </script>
+    </body>
+</html>

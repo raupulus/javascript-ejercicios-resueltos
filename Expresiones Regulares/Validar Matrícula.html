@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Valida una matrícula moderna
+-->
+<html lang="es">
+    <head>
+        <title>Validar Matrícula</title>
+        <meta charset="utf-8" />
+        <meta name="author" content="Raúl Caro Pastorino" />
+    </head>
+
+    <body>
+        <h1 id="titulo1">Validar Matrícula</h1>
+        <div>
+            Valida una matrícula moderna
+        </div>
+
+        <script>
+            var v_nombre        = new RegExp('^[a-zA-Záéíóúñ]{5,40}( [a-zA-Záéíóúñ]{5,40})*$', 'g');
+            var v_apellidos     = new RegExp('^[a-zA-Záéíóúñ]{4,80}( [a-zA-Záéíóúñ]{4,80})*$', 'g');
+            var v_edad          = new RegExp('^[1]?[0-9]{1,2}$', 'g');
+            var v_email         = new RegExp('^[a-z]*[@]{1}[a-z]*[\.]{1}[a-z]{2,3}$', 'g');
+            var v_telefono      = new RegExp('^([\+]{1}[0-9]{2,3})?[0-9]{9}$', 'g');
+            var v_centro        = new RegExp('^[a-zA-Záéíóúñ]{5,120}( [a-zA-Záéíóúñ]{5,120})*$', 'g');
+            var v_curso         = new RegExp('^[0-9]{1}$', 'g');
+            var v_anio          = new RegExp('^[12]{1}[0-9]{3}$', 'g');
+            var v_observaciones = new RegExp('^[a-zA-Záéíóúñ]{1,120}( [a-zA-Záéíóúñ]{5,120})*$', 'g');
+
+            var nombre = 'Manuel Antonio';
+            var apellidos = 'Gómez León';
+            var edad = 44;
+            var email = 'mgole@gmail.com';
+            var telefono = 912323213;
+            var centro = 'Castañero';
+            var curso = '1';
+            var anio = '1999';
+            var observaciones = 'Todo Correcto';
+
+            /**
+             * Comprueba si el dato que le pasamos cumple con el patrón
+             * que también le hemos pasado, además pinta por pantalla
+             * el resultado booleano.
+             * @param  {String} titulo Nombre a mostrar cuando se pinta
+             * @param  {String} dato   Dato a comprobar
+             * @param  {RegExp} expr   Expresión regular que debe cumplirse.
+             */
+            function comprobar(titulo, dato, expr) {
+                document.write(titulo + ' → ' + expr.test(dato) + '<br />');
+            }
+
+            comprobar("Nombre", nombre, v_nombre);
+            comprobar("Apellidos", apellidos, v_apellidos);
+            comprobar("Edad", edad, v_edad);
+            comprobar("Email", email, v_email);
+            comprobar("Telefono", telefono, v_telefono);
+            comprobar("Centro", centro, v_centro);
+            comprobar("Curso", curso, v_curso);
+            comprobar("Anio", anio, v_anio);
+            comprobar("Observaciones", observaciones, v_observaciones);
+        </script>
+    </body>
+</html>
