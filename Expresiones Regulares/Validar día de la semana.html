@@ -25,31 +25,15 @@ Los valores serán desde Lunes (o número 0) hasta Domingo (número 6)
         </div>
 
         <script>
-            /*
-            No me queda claro:
-            lunes0
-            lunes00
-            lunes | 0
-            lunes | 00
-            */
-
-            /*
-                Entiendo que permite un día en cadena del lunes al domingo
-                Entiendo que si no es una cadena, se admite un número del 0-6
-            */
-
-            //Validación solo de día de la semana
-            //var comprobar = new RegExp("^(lunes|martes|miércoles|jueves|sabado|domingo)$", "i");
-
-            //Validación de día de la semana o un número del 0-6
-            var comprobar = new RegExp("^((lunes|martes|miércoles|jueves|sabado|domingo)|[0-6])$", "i");
+            // Validación de día de la semana o un número del 0-6
+            var comprobar = new RegExp("^(([Ll]unes|[Mm]artes|[Mm]i[eé]rcoles|[Jj]ueves|[Ss][aá]bado|[Dd]omingo)|[0-6])$", "i");
 
             while (true) {
-                var dia = prompt("Introduce el día de la semana");
+                var dia = prompt('Introduce el día de la semana');
                 if (comprobar.test(dia)) {
-                    alert("Día correcto");
+                    alert('Día correcto');
                 } else {
-                    alert("No coincide")
+                    alert('No coincide')
                 }
             }
         </script>
