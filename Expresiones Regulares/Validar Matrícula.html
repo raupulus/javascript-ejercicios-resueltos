@@ -23,9 +23,9 @@ Valida una matrícula moderna
         </div>
 
         <script>
-            var v_nombre        = new RegExp('^[a-zA-Z]{5,40}( [a-zA-Z]{5,40})*$', 'g');
-            var v_apellidos     = new RegExp('^[a-zA-Z]{5,80}( [a-zA-Z]{5,80})*$', 'g');
-            var v_edad          = new RegExp('', 'g');
+            var v_nombre        = new RegExp('^[a-zA-Záéíóú]{5,40}( [a-zA-Záéíóú]{5,40})*$', 'g');
+            var v_apellidos     = new RegExp('^[a-zA-Záéíóú]{4,80}( [a-zA-Záéíóú]{4,80})*$', 'g');
+            var v_edad          = new RegExp('^[1]?[0-9]{1,2}$', 'g');
             var v_email         = new RegExp('', 'g');
             var v_telefono      = new RegExp('', 'g');
             var v_centro        = new RegExp('', 'g');
@@ -33,15 +33,15 @@ Valida una matrícula moderna
             var v_anio          = new RegExp('', 'g');
             var v_observaciones = new RegExp('', 'g');
 
-            var nombre = "Manuel Antonio";
-            var apellidos = "Gómez León";
-            var edad = 23;
+            var nombre = 'Manuel Antonio';
+            var apellidos = 'Gómez León';
+            var edad = 44;
             var email = 'mgole@gmail.com';
             var telefono = 9123123213;
-            var centro = "Castañero";
-            var curso = "1";
-            var anio = "1999";
-            var observaciones = "Todo Correcto";
+            var centro = 'Castañero';
+            var curso = '1';
+            var anio = '1999';
+            var observaciones = 'Todo Correcto';
 
             /**
              * Comprueba si el dato que le pasamos cumple con el patrón
