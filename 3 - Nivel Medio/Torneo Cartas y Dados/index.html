@@ -13,6 +13,8 @@ Crear como mínimo las clases de la forma que creas correspondiente para:
     - Dados
 
 Instancia un juego
+
+Muestra todas las características del juego, partida y jugadores añadiendo nodos nuevos, no lo hagas directamente en la estructura html con innerHTML ni nada similar.
 -->
 <html lang="es">
     <head>
@@ -26,12 +28,6 @@ Instancia un juego
         <script src="juego.js"></script>
 
         <script>
-            // Clase padre de JuegoCartas y JuegoDados
-            function Juego(nombre, jugadores = 2) {
-                this.nombre = nombre;
-                this.jugadores = jugadores;
-            }
-
             // Hereda de Juego
             function JuegoCartas(nombre, jugadores, baraja = 'Española', cartas = 48) {
                 //self|parent¿¿?
