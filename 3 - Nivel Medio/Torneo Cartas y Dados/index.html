@@ -27,22 +27,6 @@ Muestra todas las características del juego, partida y jugadores añadiendo nod
         <script src="JuegoDados.js"></script>
         <script src="jugador.js"></script>
         <script>
-            // Hereda de Juego
-            function JuegoDados(nombre, jugadores, dados, cantidad = 2) {
-                //llamar constructor padre pasando nombre y jugadores
-                //this.parent.constructor(nombre, jugadores)
-                this.dados = dados;
-                this.cantidad = cantidad;
-
-                function mostrarCarateristicas() {
-                    caracteristicas = '';
-                    // Nombre del padre "Juego"
-                    // Jugadores del padre "Juego"
-                    caracteristicas += 'Tipo de dados ' + this.dados;
-                    caracteristicas += 'Cantidad de dados' + this.dados;
-                }
-            }
-
             window.onload = limpiar_nodos;
         </script>
     </head>
