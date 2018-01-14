@@ -29,23 +29,6 @@ Muestra todas las características del juego, partida y jugadores añadiendo nod
 
         <script>
             // Hereda de Juego
-            function JuegoCartas(nombre, jugadores, baraja = 'Española', cartas = 48) {
-                //self|parent¿¿?
-                //llamar constructor padre pasando nombre y jugadores
-                //this.parent.constructor(nombre, jugadores);
-                this.baraja = baraja;
-                this.cartas = cartas;
-
-                function mostrarCarateristicas() {
-                    caracteristicas = '';
-                    // Nombre del padre "Juego"
-                    // Jugadores del padre "Juego"
-                    caracteristicas += 'Tipo de baraja ' + this.baraja;
-                    caracteristicas += 'Número de cartas' + this.cartas;
-                }
-            }
-
-            // Hereda de Juego
             function JuegoDados(nombre, jugadores, dados, cantidad = 2) {
                 //llamar constructor padre pasando nombre y jugadores
                 //this.parent.constructor(nombre, jugadores)
