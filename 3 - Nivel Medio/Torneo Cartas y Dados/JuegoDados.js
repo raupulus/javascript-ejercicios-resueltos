@@ -4,9 +4,10 @@
  * @license https://www.gnu.org/licenses/gpl-3.0-standalone.html
  */
 
-// Hereda de Juego
-
-class JuegoDados {
+ /**
+  * Juego de clase Dados que hereda de la clase "Juego"
+  */
+class JuegoDados extends Juego {
     constructor(nombre, jugadores, dados, cantidad = 2) {
         // Constructor del padre
         super(nombre, jugadores);
