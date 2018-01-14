@@ -18,9 +18,9 @@ class JuegoCartas extends Juego {
     }
 
     get carateristicas() {
-        caracteristicas = '';
-        // Nombre del padre "Juego"
-        // Jugadores del padre "Juego"
+        var caracteristicas = '';
+        caracteristicas += 'Nombre ' + super.nombre;
+        caracteristicas += 'Jugadores ' + super.jugadores;
         caracteristicas += 'Tipo de baraja ' + this.baraja;
         caracteristicas += 'Número de cartas' + this.cartas;
     }
