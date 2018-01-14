@@ -41,10 +41,10 @@ Instancia Jugadores generando aleatoriamente datos de puntuación
     </head>
 
         <body>
-            <h1>Torneo de Cartas y Dados</h1>
+            <h1 align="center">Torneo de Cartas y Dados</h1>
 
-        <h2>LISTADO DE JUEGOS</h2>
-        <table border="1" width="90%" align="center">
+        <h2 align="center">LISTADO DE JUEGOS</h2>
+        <table border="1" width="90%" align="center" cellspacing="0">
             <tr>
                 <th>Nombre</th>
                 <th>Jugadores</th>
@@ -53,13 +53,14 @@ Instancia Jugadores generando aleatoriamente datos de puntuación
             </tr>
         </table>
 
-        <h2>LISTADO DE JUGADORES</h2>
-        <table border="1" width="90%" align="center">
+        <h2 align="center">LISTADO DE JUGADORES</h2>
+        <table border="1" width="90%" align="center" cellspacing="0">
             <tr>
                 <th>Nombre</th>
                 <th>Mejor Puntuación</th>
                 <th>Puntuación media</th>
                 <th>Puntuación total</th>
+                <th>Algún Cero</th>
             </tr>
         </table>
 
@@ -144,7 +145,6 @@ Instancia Jugadores generando aleatoriamente datos de puntuación
                         td.append(cantidad);
                         tr.append(td);
                     }
-
                 }
             }
 
@@ -180,8 +180,18 @@ Instancia Jugadores generando aleatoriamente datos de puntuación
                     var totalPuntos = document.createTextNode(o.totalPuntos);
                     td.append(totalPuntos);
                     tr.append(td);
+
+                    td = document.createElement('td');
+                    var algunCero = document.createTextNode(o.algunCero);
+                    td.append(algunCero);
+                    tr.append(td);
                 }
             }
+
+            // Provocando que exista puntuación 0
+            jugadores[1].puntuacion = 0;
+            jugadores[3].puntuacion = 0;
+            jugadores[5].puntuacion = 0;
 
             // Genera tabla con todos los juegos
             for (let j of juegos) {
@@ -195,6 +205,9 @@ Instancia Jugadores generando aleatoriamente datos de puntuación
                 }
                 generarTablaJugadores(j);
             }
+
+
+
         </script>
     </body>
 </html>

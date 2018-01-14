@@ -32,7 +32,7 @@ class Jugador {
 
     get algunCero() {
         var cero;
-        if (this.resultados.find(0)) {
+        if (this.resultados.some(elem => elem == 0)) {
             cero = 'Si';
         } else {
             cero = 'No';
@@ -40,7 +40,11 @@ class Jugador {
         return cero;
     }
 
+    /**
+     * Devuelve el número redondeado a 2 decimales
+     * @return {Float} Devuelve el total de puntos redondeado a 2 decimales
+     */
     get puntuacionMedia() {
-        return (this.totalPuntos / this.resultados.length);
+        return (this.totalPuntos / this.resultados.length).toFixed(2);
     }
 }
