@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>Torneo de Cartas y Dados</title>
+        <script src="cookies.js"></script>
+        <script src="limpiar_nodos.js"></script>
+
+        <script>
+            function Jugador(nombre) {
+                this.nombre = nombre;
+                this.resultados = [];
+
+                function verNombre() {
+                    return this.nombre;
+                }
+
+                function addPuntuacion(puntos) {
+                    this.resultados.push(puntos);
+                }
+
+                function mejorPuntuacion() {
+                    return "La mejor puntuación ha sido " + (Math.max(...this.resultados));
+                }
+
+                function totalPuntos() {
+                    puntos = 0;
+                    for (p of this.resultados) {
+                        puntos += p;
+                    }
+                    return "El total de puntos obtenidos es " + puntos;
+                }
+
+                function algunCero() {
+                    var cero;
+                    if (this.resultados.find(0)) {
+                        cero = "Este jugador si ha obtenido 0 en alguna partida";
+                    } else {
+                        cero = "Este jugador no ha obtenido 0 en alguna partida";
+                    }
+                    return cero;
+                }
+
+                function puntuacionMedia() {
+                    return "La puntuación media es " + this.totalPuntos() / this.resultados.lenght;
+                }
+            }
+
+            // Clase padre de JuegoCartas y JuegoDados
+            function Juego(nombre, jugadores = 2) {
+                this.nombre = nombre;
+                this.jugadores = jugadores;
+            }
+
+            // Hereda de Juego
+            function JuegoCartas(nombre, jugadores, baraja = 'Española', cartas = 48) {
+                //self|parent¿¿?
+                //llamar constructor padre pasando nombre y jugadores
+                //this.parent.constructor(nombre, jugadores);
+                this.baraja = baraja;
+                this.cartas = cartas;
+
+                function mostrarCarateristicas() {
+                    caracteristicas = '';
+                    // Nombre del padre "Juego"
+                    // Jugadores del padre "Juego"
+                    caracteristicas += 'Tipo de baraja ' + this.baraja;
+                    caracteristicas += 'Número de cartas' + this.cartas;
+                }
+            }
+
+            // Hereda de Juego
+            function JuegoDados(nombre, jugadores, dados, cantidad = 2) {
+                //llamar constructor padre pasando nombre y jugadores
+                //this.parent.constructor(nombre, jugadores)
+                this.dados = dados;
+                this.cantidad = cantidad;
+
+                function mostrarCarateristicas() {
+                    caracteristicas = '';
+                    // Nombre del padre "Juego"
+                    // Jugadores del padre "Juego"
+                    caracteristicas += 'Tipo de dados ' + this.dados;
+                    caracteristicas += 'Cantidad de dados' + this.dados;
+                }
+            }
+
+            window.onload = buscar;
+        </script>
+
+        <body>
+            <h1>Torneo de Cartas y Dados</h1>
+        <script>
+            juego1 = new JuegoCartas('Juego de mesa 1', 4); //4j
+            juego2 = new JuegoCartas('Juego de Mesa 2', 1, 'Poker', 50); //1j
+            juego3 = new JuegoDados('Juego de mesa 3', 2, 21); //2j
+
+            document.write('LISTADO DE JUEGOS' + '<br />');
+
+
+            jugador1 = new Jugador('Manuel');
+            jugador1.addPuntuacion(21);
+            jugador1.addPuntuacion(23);
+            jugador1.addPuntuacion(44);
+            jugador1.addPuntuacion(0);
+
+
+            jugador2 = new Jugador('María');
+            jugador2.addPuntuacion(33);
+            jugador2.addPuntuacion(44);
+            jugador2.addPuntuacion(56);
+            jugador2.addPuntuacion(12);
+
+            document.write('LISTADO DE JUGADORES' + '<br />');
+            document.write(jugador1.verNombre() + '<br />');
+            document.write(jugador1.mejorPuntuacion() + '<br />');
+            document.write(jugador1.puntuacionMedia() + '<br />');
+            document.write(jugador1.totalPuntos() + '<br />');
+
+            document.write(jugador2.verNombre() + '<br />');
+            document.write(jugador2.mejorPuntuacion() + '<br />');
+            document.write(jugador2.puntuacionMedia() + '<br />');
+            document.write(jugador2.totalPuntos() + '<br />');
+        </script>
+
+        </body>
+</html>
