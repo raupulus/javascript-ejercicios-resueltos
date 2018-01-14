@@ -34,6 +34,26 @@ Muestra todas las características del juego, partida y jugadores añadiendo nod
         <body>
             <h1>Torneo de Cartas y Dados</h1>
 
+        <h2>LISTADO DE JUEGOS</h2>
+        <table border="1" width="90%" align="center">
+            <tr>
+                <th>Nombre</th>
+                <th>Jugadores</th>
+                <th>Tipo de Baraja</th>
+                <th>Número de Cartas</th>
+            </tr>
+        </table>
+
+        <h2>LISTADO DE JUGADORES</h2>
+        <table border="1" width="90%" align="center">
+            <tr>
+                <th>Nombre</th>
+                <th>Mejor Puntuación</th>
+                <th>Puntuación media</th>
+                <th>Puntuación total</th>
+            </tr>
+        </table>
+
         <script>
             var juegos = [
                 juego1 = new JuegoCartas('Juego de Mesa 1', 4), //4j
@@ -58,17 +78,29 @@ Muestra todas las características del juego, partida y jugadores añadiendo nod
             jugador2.puntuacion = 56;
             jugador2.puntuacion = 12;
 
-            document.write('<h2>LISTADO DE JUGADORES</h2>');
-            document.write('<h3>' + jugador1.nombre + '</h3>');
-            document.write(jugador1.mejorPuntuacion + '<br />');
-            document.write(jugador1.puntuacionMedia + '<br />');
-            document.write(jugador1.totalPuntos + '<br /><br />');
+            var tabla = document.getElementsByTagName('table');
+            var tr = document.createElement('tr');
+            tabla[1].append(tr);
 
-            document.write('<h3>' + jugador2.nombre + '</h3>');
-            document.write(jugador2.mejorPuntuacion + '<br />');
-            document.write(jugador2.puntuacionMedia + '<br />');
-            document.write(jugador2.totalPuntos + '<br /><br />');
+            var td = document.createElement('td');
+            var nombre = document.createTextNode(jugador2.nombre);
+            td.append(nombre);
+            tr.append(td);
+
+            td = document.createElement('td');
+            var mejorPuntuacion = document.createTextNode(jugador2.mejorPuntuacion);
+            td.append(mejorPuntuacion);
+            tr.append(td);
+
+            td = document.createElement('td');
+            var puntuacionMedia = document.createTextNode(jugador2.puntuacionMedia);
+            td.append(puntuacionMedia);
+            tr.append(td);
+
+            td = document.createElement('td');
+            var totalPuntos = document.createTextNode(jugador2.totalPuntos);
+            td.append(totalPuntos);
+            tr.append(td);
         </script>
-
     </body>
 </html>

@@ -27,20 +27,20 @@ class Jugador {
         for (let p of this.resultados) {
             puntos += p;
         }
-        return "El total de puntos obtenidos es " + puntos;
+        return puntos;
     }
 
     get algunCero() {
         var cero;
         if (this.resultados.find(0)) {
-            cero = "Este jugador si ha obtenido 0 en alguna partida";
+            cero = 'Si';
         } else {
-            cero = "Este jugador no ha obtenido 0 en alguna partida";
+            cero = 'No';
         }
         return cero;
     }
 
     get puntuacionMedia() {
-        return "La puntuación media es " + this.totalPuntos / this.resultados.lenght;
+        return (this.totalPuntos / this.resultados.length);
     }
 }
