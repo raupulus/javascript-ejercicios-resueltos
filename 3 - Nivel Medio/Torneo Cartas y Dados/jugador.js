@@ -19,7 +19,7 @@ class Jugador {
     }
 
     get mejorPuntuacion() {
-        return "La mejor puntuación ha sido " + (Math.max(...this.resultados));
+        return (Math.max(...this.resultados));
     }
 
     get totalPuntos() {
