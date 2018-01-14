@@ -13,16 +13,15 @@ class JuegoDados extends Juego {
         super(nombre, jugadores);
 
         // Propiedades de la propia clase
-        this.dados = dados;
-        this.cantidad = cantidad;
+        this.n_dados = dados;
+        this.t_cantidad = cantidad;
     }
 
-    get caracteristicas() {
-        var datos = '';
-        datos += '<h3>' + super.nombre + '</h3>';
-        datos += 'Jugadores → ' + super.jugadores + '<br />';
-        datos += 'Tipo de dados → ' + this.dados + '<br />';
-        datos += 'Cantidad de dados → ' + this.dados + '<br />';
-        return datos;
+    get dados() {
+        return this.n_dados;
+    }
+
+    get cantidad() {
+        return this.t_cantidad;
     }
 }

@@ -15,6 +15,10 @@ Crear como mínimo las clases de la forma que creas correspondiente para:
 Instancia un juego
 
 Muestra todas las características del juego, partida y jugadores añadiendo nodos nuevos, no lo hagas directamente en la estructura html con innerHTML ni nada similar.
+
+Genera los resultados en una tabla mediante agregación de nodos creados con Javascript
+
+Instancia Jugadores generando aleatoriamente datos de puntuación
 -->
 <html lang="es">
     <head>
@@ -29,6 +33,11 @@ Muestra todas las características del juego, partida y jugadores añadiendo nod
         <script>
             window.onload = limpiar_nodos;
         </script>
+        <style>
+            th, td {
+                text-align: center;
+            }
+        </style>
     </head>
 
         <body>
@@ -39,8 +48,8 @@ Muestra todas las características del juego, partida y jugadores añadiendo nod
             <tr>
                 <th>Nombre</th>
                 <th>Jugadores</th>
-                <th>Tipo de Baraja</th>
-                <th>Número de Cartas</th>
+                <th>Tipo de Baraja/<br />Cantidad de Dados</th>
+                <th>Número de Cartas/<br />Cantidad</th>
             </tr>
         </table>
 
@@ -55,52 +64,137 @@ Muestra todas las características del juego, partida y jugadores añadiendo nod
         </table>
 
         <script>
+            // Crear Juegos
             var juegos = [
-                juego1 = new JuegoCartas('Juego de Mesa 1', 4), //4j
-                juego2 = new JuegoCartas('Juego de Mesa 2', 1, 'Poker', 50), //1j
-                juego3 = new JuegoDados('Juego de Mesa 3', 2, 21), //2j
+                new JuegoCartas('Juego de Cartas 1', 4),
+                new JuegoCartas('Juego de Cartas 2', 1, 'Poker', 50),
+                new JuegoCartas('Juego de Cartas 3', 7, 'Poker', 31),
+                new JuegoCartas('Juego de Cartas 4', 4, 'Poker', 48),
+                new JuegoDados('Juego de Dados 1', 1, 13),
+                new JuegoDados('Juego de Dados 2', 12, 21),
+                new JuegoDados('Juego de Dados 3', 5, 44),
             ]
-            document.write('<h2>LISTADO DE JUEGOS</h2>' + '<br />');
-            for (j of juegos) {
-                document.write('<br />' + j.caracteristicas + '<br />');
+
+            // Creo Jugadores
+            var jugadores = [
+                new Jugador('Manuel'),
+                new Jugador('María'),
+                new Jugador('Antonio'),
+                new Jugador('José María'),
+                new Jugador('Elena'),
+                new Jugador('Ramón'),
+                new Jugador('Marcos'),
+                new Jugador('Rocío'),
+            ];
+
+            /**
+             * Genera un número aleatoriamente entre los valores de mínimo y máximo.
+             * @param  {Integer} [minimo=0]  Valor mínimo.
+             * @param  {Integer} [maximo=10] Valor máximo.
+             * @return {Integer}             Devuelve un entero entre el mínimo y máximo.
+             */
+            function generarAleatorio(minimo = 0, maximo = 100) {
+                var x = 0;
+                while (true) {
+                    x = parseInt((Math.random()+0.01) * maximo);
+
+                    if ((x >= minimo) && (x <= maximo)) {
+                        return x;
+                    }
+                }
             }
 
-            jugador1 = new Jugador('Manuel');
-            jugador1.puntuacion = 21;
-            jugador1.puntuacion = 23;
-            jugador1.puntuacion = 44;
-            jugador1.puntuacion = 55;
+            function generarTablaJuegos(...objeto) {
+                // Tabla sobre la que añadir elementos
+                var tabla = document.getElementsByTagName('table');
 
+                // Recorre cada objeto pasado y lo añade a la tabla
+                for (let o of objeto) {
+                    var tr = document.createElement('tr');
+                    tabla[0].append(tr);
 
-            jugador2 = new Jugador('María');
-            jugador2.puntuacion = 33;
-            jugador2.puntuacion = 44;
-            jugador2.puntuacion = 56;
-            jugador2.puntuacion = 12;
+                    var td = document.createElement('td');
+                    var nombre = document.createTextNode(o.nombre);
+                    td.append(nombre);
+                    tr.append(td);
 
-            var tabla = document.getElementsByTagName('table');
-            var tr = document.createElement('tr');
-            tabla[1].append(tr);
+                    td = document.createElement('td');
+                    var jugadores = document.createTextNode(o.jugadores);
+                    td.append(jugadores);
+                    tr.append(td);
 
-            var td = document.createElement('td');
-            var nombre = document.createTextNode(jugador2.nombre);
-            td.append(nombre);
-            tr.append(td);
+                    if (o instanceof JuegoCartas) {
+                        td = document.createElement('td');
+                        var puntuacionMedia = document.createTextNode(o.baraja);
+                        td.append(puntuacionMedia);
+                        tr.append(td);
 
-            td = document.createElement('td');
-            var mejorPuntuacion = document.createTextNode(jugador2.mejorPuntuacion);
-            td.append(mejorPuntuacion);
-            tr.append(td);
+                        td = document.createElement('td');
+                        var totalPuntos = document.createTextNode(o.cartas);
+                        td.append(totalPuntos);
+                        tr.append(td);
+                    } else if (o instanceof JuegoDados) {
+                        td = document.createElement('td');
+                        var dados = document.createTextNode(o.dados);
+                        td.append(dados);
+                        tr.append(td);
 
-            td = document.createElement('td');
-            var puntuacionMedia = document.createTextNode(jugador2.puntuacionMedia);
-            td.append(puntuacionMedia);
-            tr.append(td);
+                        td = document.createElement('td');
+                        var cantidad = document.createTextNode(o.cantidad);
+                        td.append(cantidad);
+                        tr.append(td);
+                    }
 
-            td = document.createElement('td');
-            var totalPuntos = document.createTextNode(jugador2.totalPuntos);
-            td.append(totalPuntos);
-            tr.append(td);
+                }
+            }
+
+            /**
+             * Recibe uno o más objetos y los añade a la tabla
+             * @param  {Objeto} objeto Objeto sobre el que mostrar elementos
+             */
+            function generarTablaJugadores(...objeto) {
+                // Tabla sobre la que añadir elementos
+                var tabla = document.getElementsByTagName('table');
+
+                // Recorre cada objeto pasado y lo añade a la tabla
+                for (let o of objeto) {
+                    var tr = document.createElement('tr');
+                    tabla[1].append(tr);
+
+                    var td = document.createElement('td');
+                    var nombre = document.createTextNode(o.nombre);
+                    td.append(nombre);
+                    tr.append(td);
+
+                    td = document.createElement('td');
+                    var mejorPuntuacion = document.createTextNode(o.mejorPuntuacion);
+                    td.append(mejorPuntuacion);
+                    tr.append(td);
+
+                    td = document.createElement('td');
+                    var puntuacionMedia = document.createTextNode(o.puntuacionMedia);
+                    td.append(puntuacionMedia);
+                    tr.append(td);
+
+                    td = document.createElement('td');
+                    var totalPuntos = document.createTextNode(o.totalPuntos);
+                    td.append(totalPuntos);
+                    tr.append(td);
+                }
+            }
+
+            // Genera tabla con todos los juegos
+            for (let j of juegos) {
+                generarTablaJuegos(j);
+            }
+
+            // Genera 10 puntuaciones para cada jugador
+            for (let j of jugadores) {
+                for (let i = 1; i <= 10; i++) {
+                    j.puntuacion = generarAleatorio(0, 100);
+                }
+                generarTablaJugadores(j);
+            }
         </script>
     </body>
 </html>
