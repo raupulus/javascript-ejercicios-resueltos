@@ -36,11 +36,11 @@ Muestra todas las características del juego, partida y jugadores añadiendo nod
 
         <script>
             var juegos = [
-                juego1 = new JuegoCartas('Juego de mesa 1', 4), //4j
+                juego1 = new JuegoCartas('Juego de Mesa 1', 4), //4j
                 juego2 = new JuegoCartas('Juego de Mesa 2', 1, 'Poker', 50), //1j
-                juego3 = new JuegoDados('Juego de mesa 3', 2, 21), //2j
+                juego3 = new JuegoDados('Juego de Mesa 3', 2, 21), //2j
             ]
-            document.write('LISTADO DE JUEGOS' + '<br />');
+            document.write('<h2>LISTADO DE JUEGOS</h2>' + '<br />');
             for (j of juegos) {
                 document.write('<br />' + j.caracteristicas + '<br />');
             }
@@ -58,13 +58,13 @@ Muestra todas las características del juego, partida y jugadores añadiendo nod
             jugador2.puntuacion = 56;
             jugador2.puntuacion = 12;
 
-            document.write('LISTADO DE JUGADORES' + '<br /><br />');
-            document.write(jugador1.nombre + '<br />');
+            document.write('<h2>LISTADO DE JUGADORES</h2>');
+            document.write('<h3>' + jugador1.nombre + '</h3>');
             document.write(jugador1.mejorPuntuacion + '<br />');
             document.write(jugador1.puntuacionMedia + '<br />');
             document.write(jugador1.totalPuntos + '<br /><br />');
 
-            document.write(jugador2.nombre + '<br />');
+            document.write('<h3>' + jugador2.nombre + '</h3>');
             document.write(jugador2.mejorPuntuacion + '<br />');
             document.write(jugador2.puntuacionMedia + '<br />');
             document.write(jugador2.totalPuntos + '<br /><br />');

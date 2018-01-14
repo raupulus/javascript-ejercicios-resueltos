@@ -11,8 +11,16 @@
  * los elementos comunes de estos.
  */
 class Juego {
-    constructor(nombre, jugadores = 2) {
-        this.nombre = nombre;
-        this.jugadores = jugadores;
+    constructor(name, players = 2) {
+        this.name = name;
+        this.players = players;
+    }
+
+    get nombre() {
+        return this.nombre;
+    }
+
+    get jugadores() {
+        return this.jugadores;
     }
 }
