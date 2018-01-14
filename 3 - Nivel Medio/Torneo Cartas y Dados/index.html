@@ -22,11 +22,10 @@ Muestra todas las características del juego, partida y jugadores añadiendo nod
         <title>Torneo de Cartas y Dados</title>
         <script src="cookies.js"></script>
         <script src="limpiar_nodos.js"></script>
+        <script src="juego.js"></script>
         <script src="JuegoCartas.js"></script>
         <script src="JuegoDados.js"></script>
         <script src="jugador.js"></script>
-        <script src="juego.js"></script>
-
         <script>
             // Hereda de Juego
             function JuegoDados(nombre, jugadores, dados, cantidad = 2) {
@@ -53,7 +52,7 @@ Muestra todas las características del juego, partida y jugadores añadiendo nod
 
         <script>
             juego1 = new JuegoCartas('Juego de mesa 1', 4); //4j
-            juego2 = new JuegoCartas('Juego de Mesa 2', 1, 'Poker', 50); //1j
+            //juego2 = new JuegoCartas('Juego de Mesa 2', 1, 'Poker', 50); //1j
             juego3 = new JuegoDados('Juego de mesa 3', 2, 21); //2j
 
             document.write('LISTADO DE JUEGOS' + '<br />');

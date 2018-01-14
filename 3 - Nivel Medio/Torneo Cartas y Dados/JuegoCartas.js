@@ -9,16 +9,12 @@
  */
 class JuegoCartas extends Juego {
     constructor(nombre, jugadores, baraja = 'Española', cartas = 48) {
+        // Constructor del padre
+        super(nombre, jugadores);
+
+        // Propiedades de la propia clase
         this.baraja = baraja;
         this.cartas = cartas;
-
-        //this.nombre = nombre;
-        //this.jugadores = jugadores
-
-        // Asignar parámetros heredados
-        //parent.nombre = nombre;
-        //parent.jugadores = jugadores;
-        //parent.constructor(nombre,jugadores);
     }
 
     get carateristicas() {
