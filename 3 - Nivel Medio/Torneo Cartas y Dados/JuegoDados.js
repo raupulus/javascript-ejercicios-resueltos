@@ -17,11 +17,12 @@ class JuegoDados extends Juego {
         this.cantidad = cantidad;
     }
 
-    get carateristicas() {
-        var caracteristicas = '';
-        caracteristicas += 'Nombre ' + super.nombre;
-        caracteristicas += 'Jugadores ' + super.jugadores;
-        caracteristicas += 'Tipo de dados ' + this.dados;
-        caracteristicas += 'Cantidad de dados' + this.dados;
+    get caracteristicas() {
+        var datos = '';
+        datos += '<h3>' + super.nombre + '</h3>';
+        datos += 'Jugadores → ' + super.jugadores + '<br />';
+        datos += 'Tipo de dados → ' + this.dados + '<br />';
+        datos += 'Cantidad de dados → ' + this.dados + '<br />';
+        return datos;
     }
 }

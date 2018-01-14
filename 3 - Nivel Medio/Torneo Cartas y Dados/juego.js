@@ -17,10 +17,10 @@ class Juego {
     }
 
     get nombre() {
-        return this.nombre;
+        return this.name;
     }
 
     get jugadores() {
-        return this.jugadores;
+        return this.players;
     }
 }

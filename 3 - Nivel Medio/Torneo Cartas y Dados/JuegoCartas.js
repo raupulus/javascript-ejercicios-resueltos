@@ -17,11 +17,12 @@ class JuegoCartas extends Juego {
         this.cartas = cartas;
     }
 
-    get carateristicas() {
-        var caracteristicas = '';
-        caracteristicas += 'Nombre ' + super.nombre;
-        caracteristicas += 'Jugadores ' + super.jugadores;
-        caracteristicas += 'Tipo de baraja ' + this.baraja;
-        caracteristicas += 'Número de cartas' + this.cartas;
+    get caracteristicas() {
+        var datos = '';
+        datos += '<h3>' + super.nombre + '</h3>';
+        datos += 'Jugadores → ' + super.jugadores + '<br />';
+        datos += 'Tipo de baraja → ' + this.baraja + '<br />';
+        datos += 'Número de cartas → ' + this.cartas + '<br />';
+        return datos;
     }
 }
