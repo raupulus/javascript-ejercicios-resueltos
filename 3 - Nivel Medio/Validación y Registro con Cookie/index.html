@@ -34,16 +34,8 @@ su valor pero no cargará el formulario.
         <script src="cookies.js"></script>
 
         <script>
-            if (getCookie('misesion')) {
-                alert('Existe sesión → Dibujar datos');
-            } else {
-                //alert('No hay sesión')
-            }
-
             var inputs = document.getElementsByTagName('input');
             var labels = document.getElementsByTagName('label');
-
-            // Recibe el número de input
 
             /**
              * Muestra error de entrada vacía en el campo input pasado
@@ -164,12 +156,22 @@ su valor pero no cargará el formulario.
                 }
             }
 
+            function reemplazarSesion() {
+                if (getCookie('misesion')) {
+                    alert('Existe sesión');
+                    // Borrar todos los nodos del <body>
+                    //getElementsByTagName('body')[0].removeChild(1);
+                    //getElementsByTagName('body')[0].removeChild(2);
+                }
+            }
+
             window.onload = function() {
                 limpiar_nodos();
                 inputs[0].addEventListener('blur', comprobarUsuario);
                 inputs[1].addEventListener('blur', comprobarTelefono);
                 inputs[2].addEventListener('blur', comprobarMeses);
                 inputs[3].addEventListener('blur', generarSesion);
+                reemplazarSesion();
             }
         </script>
     </head>
