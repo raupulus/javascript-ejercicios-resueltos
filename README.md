@@ -1,6 +1,15 @@
 # Javascript Ejercicios_Resueltos
 Ejercicios ya resueltos de javascript con los que he practicado durante mis estudios y los comparto para que puedas utilizarlo como base.
 
+
+## Modo de plantear ejercicios
+Los ejercicios y sus objetivos son orientativos, como podrás comprobar se pueden resolver de distintas formas e incluso mejorar los que yo mismo he resuelto.
+
+Mantengo algunas cosas que no serían lo más óptimo en producción porque me ha parecido que de esta forma pueden ser lo más legible o fáciles de entender.
+
+Puedes modificar aquellos ejercicios que consideres más pesados u orienttados de una forma que no te guste, recuerda que disfrutar puede aumentar el aprendizaje.
+
+
 ## División por nivel y objetivos
 He procurado dividir los tipos de ejercicios por nivel de dificultad y/o por el objetivo para el que se ha procurado.
 
