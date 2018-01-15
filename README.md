@@ -24,3 +24,9 @@ Además puedes encontrar en cada directorio ejercicios más concretos.
 
 ## Hay un error
 Si encuentras algún error o quieres mejorar algo puedes contactar directamente conmigo, puedes abrir un Issue describiéndolo y además puedes hacer un fork del proyecto, corregirlo y enviarme un Pull Request con la corrección o mejora.
+
+
+## Sobre el autor
+Nombre  | GitHub    | Web
+:-------|:----------|:---------
+Raúl Caro Pastorino | [@fryntiz](https://github.com/fryntiz) | [www.fryntiz.es](http://www.fryntiz.es)
