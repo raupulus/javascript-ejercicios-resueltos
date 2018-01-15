@@ -7,7 +7,7 @@ Los ejercicios y sus objetivos son orientativos, como podrás comprobar se puede
 
 Mantengo algunas cosas que no serían lo más óptimo en producción porque me ha parecido que de esta forma pueden ser lo más legible o fáciles de entender.
 
-Puedes modificar aquellos ejercicios que consideres más pesados u orienttados de una forma que no te guste, recuerda que disfrutar puede aumentar el aprendizaje.
+Puedes modificar aquellos ejercicios que consideres más pesados u orientados de una forma que no te guste, recuerda que disfrutar puede aumentar el aprendizaje.
 
 
 ## División por nivel y objetivos
@@ -18,3 +18,9 @@ Los principales ejercicios mezclados están en:
 - 2 - Introducción → Ejercicios con muy poco nivel.
 - 3 - Nivel Medio → Ejercicios con un cierto nivel de complejidad.
 - 4 - Nivel Alto → Ejercicios difíciles (aún no creados).
+
+Además puedes encontrar en cada directorio ejercicios más concretos.
+
+
+## Hay un error
+Si encuentras algún error o quieres mejorar algo puedes contactar directamente conmigo, puedes abrir un Issue describiéndolo y además puedes hacer un fork del proyecto, corregirlo y enviarme un Pull Request con la corrección o mejora.
