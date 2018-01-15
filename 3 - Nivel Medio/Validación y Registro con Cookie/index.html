@@ -20,7 +20,7 @@ Al enviar aparecerá una ventana nueva durante 3 segundos, tras este tiempo se c
 Una vez registrado lo que ocurre es que se añade el valor de los meses a una cookie y se recarga la página.
 
 Al entrar en la página si existe la cookie con los meses, mostrará un aviso con
-su valor pero no cargará el formulario.
+su valor pero no cargará el formulario.Si existe la cookie de sesión reemplaza el DOM por un mensaje en vez del formulario donde muestra los meses y un botón para eliminar la cookie.
 -->
 <html lang="es">
     <head>
@@ -152,14 +152,19 @@ su valor pero no cargará el formulario.
                     setInterval(function(){ventana.close}, 3000);
 
                     setCookie('misesion', inputs[2].value);
-                    //reload();
+                    return true;
                 }
+
+                return false;
             }
 
+            /**
+             * Si existe la variable de sesión reemplaza el DOM
+             */
             function reemplazarSesion() {
                 if (getCookie('misesion')) {
                     alert('Existe sesión');
-                    // Borrar todos los nodos del <body>
+                    // TOFIX → Borrar todos los nodos del <body>
                     //getElementsByTagName('body')[0].removeChild(1);
                     //getElementsByTagName('body')[0].removeChild(2);
                 }
@@ -170,28 +175,33 @@ su valor pero no cargará el formulario.
                 inputs[0].addEventListener('blur', comprobarUsuario);
                 inputs[1].addEventListener('blur', comprobarTelefono);
                 inputs[2].addEventListener('blur', comprobarMeses);
-                inputs[3].addEventListener('blur', generarSesion);
+                inputs[3].addEventListener('submit', generarSesion);
                 reemplazarSesion();
             }
         </script>
     </head>
         <body>
-              <h1>Formulario de registo</h1>
-              <form>
-                  <label>Nombre:
-                        <input type="text" title="Debe contener al menos una minúscula, mayúscula,número y alguno de estos signos (. - _)" />
-                  </label>
-                  <br />
-                  <label>Teléfono:
-                        <input name="telefono" type="text" placeholder="(XXX) XX-XX-XX" />
-                  </label>
-                  <br />
-                  <label>Nº meses:
-                        <input type="number" min="1" max="24" title="Debe introducir una cantidad entre 1 y 24"/>
-                  </label>
-                  <br /><br />
+            <h1>Formulario de registo</h1>
+            <form>
+                <label>Nombre:
+                    <input type="text" title="Debe contener al menos una minúscula, mayúscula,número y alguno de estos signos (. - _)" />
+                </label>
 
-                  <input type="submit" value="Registrar" />
-              </form>
+                <br />
+
+                <label>Teléfono:
+                    <input name="telefono" type="text" placeholder="(XXX) XX-XX-XX" />
+                </label>
+
+                <br />
+
+                <label>Nº meses:
+                    <input type="number" min="1" max="24" title="Debe introducir una cantidad entre 1 y 24"/>
+                </label>
+
+                <br /><br />
+
+                <input type="submit" value="Registrar" />
+            </form>
         </body>
 </html>
