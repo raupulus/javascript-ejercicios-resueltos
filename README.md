@@ -30,3 +30,9 @@ Si encuentras algún error o quieres mejorar algo puedes contactar directamente 
 Nombre  | GitHub    | Web
 :-------|:----------|:---------
 Raúl Caro Pastorino | [@fryntiz](https://github.com/fryntiz) | [www.fryntiz.es](http://www.fryntiz.es)
+
+
+## Licencia
+Este repositorio incluye material libre con el que puedes hacer lo que prefieras correspondiendo con la licencia GPLv3 y respetando autoría/s
+
+Puedes consultar la licencia en el archivo adjunto [LICENSE](https://github.com/fryntiz/Javascript_Ejercicios_Resueltos/LICENSE)
