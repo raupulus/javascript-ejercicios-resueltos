@@ -7,7 +7,6 @@
 
 <!--
 ↓ INSTRUCCIONES DEL EJERCICIO ↓
-
 Valida un Formulario con los siguientes campos y condiciones:
     - Nombre → Debe contener al menos una minúscula, mayúscula,número y alguno de estos signos (. - _)
     - Teléfono → (XXX) XX-XX-XX
@@ -28,15 +27,17 @@ su valor pero no cargará el formulario.
         <meta charset="utf-8" />
         <title>Validación y Registro con cookies</title>
         <style type="text/css">
-          .error{color:red;}
+            .error{color:red;}
         </style>
 
         <script src="limpiar_nodos.js"></script>
         <script src="cookies.js"></script>
 
         <script>
-            if (getCookie('misesion') == true) {
+            if (getCookie('misesion')) {
                 alert('Existe sesión → Dibujar datos');
+            } else {
+                //alert('No hay sesión')
             }
 
             var inputs = document.getElementsByTagName('input');
@@ -70,7 +71,7 @@ su valor pero no cargará el formulario.
                 nodoError.appendChild(nodoTexto);
 
                 if (labels[entrada].children.length > 1) {
-                    labels[entrada].replaceChild(nodoError);
+                    labels[entrada].replaceChild(nodoError, labels[entrada].childNodes[2]);
                 } else {
                     labels[entrada].appendChild(nodoError);
                 }
@@ -79,25 +80,43 @@ su valor pero no cargará el formulario.
             /**
              * Limpia errores si es válido el formato en un input
              */
-            function formatoValido() {
-                // Limpiar todos los inputs
-                for (x of inputs) {
-                    // si el padre tiene más de un hijo borra todos menos primero
+            function formatoValido(entrada) {
+                // Limpiar errores
+                // TOFIX → Tiene que limpiar el nodo "P" con error tras el input
+                if (labels[entrada].children.length > 2) {
+                    labels[entrada].removeChild(2);
                 }
             }
 
             function comprobarUsuario() {
                 var entrada = inputs[0].value;
 
-                patron = new RegExp("[a-z]+[A-Z]+[0-9]+");
+                // Contiene minúsculas
+                patron1 = new RegExp("[a-z]+", 'g');
+
+                // Contiene mayúsculas
+                patron2 = new RegExp("[A-Z]+", 'g');
+
+                // Contiene número
+                patron3 = new RegExp("[0-9]+", 'g');
+
+                // Contiene carácter especial (. - _)
+                patron4 = new RegExp("[\.\ \-\_]+", 'g');
+
+                var test1 = patron1.test(inputs[0].value);
+                var test2 = patron2.test(inputs[0].value);
+                var test3 = patron3.test(inputs[0].value);
+                var test4 = patron4.test(inputs[0].value);
 
                 if (entrada === '') {
                     entradaVacia(0);
                     return false;
-                } else if (patron.test(inputs[0].value) === false) {
+                } else if (! test1 || ! test2 || ! test3 || ! test4) {
                     formatoInvalido(0);
                     return false;
                 }
+
+                formatoValido(0);
                 return true;
             }
 
@@ -113,6 +132,7 @@ su valor pero no cargará el formulario.
                     formatoInvalido(1);
                 }
 
+                formatoValido(1);
                 return patron.test(entrada);
             }
 
@@ -129,6 +149,8 @@ su valor pero no cargará el formulario.
                     formatoInvalido(2);
                     return false;
                 }
+
+                formatoValido(2);
                 return true;
             }
 
