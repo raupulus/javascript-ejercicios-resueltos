@@ -8,6 +8,20 @@
 <!--
 ↓ INSTRUCCIONES DEL EJERCICIO ↓
 
+Valida un Formulario con los siguientes campos y condiciones:
+    - Nombre → Debe contener al menos una minúscula, mayúscula,número y alguno de estos signos (. - _)
+    - Teléfono → (XXX) XX-XX-XX
+    - Nº meses → Debe introducir una cantidad entre 1 y 24
+    - Botón para Registrar
+
+Antes de enviar el registro comprobará que los campos introducidos son válidos.
+
+Al enviar aparecerá una ventana nueva durante 3 segundos, tras este tiempo se cerrará la ventana
+
+Una vez registrado lo que ocurre es que se añade el valor de los meses a una cookie y se recarga la página.
+
+Al entrar en la página si existe la cookie con los meses, mostrará un aviso con
+su valor pero no cargará el formulario.
 -->
 <html lang="es">
     <head>
@@ -140,7 +154,6 @@
         <body>
               <h1>Formulario de registo</h1>
               <form>
-
                   <label>Nombre:
                         <input type="text" title="Debe contener al menos una minúscula, mayúscula,número y alguno de estos signos (. - _)" />
                   </label>
@@ -155,8 +168,6 @@
                   <br /><br />
 
                   <input type="submit" value="Registrar" />
-
               </form>
-
         </body>
 </html>
