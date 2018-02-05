@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Crear como mínimo las clases de la forma que creas correspondiente para:
+    - Jugador → nombre, todos los resultados, total de puntos, si alguna vez ha sacado 0, puntuación más alta y puntuación media.
+    - Cartas → nombre, jugadores, baraja (por omisión española), cartas (por omisión 48)
+    - Dados → nombre, jugadores, dados, cantidad (por omisión 2)
+
+Instancia un juego
+
+Muestra todas las características del juego, partida y jugadores añadiendo nodos nuevos, no lo hagas directamente en la estructura html con innerHTML ni nada similar.
+
+Genera los resultados en una tabla mediante agregación de nodos creados con Javascript
+
+Instancia Jugadores generando aleatoriamente datos de puntuación
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>Torneo de Cartas y Dados</title>
+        <script src="cookies.js"></script>
+        <script src="limpiar_nodos.js"></script>
+        <script src="juego.js"></script>
+        <script src="JuegoCartas.js"></script>
+        <script src="JuegoDados.js"></script>
+        <script src="jugador.js"></script>
+        <script>
+            window.onload = limpiar_nodos;
+        </script>
+        <style>
+            th, td {
+                text-align: center;
+            }
+        </style>
+    </head>
+
+        <body>
+            <h1 align="center">Torneo de Cartas y Dados</h1>
+
+        <h2 align="center">LISTADO DE JUEGOS</h2>
+        <table border="1" width="90%" align="center" cellspacing="0">
+            <tr>
+                <th>Nombre</th>
+                <th>Jugadores</th>
+                <th>Tipo de Baraja/<br />Cantidad de Dados</th>
+                <th>Número de Cartas/<br />Cantidad</th>
+            </tr>
+        </table>
+
+        <h2 align="center">LISTADO DE JUGADORES</h2>
+        <table border="1" width="90%" align="center" cellspacing="0">
+            <tr>
+                <th>Nombre</th>
+                <th>Mejor Puntuación</th>
+                <th>Puntuación media</th>
+                <th>Puntuación total</th>
+                <th>Algún Cero</th>
+            </tr>
+        </table>
+
+        <script>
+            // Crear Juegos
+            var juegos = [
+                new JuegoCartas('Juego de Cartas 1', 4),
+                new JuegoCartas('Juego de Cartas 2', 1, 'Poker', 50),
+                new JuegoCartas('Juego de Cartas 3', 7, 'Poker', 31),
+                new JuegoCartas('Juego de Cartas 4', 4, 'Poker', 48),
+                new JuegoDados('Juego de Dados 1', 1, 13),
+                new JuegoDados('Juego de Dados 2', 12, 21),
+                new JuegoDados('Juego de Dados 3', 5, 44),
+            ]
+
+            // Creo Jugadores
+            var jugadores = [
+                new Jugador('Manuel'),
+                new Jugador('María'),
+                new Jugador('Antonio'),
+                new Jugador('José María'),
+                new Jugador('Elena'),
+                new Jugador('Ramón'),
+                new Jugador('Marcos'),
+                new Jugador('Rocío'),
+            ];
+
+            /**
+             * Genera un número aleatoriamente entre los valores de mínimo y máximo.
+             * @param  {Integer} [minimo=0]  Valor mínimo.
+             * @param  {Integer} [maximo=10] Valor máximo.
+             * @return {Integer}             Devuelve un entero entre el mínimo y máximo.
+             */
+            function generarAleatorio(minimo = 0, maximo = 100) {
+                var x = 0;
+                while (true) {
+                    x = parseInt((Math.random()+0.01) * maximo);
+
+                    if ((x >= minimo) && (x <= maximo)) {
+                        return x;
+                    }
+                }
+            }
+
+            function generarTablaJuegos(...objeto) {
+                // Tabla sobre la que añadir elementos
+                var tabla = document.getElementsByTagName('table');
+
+                // Recorre cada objeto pasado y lo añade a la tabla
+                for (let o of objeto) {
+                    var tr = document.createElement('tr');
+                    tabla[0].append(tr);
+
+                    var td = document.createElement('td');
+                    var nombre = document.createTextNode(o.nombre);
+                    td.append(nombre);
+                    tr.append(td);
+
+                    td = document.createElement('td');
+                    var jugadores = document.createTextNode(o.jugadores);
+                    td.append(jugadores);
+                    tr.append(td);
+
+                    if (o instanceof JuegoCartas) {
+                        td = document.createElement('td');
+                        var puntuacionMedia = document.createTextNode(o.baraja);
+                        td.append(puntuacionMedia);
+                        tr.append(td);
+
+                        td = document.createElement('td');
+                        var totalPuntos = document.createTextNode(o.cartas);
+                        td.append(totalPuntos);
+                        tr.append(td);
+                    } else if (o instanceof JuegoDados) {
+                        td = document.createElement('td');
+                        var dados = document.createTextNode(o.dados);
+                        td.append(dados);
+                        tr.append(td);
+
+                        td = document.createElement('td');
+                        var cantidad = document.createTextNode(o.cantidad);
+                        td.append(cantidad);
+                        tr.append(td);
+                    }
+                }
+            }
+
+            /**
+             * Recibe uno o más objetos y los añade a la tabla
+             * @param  {Objeto} objeto Objeto sobre el que mostrar elementos
+             */
+            function generarTablaJugadores(...objeto) {
+                // Tabla sobre la que añadir elementos
+                var tabla = document.getElementsByTagName('table');
+
+                // Recorre cada objeto pasado y lo añade a la tabla
+                for (let o of objeto) {
+                    var tr = document.createElement('tr');
+                    tabla[1].append(tr);
+
+                    var td = document.createElement('td');
+                    var nombre = document.createTextNode(o.nombre);
+                    td.append(nombre);
+                    tr.append(td);
+
+                    td = document.createElement('td');
+                    var mejorPuntuacion = document.createTextNode(o.mejorPuntuacion);
+                    td.append(mejorPuntuacion);
+                    tr.append(td);
+
+                    td = document.createElement('td');
+                    var puntuacionMedia = document.createTextNode(o.puntuacionMedia);
+                    td.append(puntuacionMedia);
+                    tr.append(td);
+
+                    td = document.createElement('td');
+                    var totalPuntos = document.createTextNode(o.totalPuntos);
+                    td.append(totalPuntos);
+                    tr.append(td);
+
+                    td = document.createElement('td');
+                    var algunCero = document.createTextNode(o.algunCero);
+                    td.append(algunCero);
+                    tr.append(td);
+                }
+            }
+
+            // Provocando que exista puntuación 0
+            jugadores[1].puntuacion = 0;
+            jugadores[3].puntuacion = 0;
+            jugadores[5].puntuacion = 0;
+
+            // Genera tabla con todos los juegos
+            for (let j of juegos) {
+                generarTablaJuegos(j);
+            }
+
+            // Genera 10 puntuaciones para cada jugador
+            for (let j of jugadores) {
+                for (let i = 1; i <= 10; i++) {
+                    j.puntuacion = generarAleatorio(0, 100);
+                }
+                generarTablaJugadores(j);
+            }
+
+
+
+        </script>
+    </body>
+</html>

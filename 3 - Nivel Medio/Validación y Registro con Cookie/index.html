@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Valida un Formulario con los siguientes campos y condiciones:
+    - Nombre → Debe contener al menos una minúscula, mayúscula,número y alguno de estos signos (. - _)
+    - Teléfono → (XXX) XX-XX-XX
+    - Nº meses → Debe introducir una cantidad entre 1 y 24
+    - Botón para Registrar
+
+Antes de enviar el registro comprobará que los campos introducidos son válidos.
+
+Al enviar aparecerá una ventana nueva durante 3 segundos, tras este tiempo se cerrará la ventana
+
+Una vez registrado lo que ocurre es que se añade el valor de los meses a una cookie y se recarga la página.
+
+Al entrar en la página si existe la cookie con los meses, mostrará un aviso con
+su valor pero no cargará el formulario.Si existe la cookie de sesión reemplaza el DOM por un mensaje en vez del formulario donde muestra los meses y un botón para eliminar la cookie.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>Validación y Registro con cookies</title>
+        <style type="text/css">
+            .error{color:red;}
+        </style>
+
+        <script src="limpiar_nodos.js"></script>
+        <script src="cookies.js"></script>
+
+        <script>
+
+            /********ATENCIÓN → EJERCICIO NO TERMNADO POR COMPLETO ***********\
+
+            var inputs = document.getElementsByTagName('input');
+            var labels = document.getElementsByTagName('label');
+
+            /**
+             * Muestra error de entrada vacía en el campo input pasado
+             * @param  {Integer}  entrada  Recibe el número de input
+             */
+            function entradaVacia(entrada) {
+                var nodoError = document.createElement('p');
+                var nodoTexto = document.createTextNode('No puede ser vacío');
+                nodoError.appendChild(nodoTexto);
+
+                if (labels[entrada].children.length > 1) {
+                    labels[entrada].replaceChild(nodoError);
+                } else {
+                    labels[entrada].appendChild(nodoError);
+                }
+            }
+
+            /**
+             * Muestra errores al ser inválido un formato.
+             * @param  {Integer}  entrada  Recibe el número de input
+             */
+            function formatoInvalido(entrada) {
+                var nodoError = document.createElement('p');
+                var nodoTexto = document.createTextNode('No coincide el formato');
+                nodoError.appendChild(nodoTexto);
+
+                if (labels[entrada].children.length > 1) {
+                    labels[entrada].replaceChild(nodoError, labels[entrada].childNodes[2]);
+                } else {
+                    labels[entrada].appendChild(nodoError);
+                }
+            }
+
+            /**
+             * Limpia errores si es válido el formato en un input
+             */
+            function formatoValido(entrada) {
+                // Limpiar errores
+                // TOFIX → Tiene que limpiar el nodo "P" con error tras el input
+                if (labels[entrada].children.length > 2) {
+                    labels[entrada].removeChild(2);
+                }
+            }
+
+            function comprobarUsuario() {
+                var entrada = inputs[0].value;
+
+                // Contiene minúsculas
+                patron1 = new RegExp("[a-z]+", 'g');
+
+                // Contiene mayúsculas
+                patron2 = new RegExp("[A-Z]+", 'g');
+
+                // Contiene número
+                patron3 = new RegExp("[0-9]+", 'g');
+
+                // Contiene carácter especial (. - _)
+                patron4 = new RegExp("[\.\ \-\_]+", 'g');
+
+                var test1 = patron1.test(inputs[0].value);
+                var test2 = patron2.test(inputs[0].value);
+                var test3 = patron3.test(inputs[0].value);
+                var test4 = patron4.test(inputs[0].value);
+
+                if (entrada === '') {
+                    entradaVacia(0);
+                    return false;
+                } else if (! test1 || ! test2 || ! test3 || ! test4) {
+                    formatoInvalido(0);
+                    return false;
+                }
+
+                formatoValido(0);
+                return true;
+            }
+
+            function comprobarTelefono() {
+                var entrada = inputs[1].value;
+
+                patron = new RegExp("^([\(]{1}[0-9]{3}[\)]{1}){1}[ ]{1}[0-9]{2}[\-]{1}[0-9]{2}[\-]{1}[0-9]{2}$");
+
+                if (entrada === '') {
+                    entradaVacia(1);
+                }
+                else if (patron.test(entrada) === false) {
+                    formatoInvalido(1);
+                }
+
+                formatoValido(1);
+                return patron.test(entrada);
+            }
+
+            function comprobarMeses() {
+                var entrada = inputs[2].value;
+                if (entrada === '') {
+                    entradaVacia(2);
+                    return false;
+
+                } else if (isNaN(Number(entrada)) === NaN) {
+                    formatoInvalido(2);
+                    return false;
+                } else if (! (entrada >= 1 && entrada <= 24)) {
+                    formatoInvalido(2);
+                    return false;
+                }
+
+                formatoValido(2);
+                return true;
+            }
+
+            function generarSesion() {
+                if (comprobarUsuario() && comprobarTelefono() &&comprobarMeses()) {
+                    var ventana = window.open('ventana.html', 'nueva_ventana', "width=300px, height=200px");
+                    setInterval(function(){ventana.close}, 3000);
+
+                    setCookie('misesion', inputs[2].value);
+                    return true;
+                }
+
+                return false;
+            }
+
+            /**
+             * Si existe la variable de sesión reemplaza el DOM
+             */
+            function reemplazarSesion() {
+                if (getCookie('misesion')) {
+                    alert('Existe sesión');
+                    // TOFIX → Borrar todos los nodos del <body>
+                    //getElementsByTagName('body')[0].removeChild(1);
+                    //getElementsByTagName('body')[0].removeChild(2);
+                }
+            }
+
+            window.onload = function() {
+                limpiar_nodos();
+                inputs[0].addEventListener('blur', comprobarUsuario);
+                inputs[1].addEventListener('blur', comprobarTelefono);
+                inputs[2].addEventListener('blur', comprobarMeses);
+                inputs[3].addEventListener('submit', generarSesion);
+                reemplazarSesion();
+            }
+        </script>
+    </head>
+        <body>
+            <h1>Formulario de registo</h1>
+            <form>
+                <label>Nombre:
+                    <input type="text" title="Debe contener al menos una minúscula, mayúscula,número y alguno de estos signos (. - _)" />
+                </label>
+
+                <br />
+
+                <label>Teléfono:
+                    <input name="telefono" type="text" placeholder="(XXX) XX-XX-XX" />
+                </label>
+
+                <br />
+
+                <label>Nº meses:
+                    <input type="number" min="1" max="24" title="Debe introducir una cantidad entre 1 y 24"/>
+                </label>
+
+                <br /><br />
+
+                <input type="submit" value="Registrar" />
+            </form>
+        </body>
+</html>

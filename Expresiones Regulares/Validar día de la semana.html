@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Confecciona una expresión regular que valide el ingreso del nombre de un día de la semana y un número de 1 o 2 dígitos
+Los valores serán desde Lunes (o número 0) hasta Domingo (número 6)
+-->
+<html lang="es">
+    <head>
+        <title>Validar día de la semana</title>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Raúl Caro Pastorino"/>
+    </head>
+
+    <body>
+        <h1 id="titulo1">Actividad 21</h1>
+
+        <div>
+            Confecciona una expresión regular que valide el ingreso del nombre de un día de la semana y un número de 1 o 2 dígitos
+        </div>
+
+        <script>
+            // Validación de día de la semana o un número del 0-6
+            var comprobar = new RegExp("^(([Ll]unes|[Mm]artes|[Mm]i[eé]rcoles|[Jj]ueves|[Ss][aá]bado|[Dd]omingo)|[0-6])$", "i");
+
+            while (true) {
+                var dia = prompt('Introduce el día de la semana');
+                if (comprobar.test(dia)) {
+                    alert('Día correcto');
+                } else {
+                    alert('No coincide')
+                }
+            }
+        </script>
+    </body>
+</html>
