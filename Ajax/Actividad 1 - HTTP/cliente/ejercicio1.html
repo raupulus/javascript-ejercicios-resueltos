@@ -14,20 +14,33 @@
         <meta charset="utf-8" />
         <title>Ejercicio 1 - Comprobar disponibilidad del login</title>
         <script type="text/javascript">
-            window.onload = function() {
+        window.onload = function() {
+            /**
+             * Comprueba la disponibilidad generando una petición al servidor
+             * con Ajax y agrega el resultado obtenido dentro de del bloque
+             * div con id="disponibilidad"
+             */
+            function comprueba() {
+                // Se instancia la petición
                 var xmlhttp = new XMLHttpRequest();
 
+                // Cuando abre la petición comprueba si ha terminado correcto
                 xmlhttp.onreadystatechange = function() {
                     if (xmlhttp.readyState==4 && xmlhttp.status==200) {
                         var resp = xmlhttp.responseText;
                         document.getElementById('disponibilidad').append(resp);
-
                     }
                 }
 
+                // Abre petición por método GET al servidor
                 xmlhttp.open("GET","../servidor/compruebaDisponibilidad.php",true);
+                // Envía la petición anterior
                 xmlhttp.send();
             }
+
+            // Añade evento "click" al botón de comprobar
+            document.getElementById('comprobar').addEventListener('click', comprueba);
+        }
         </script>
     </head>
 
