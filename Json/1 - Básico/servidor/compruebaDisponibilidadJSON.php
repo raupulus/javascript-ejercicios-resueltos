@@ -1,25 +1,32 @@
 <?php
+// Extraigo la variable "name" que viene mediante GET al servidor
 $login = $_GET['name'];
 
+// Genera un número aleatorio
 srand((double)microtime()*1000000);
 $numeroAleatorio = rand(0, 10);
 
-// Simular un falso retardo por la red y el servidor
+// Simular un falso retardo por la red y el servidor pausando unos breves segundos
 sleep($numeroAleatorio % 2);
 
+// Obtengo aleatoriamente si estará disponible según el módulo del número generado aleatoriamente
 $disponible = ($numeroAleatorio % 2 == 0)? "si" : "no";
 
-class respuesta {
+// Crear el objeto respuesta, este será enviado y tratado en el cliente como objeto JSON
+class Respuesta {
  public $disponible;
  public $alternativas;
 }
 
-$respuesta = new respuesta();
+// Se instancia el objeto Respuesta para asignarlle valores
+$respuesta = new Respuesta();
 
+// En el caso de aleatoriamente recibir que está disponible, no se envían alternativas de nombre
 if($disponible == "si") {
     $respuesta->disponible = "si";
     $respuesta->alternativas = null;
 }
+// En el caso de no estar disponible se autogeneran con el nombre recibido una serie de usuarios propuestos
 else {
     $alternativasAutomaticas[] = $login.$login;
     $alternativasAutomaticas[] = "123".$login;
@@ -31,6 +38,7 @@ else {
     $respuesta->alternativas = $alternativasAutomaticas;
 
 }
-echo json_encode($respuesta);
 
+// Se devuelve la respuesta codificada mediante PHP en formato JSON
+echo json_encode($respuesta);
 ?>
