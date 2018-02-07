@@ -16,7 +16,6 @@
     <style type="text/css">
 
     </style>
-    <script src="./jquery-3.2.1.js"></script>
     <script>
         window.onload = function() {
             function comprueba() {
@@ -24,12 +23,16 @@
             }
 
             // Añado evento
+            document.getElementById('comprobar').addEventListener('click', comprueba);
         }
     </script>
 </head>
 
 <body>
-Nombre de usuario: <input id="entrada" type="text" />
-<a id="comprobar" href="#">Comprobar disponibilidad</a>
+    <form>
+        <label for="entrada">Nombre de usuario: </label>
+        <input id="entrada" type="text" />
+        <a id="comprobar" href="#">Comprobar disponibilidad</a>
+    </form>
 </body>
 </html>
