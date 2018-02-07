@@ -12,17 +12,35 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Ejercicios DOM Básicos</title>
+    <title>¿?</title>
     <style type="text/css">
 
     </style>
     <script>
         window.onload = function() {
+            /**
+             * ¿?
+             */
             function comprueba() {
+                // Se instancia la petición
+                var xmlhttp = new XMLHttpRequest();
 
+                // Cuando abre la petición comprueba si ha terminado correcto
+                xmlhttp.onreadystatechange = function() {
+                    if ((xmlhttp.readyState === 4) && (xmlhttp.status === 200)) {
+                        // ¿?
+                        alert('¿?');
+                    }
+                };
+
+                // Abre petición por método GET al servidor
+                xmlhttp.open("GET", "../servidor/compruebaDisponibilidadJSON.php", true);
+
+                // Envía la petición anterior
+                xmlhttp.send();
             }
 
-            // Añado evento
+            // Añado Evento
             document.getElementById('comprobar').addEventListener('click', comprueba);
         }
     </script>
@@ -30,9 +48,12 @@
 
 <body>
     <form>
+        <h1>?¿</h1>
         <label for="entrada">Nombre de usuario: </label>
         <input id="entrada" type="text" />
         <a id="comprobar" href="#">Comprobar disponibilidad</a>
     </form>
+
+    <div id="resultado"></div>
 </body>
 </html>

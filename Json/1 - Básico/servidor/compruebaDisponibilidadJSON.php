@@ -1,7 +1,6 @@
 <?php
-//si estuvieran en el fichero productos.json
-//$json= file_get_contents("products.json");
-
+$entrada = $_GET['¿?'];
+$login = '¿?';
 
 srand((double)microtime()*1000000);
 $numeroAleatorio = rand(0, 10);
