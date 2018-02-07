@@ -41,6 +41,14 @@ Crear un formulario básico donde introducir un nombre de usuario y un botón pa
                         // Convierto la cadena como respuesta JSON del servidor en un objeto Javascript
                         var res = JSON.parse(xmlhttp.responseText);
 
+                        // Almaceno variable con caja donde pintar resultados
+                        var resultado = document.getElementById('resultado');
+
+                        // Limpia el resultado borrando todos los nodos hijos
+                        while (resultado.firstChild) {
+                            resultado.removeChild(resultado.firstChild);
+                        }
+
                         // Crea nodo con la disponibilidad
                         var p = document.createElement('p');
                         p.append(document.createTextNode('Está disponible: ' + res.disponible));
@@ -50,7 +58,7 @@ Crear un formulario básico donde introducir un nombre de usuario y un botón pa
 
                         // Si no está disponible muestra las alternativas importadas desde el servidor
                         if (res.alternativas !== null) {
-                            var resultado = document.getElementById('resultado');
+
 
                             // Creo título con las alternativas y lo añado al resultado
                             var h3 = document.createElement('h3');
