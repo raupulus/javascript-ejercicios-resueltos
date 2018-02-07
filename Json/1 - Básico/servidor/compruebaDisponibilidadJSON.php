@@ -1,4 +1,12 @@
 <?php
+/**
+ * Archivo complementario simulando el lado del servidor donde se procesará un nombre de usuario recibido
+ * como parámetro por GET.
+ * Se generará una instancia de un objeto dónde contendrá si está disponible el usuario o no,
+ * en el caso de no estar se añadirá un array con alternativas propuestas para el nombre de usuario.
+ * Por último se devolverá este objeto instanciado en formato JSON para ser tratado por el cliente.
+ */
+
 // Extraigo la variable "name" que viene mediante GET al servidor
 $login = $_GET['name'];
 
