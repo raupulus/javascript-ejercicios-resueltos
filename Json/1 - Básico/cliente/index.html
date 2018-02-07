@@ -7,7 +7,14 @@
 
 <!--
 ↓ INSTRUCCIONES DEL EJERCICIO ↓
-
+Crear un formulario básico donde introducir un nombre de usuario y un botón para comprobar si está disponible.
+    - Enviar variable con el nombre al servidor mediante GET (a un archivo php).
+    - El archivo php tendrá un retardo de pocos segundos y devolverá un objeto JSON.
+    - En el archivo principal tenemos que capturar la cadena con el objeto JSON y convertirlo a un objeto de Javascript
+    - Una vez tengamos el objeto de Javascript, rescatar su contenido:
+        - Si el contenido está disponible, mostramos que si.
+        - Si el contenido no está disponible lo indicamos, pero además añadimos una serie de sugerencias tomadas del
+          segundo objeto o array (dentro del objeto principal) con estas sugerencias.
 -->
 <html lang="es">
 <head>
@@ -29,12 +36,19 @@
                 xmlhttp.onreadystatechange = function() {
                     if ((xmlhttp.readyState === 4) && (xmlhttp.status === 200)) {
                         // ¿?
-                        alert('¿?');
+                        var res = JSON.parse(xmlhttp.responseText);
+
+                        document.getElementById('resultado').append('Está disponible: ' + res.disponible);
+                        if (res.alternativas !== null) {
+                            document.getElementById('resultado').append('Alternativas: ' + res.alternativas);
+                        }
                     }
                 };
+                alert(document.getElementById('entrada').value);
+                var name = document.getElementById('entrada').value;
 
                 // Abre petición por método GET al servidor
-                xmlhttp.open("GET", "../servidor/compruebaDisponibilidadJSON.php", true);
+                xmlhttp.open("GET", "../servidor/compruebaDisponibilidadJSON.php?name=" + name, true);
 
                 // Envía la petición anterior
                 xmlhttp.send();
@@ -42,6 +56,7 @@
 
             // Añado Evento
             document.getElementById('comprobar').addEventListener('click', comprueba);
+
         }
     </script>
 </head>

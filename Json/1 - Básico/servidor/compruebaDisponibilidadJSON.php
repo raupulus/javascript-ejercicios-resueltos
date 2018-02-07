@@ -1,6 +1,5 @@
 <?php
-$entrada = $_GET['¿?'];
-$login = '¿?';
+$login = $_GET['name'];
 
 srand((double)microtime()*1000000);
 $numeroAleatorio = rand(0, 10);
