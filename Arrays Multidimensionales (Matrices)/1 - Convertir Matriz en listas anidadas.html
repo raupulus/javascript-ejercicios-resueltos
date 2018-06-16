@@ -61,13 +61,42 @@ Un ejemplo de la estructura sería
             return nuevoNodo;
         }
 
-        function genLista() {
-
+        /**
+         * Comprueba cada elemento del Array() y actúa en consecuencia:
+         * - En caso de ser un Array() se envía a esta misma función de nuevo
+         *   cada uno de los elementos interiores de ese Array().
+         * - En caso de no ser un Array() se devuelve dentro de un nodo.
+         * @param ele Recibe un elemento
+         * @returns {Node} Devuelve un nodo con el elemento o los elementos.
+         */
+        function comprobarArray(ele) {
+            if (ele instanceof Array) {
+                var nuevaLista = crearNodo('ul', 'lista-ul');
+                ele.forEach(ele => {
+                    nuevaLista.appendChild(comprobarArray(ele));
+                });
+                return nuevaLista;
+            } else {
+                return crearNodo('li', 'lista-li', ele);
+            }
         }
 
+        /**
+         * Función principal que contiene la lógica de la actividad y es quien
+         * inicia la ejecución y manipula el DOM.
+         */
         function main() {
+            var box = document.getElementById('box-main');
+            var ulprincipal = crearNodo('ul', 'lista-ul-principal');
 
+            paises.forEach(ele => {
+                ulprincipal.appendChild(comprobarArray(ele));
+            });
+
+            box.appendChild(ulprincipal);
         }
+
+        window.onload = main;
     </script>
 </head>
 
