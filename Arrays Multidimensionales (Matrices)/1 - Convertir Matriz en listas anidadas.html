@@ -31,6 +31,13 @@ Un ejemplo de la estructura sería
         </ul>
     </li>
 </ul>
+
+Una vez completado comprueba que funciona también con este Array():
+paises2 = [
+    ['España',['Madrid', ['Paella', 'Cocido', 'Salmorejo']]],
+    ['Francia',['París', ['Fondue de queso', 'Crepes', 'Croissants']]],
+    ['Italia',['Roma', ['Pasta', 'Pizzas', 'Helados']]]
+];
 -->
 <html lang="es">
 <head>
@@ -43,6 +50,12 @@ Un ejemplo de la estructura sería
             ['España','Madrid', ['Paella', 'Cocido', 'Salmorejo']],
             ['Francia','París', ['Fondue de queso', 'Crepes', 'Croissants']],
             ['Italia','Roma', ['Pasta', 'Pizzas', 'Helados']]
+        ];
+
+        const paises2 = [
+            ['España',['Madrid', ['Paella', 'Cocido', 'Salmorejo']]],
+            ['Francia',['París', ['Fondue de queso', 'Crepes', 'Croissants']]],
+            ['Italia',['Roma', ['Pasta', 'Pizzas', 'Helados']]]
         ];
 
         /**
@@ -85,26 +98,28 @@ Un ejemplo de la estructura sería
          * Función principal que contiene la lógica de la actividad y es quien
          * inicia la ejecución y manipula el DOM.
          */
-        function main() {
-            var box = document.getElementById('box-main');
+        function main(array, caja) {
+            var box = document.getElementById(caja);
             var ulprincipal = crearNodo('ul', 'lista-ul-principal');
 
-            paises.forEach(ele => {
+            array.forEach(ele => {
                 ulprincipal.appendChild(comprobarArray(ele));
             });
 
             box.appendChild(ulprincipal);
         }
 
-        window.onload = main;
+        window.onload = function() {
+            main(paises, 'box-main');
+            main(paises2, 'box-main2');
+        };
     </script>
 </head>
 
 <body>
     <h1 id="titulo1">Matriz a listas Anidadas</h1>
 
-    <div id="box-main">
-
-    </div>
+    <div id="box-main"><h3>Array 1</h3></div>
+    <div id="box-main2"><h3>Array 2</h3></div>
 </body>
 </html>
