@@ -28,7 +28,8 @@ function getCookie(name){
  *                          el dominio del documento que realiza la llamada.
  * @param {String} domain   Dominio para el cual la cookie es válida (por
  *                          defecto, el del documento que hace la llamada).
- * @param {Bool} secure     Indica si la trasnmisión de la cookie requiere una
+ * @param {Boolean} secure     Indica si la trasnmisión de la cookie
+ * requiere una
  *                          transmisión segura (HTTPS).
  */
 function setCookie(name, value, expires, path, domain, secure) {
