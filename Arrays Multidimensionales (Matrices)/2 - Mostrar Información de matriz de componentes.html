@@ -16,8 +16,34 @@ Su total de unidades*precio unitario.
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Mostrar Información de matriz de componentes</title>
     <meta name="author" content="Raúl Caro Pastorino" />
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .tabla {
+            margin: auto;
+            padding: 0;
+            border-spacing: 0;
+            border-collapse : collapse;
+        }
+
+        .tabla td {
+            margin: 0;
+            padding: 5px 9px;
+            border: 2px solid #000000;
+        }
+
+        .tabla-td-result {
+            font-weight: bolder;
+            font-size: 1.2em;
+            color: white;
+            background-color: #FF2222;
+        }
+    </style>
 
     <script>
         const productos = [
@@ -44,12 +70,34 @@ Su total de unidades*precio unitario.
             return nuevoNodo;
         }
 
-        function engancharNodo() {
-
-        }
-
+        /**
+         * Función principal que contiene la lógica del script.
+         * Primero genera un nuevo array de nodos con cada fila (tr) de la
+         * tabla.
+         * Después se recorre esa lista añadiéndola al nodo tabla creado al
+         * comienzo para finalmente engancharlo al DOM.
+         */
         function main() {
+            var box = document.getElementById('tabla-box');
+            var tabla = crearNodo('table', 'tabla');
 
+            filas = productos.map(ele => {
+                let fila = crearNodo('tr', 'tabla-tr');
+                ele.forEach(ele => {
+                    fila.appendChild(crearNodo('td', 'tabla-td', ele), true);
+                });
+                fila.appendChild(crearNodo(
+                    'td', 'tabla-td-result',
+                    (ele[1]*ele[2]).toFixed(2) + '€'
+                ), true);
+                return fila;
+            });
+
+            filas.forEach(ele => {
+                tabla.appendChild(ele, true);
+            });
+
+            box.appendChild(tabla, true);
         }
 
         window.onload = main;
@@ -57,7 +105,7 @@ Su total de unidades*precio unitario.
 </head>
 
 <body>
-<h1 id="titulo1"></h1>
-
+<h1 id="titulo1">Mostrar Información de matriz de componentes</h1>
+    <div id="tabla-box"></div>
 </body>
 </html>
