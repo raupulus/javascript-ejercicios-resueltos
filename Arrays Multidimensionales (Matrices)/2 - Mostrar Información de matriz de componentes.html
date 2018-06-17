@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2018 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+Crea una matriz que almacene componentes informáticos queriendo mantener
+el nombre, las unidades y el precio unitario.
+
+Una vez creado el Array() deberás mostrarlo con un campo de información extra:
+Su total de unidades*precio unitario.
+-->
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Mostrar Información de matriz de componentes</title>
+    <meta name="author" content="Raúl Caro Pastorino" />
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .tabla {
+            margin: auto;
+            padding: 0;
+            border-spacing: 0;
+            border-collapse : collapse;
+        }
+
+        .tabla td {
+            margin: 0;
+            padding: 5px 9px;
+            border: 2px solid #000000;
+        }
+
+        .tabla-td-result {
+            font-weight: bolder;
+            font-size: 1.2em;
+            color: white;
+            background-color: #FF2222;
+        }
+    </style>
+
+    <script>
+        const productos = [
+            ['Placa Base', 5, 120.33],
+            ['Memoria RAM', 12, 44.21],
+            ['Disco Duro', 7, 93.47],
+            ['Caja', 5, 38.99],
+            ['Monitor', 8, 131.12]
+        ];
+
+        /**
+         * Crea un nuevo nodo y le asigna una clase.
+         * @param  {String} elemento Etiqueta HTML para crear el nodo.
+         * @param  {String} clase    Clase para asignar a la etiqueta creada
+         * @param  {String} texto    Texto para incluir en el nodo texto.
+         * @return {Node}            Devuelve el nodo creado.
+         */
+        function crearNodo(elemento, clase, texto = '') {
+            var nuevoNodo = document.createElement(elemento);
+            nuevoNodo.setAttribute('class', clase);
+
+            var nodoTexto = document.createTextNode(texto);
+            nuevoNodo.appendChild(nodoTexto);
+            return nuevoNodo;
+        }
+
+        /**
+         * Función principal que contiene la lógica del script.
+         * Primero genera un nuevo array de nodos con cada fila (tr) de la
+         * tabla.
+         * Después se recorre esa lista añadiéndola al nodo tabla creado al
+         * comienzo para finalmente engancharlo al DOM.
+         */
+        function main() {
+            var box = document.getElementById('tabla-box');
+            var tabla = crearNodo('table', 'tabla');
+
+            filas = productos.map(ele => {
+                let fila = crearNodo('tr', 'tabla-tr');
+                ele.forEach(ele => {
+                    fila.appendChild(crearNodo('td', 'tabla-td', ele), true);
+                });
+                fila.appendChild(crearNodo(
+                    'td', 'tabla-td-result',
+                    (ele[1]*ele[2]).toFixed(2) + '€'
+                ), true);
+                return fila;
+            });
+
+            filas.forEach(ele => {
+                tabla.appendChild(ele, true);
+            });
+
+            box.appendChild(tabla, true);
+        }
+
+        window.onload = main;
+    </script>
+</head>
+
+<body>
+<h1 id="titulo1">Mostrar Información de matriz de componentes</h1>
+    <div id="tabla-box"></div>
+</body>
+</html>

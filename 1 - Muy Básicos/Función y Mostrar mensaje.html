@@ -21,12 +21,13 @@
         <h1>Variable Dentro y fuera de una función</h1>
 
         <script>
-            var mensaje = "Primer mensaje"
+            var mensaje = "Primer mensaje";
 
             function creaMensaje() {
                 var mensaje = "Segundo mensaje modificado";
                 alert('Dentro de la función → ' + mensaje);
             }
+
             creaMensaje();
 
             alert('Fuera de la función → ' + mensaje);
