@@ -1,4 +1,3 @@
-
 /**
  * Limpia todos los nodos texto hijos vacíos y con saltos de línea
  * que son creados automáticamente por el navegador y pueden causar errores
