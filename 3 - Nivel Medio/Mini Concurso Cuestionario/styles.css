@@ -26,3 +26,11 @@ h1, h2 {
 #textclock, #clock {
 
 }
+
+#box-questions {
+    margin: 20px 5px;
+}
+
+#box-questions .pregunta1, #box-questions .pregunta2 {
+    text-align: center;
+}
