@@ -23,11 +23,13 @@ function generarAleatorio(minimo = 0, maximo = 10) {
 }
 
 /**
- * Genera una fecha aleatoria entre el 1970 y el 2018.
- * @returns {string}
+ * Genera una fecha aleatoria entre los parámetros pasados.
+ * @param inicio por omisión será la fecha de inicio 70.
+ * @param fin por omisión será la fecha de fin 2050.
+ * @returns {Date} Devuelve un objeto Date().
  */
-function generarFechaAleatoria() {
-    var year = generarAleatorio(70, 118);
+function generarFechaAleatoria(inicio = 70, fin = 2050) {
+    var year = generarAleatorio(inicio, fin);
     if (year === 100) {
         year = 2000;
     } else if (year > 100) {

@@ -14,7 +14,7 @@ const fechaStart = new Date();
  * Fecha autogenerada para la pregunta.
  * @type {Date}
  */
-const fechaStop = generarFechaAleatoria();
+const fechaStop = generarFechaAleatoria(70, 118);
 
 /**
  * Genera automáticamente números aleatorios y devuelve un Array con ellos.
