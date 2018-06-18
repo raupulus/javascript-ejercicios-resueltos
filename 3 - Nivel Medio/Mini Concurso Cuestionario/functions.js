@@ -104,3 +104,26 @@ function crearNodoId(elemento, id, texto) {
     nuevoNodo.appendChild(nodoTexto);
     return nuevoNodo;
 }
+
+/**
+ * Crea una nueva instancia de una ventana con los parámetros pasados
+ * @param  {String}   origen  Ruta al documento HTML para abrir
+ * @param  {String}   titulo  Nombre de la ventana
+ * @param  {Number}  ancho   Ancho de la ventana
+ * @param  {Number}  alto    Altura de la ventana
+ * @param  {Number}  top     Separación respecto la parte superior
+ * @param  {Number}  left    Separación respecto la parte izquierda
+ * @return {window}           Devuelve la nueva ventana
+ */
+function abrirVentana(origen, titulo, ancho, alto, top, left) {
+    ventana = window.open(
+        origen,
+        titulo,
+        'width='+ancho+
+        ',height='+alto+
+        ',top='+top+
+        ',left='+left+
+        ',menubar=yes,resizable=yes,location=yes,scrollbars=yes,status=yes,toolbar=yes');
+
+    return ventana;
+}

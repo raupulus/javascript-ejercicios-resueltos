@@ -47,6 +47,14 @@ function agregarEventos() {
 }
 
 /**
+ * Quitar eventos del cuestionario.
+ */
+function quitarEventos() {
+    var btn = document.getElementById('btn-test');
+    btn.removeEventListener('click', enviarRespuestas);
+}
+
+/**
  * Pinta los datos generados al cuestionario.
  */
 function pintarDatos() {
@@ -111,12 +119,17 @@ function compararNumeros() {
     return max === Number(inputUser[inputUser.length - 1].value);
 }
 
+/**
+ * Crea nueva ventana de 300x100 en esquina inferior derecha con el contenido
+ * del nodo pasado como parámetro.
+ * @param nodos
+ */
 function mostrarVentana(nodos) {
-    // Recibo nodos para enganchar en la nueva ventana
-
-    // Creo nueva ventana 300x100 en esquina inferior derecha
-
-    // Agrego esos nodos a la nueva ventana
+    var titulo = 'Información del resultado';
+    var top = screen.width - 100;
+    var left = screen.height - 300;
+    var ventana = abrirVentana('', titulo, 300, 100, top, left);
+    ventana.document.body.appendChild(nodos);
 }
 
 /**
@@ -127,7 +140,8 @@ function mostrarVentana(nodos) {
 function mostrarResultado(ganador) {
     clearInterval(contador);
 
-    var victoria, aciertos;
+    var victoria;
+    var aciertos;
     var resultado = 'Has tardado ' +
         document.getElementById('clock').innerHTML +
         ' segundos';
@@ -148,14 +162,17 @@ function mostrarResultado(ganador) {
         resultado += ' con ' + aciertos + ' aciertos';
     }
 
-    var nodos = crearNodoId('div', 'ventana2');
-    nodos.appendChild(crearNodoId('h1'), 'titulo', 'Resultados:');
-    nodos.appendChild(crearNodoId('p'), 'victoria', victoria);
-    nodos.appendChild(crearNodoId('p'), 'resultado', resultado);
+    var nodos = crearNodoId('div', 'ventana2', '');
+    nodos.appendChild(crearNodoId('h1', 'titulo', 'Resultados:'));
+    nodos.appendChild(crearNodoId('p', 'victoria', victoria));
+    nodos.appendChild(crearNodoId('p', 'resultado', resultado));
 
     mostrarVentana(nodos);
 }
 
+/**
+ * Evento al enviar las respuestas pulsando el botón.
+ */
 function enviarRespuestas() {
     var f = compararFechas();
     var n = compararNumeros();
@@ -165,4 +182,6 @@ function enviarRespuestas() {
     } else {
         mostrarResultado(false);
     }
+
+    quitarEventos();
 }
