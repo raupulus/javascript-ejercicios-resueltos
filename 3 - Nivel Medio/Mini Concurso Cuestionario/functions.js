@@ -39,7 +39,7 @@ function generarFechaAleatoria() {
     var dia = generarAleatorio(0, 30);
     var mes = generarAleatorio(0, 11);
 
-    return new Date(year, mes, dia, 0, 0);
+    return new Date(year, mes, dia);
 }
 
 /**
@@ -86,5 +86,21 @@ function milisegundosMinutos(milis) {
  * @returns {number}
  */
 function milisegundosSegundos(milis) {
-    return Math.floor(milis/(60*1000));
+    return Math.floor(milis/(1000));
+}
+
+/**
+ * Crea un nuevo nodo y le asigna un id.
+ * @param  {String} elemento Etiqueta HTML para crear el nodo.
+ * @param  {String} id       Id para asignar a la etiqueta creada
+ * @param  {String} texto    Texto para incluir en el nodo texto.
+ * @return {Node}            Devuelve el nodo creado.
+*/
+function crearNodoId(elemento, id, texto) {
+    var nuevoNodo = document.createElement(elemento);
+    nuevoNodo.setAttribute('id', id);
+
+    var nodoTexto = document.createTextNode(texto);
+    nuevoNodo.appendChild(nodoTexto);
+    return nuevoNodo;
 }

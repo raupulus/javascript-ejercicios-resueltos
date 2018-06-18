@@ -4,9 +4,28 @@
  * @license https://www.gnu.org/licenses/gpl-3.0-standalone.html
  */
 
-const fechaStart = new Date(0);
+/**
+ * Fecha de inicio.
+ * @type {Date}
+ */
+const fechaStart = new Date();
+
+/**
+ * Fecha autogenerada para la pregunta.
+ * @type {Date}
+ */
 const fechaStop = generarFechaAleatoria();
+
+/**
+ * Genera automáticamente números aleatorios y devuelve un Array con ellos.
+ * @type {*[]}
+ */
 const numeros = generarNumeros();
+
+/**
+ * Intervalo de tiempo con el que se ejecuta el tiempo restante.
+ */
+const contador = setInterval(mostrarTiempo, 800);
 
 /**
  * Genera 3 números entre el 1 y el 100 de forma aleatoria y los devuelve
@@ -37,11 +56,27 @@ function pintarDatos() {
     });
 
     var preguntas2 = document.getElementsByClassName('pregunta2');
-    var milis = restarFechas(fechaStart, fechaStop);
+    var milis = restarFechas(fechaStop, fechaStart);
     preguntas2[0].value = (fechaStop.getDay()+1) + '/' +
                           (fechaStop.getMonth()+1) + '/' +
                           fechaStop.getFullYear();
     console.log('Cantidad de Horas → ' + milisegundosHoras(milis));
+}
+
+/**
+ * Muestra el tiempo en la caja establecida para el reloj.
+ */
+function mostrarTiempo() {
+    var ahora = new Date();
+    var diff = milisegundosSegundos(restarFechas(fechaStart, ahora));
+    var sclock = document.getElementById('box-clock');
+    var boxclock = document.getElementById('clock');
+    sclock.replaceChild(crearNodoId('div', 'clock', 60 - diff), boxclock);
+
+    if (diff >= 60) {
+        console.log('Ha terminado el tiempo');
+        mostrarResultado('tiempo');
+    }
 }
 
 /**
@@ -51,8 +86,6 @@ function onInit() {
     limpiarNodos();
     agregarEventos();
     pintarDatos();
-
-    // Iniciar contador de tiempo
 }
 
 window.onload = onInit;
@@ -62,10 +95,10 @@ window.onload = onInit;
  * @returns {boolean} Indica si son iguales (true).
  */
 function compararFechas() {
-    var milis = restarFechas(fechaStart, fechaStop);
+    var milis = restarFechas(fechaStop, fechaStart);
     var horas = milisegundosHoras(milis);
     var inputUser = document.getElementsByClassName('pregunta2');
-    return horas === inputUser[inputUser.length - 1].value;
+    return horas === Number(inputUser[inputUser.length - 1].value);
 }
 
 /**
@@ -75,26 +108,59 @@ function compararFechas() {
 function compararNumeros() {
     var max = Math.max(...numeros);
     var inputUser = document.getElementsByClassName('pregunta1');
-    return max === inputUser[inputUser.length - 1].value;
+    return max === Number(inputUser[inputUser.length - 1].value);
 }
 
+function mostrarVentana(nodos) {
+    // Recibo nodos para enganchar en la nueva ventana
+
+    // Creo nueva ventana 300x100 en esquina inferior derecha
+
+    // Agrego esos nodos a la nueva ventana
+}
+
+/**
+ * Prepara los resultados para enviar un nodo a la función "mostrarVentana()"
+ * y esta generará y pintara dicha ventana con la información recibida.
+ * @param ganador
+ */
 function mostrarResultado(ganador) {
+    clearInterval(contador);
+
+    var victoria, aciertos;
+    var resultado = 'Has tardado ' +
+        document.getElementById('clock').innerHTML +
+        ' segundos';
+
     if (ganador === true) {
-        // Abre ventana felicitando
-        alert('si');
+        victoria = '¡Felicidades! has ganado';
+        resultado += ' has acertado todas las preguntas';
+    } else if (ganador === 'tiempo') {
+        victoria = '¡El tiempo ha terminado!';
     } else {
-        // Abre ventana de perder
-        alert('no');
+        victoria = 'Has perdido, puedes volver a intentarlo';
+        if (compararFechas() || compararNumeros()) {
+            aciertos = 1;
+        } else {
+            aciertos = 0;
+        }
+
+        resultado += ' con ' + aciertos + ' aciertos';
     }
+
+    var nodos = crearNodoId('div', 'ventana2');
+    nodos.appendChild(crearNodoId('h1'), 'titulo', 'Resultados:');
+    nodos.appendChild(crearNodoId('p'), 'victoria', victoria);
+    nodos.appendChild(crearNodoId('p'), 'resultado', resultado);
+
+    mostrarVentana(nodos);
 }
 
 function enviarRespuestas() {
-    // Parar contador de tiempo
-
     var f = compararFechas();
     var n = compararNumeros();
 
-    if (f === n === true) {
+    if (f && n) {
         mostrarResultado(true);
     } else {
         mostrarResultado(false);
