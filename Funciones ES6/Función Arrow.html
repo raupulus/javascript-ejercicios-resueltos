@@ -16,11 +16,11 @@ Realiza una función para que muestre al usuario el triple del valor de cada ele
         <meta name="author" content="Raúl Caro Pastorino" />
 
         <script>
-            var mi_array = new Array(23,345,1,34756,2,3,4,5,6,7,8,9);
+            var mi_array = [23,345,1,34756,2,3,4,5,6,7,8,9];
             var una_funcion = (un_array) => {
                 for (x of un_array) {
                     resultado.innerHTML += '<br />' + (x * 3);
-                };
+                }
             };
         </script>
     </head>
@@ -29,7 +29,8 @@ Realiza una función para que muestre al usuario el triple del valor de cada ele
         <h1 id="titulo1">Función Arrow</h1>
         <div>
             <form>
-                <input type="button" value="Ver Triple" onclick="una_funcion(mi_array)" />
+                <input type="button" value="Ver Triple"
+                       onclick="una_funcion(mi_array)" />
             </form>
         </div>
 
