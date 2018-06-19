@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/**
+ * @author Raúl Caro Pastorino
+ * @copyright Copyright © 2018 Raúl Caro Pastorino
+ * @license https://www.gnu.org/licenses/gpl-3.0-standalone.html
+ */
+
+h1, h2 {
+    text-align: center;
+}
+
+/* RELOJ */
+#box-clock {
+    margin: auto;
+    padding: 5px 8px;
+    width: 250px;
+    color: #00ff00;
+    font-size: 1.2em;
+    font-weight: bolder;
+    text-align: center;
+    background-color: #000000;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #000000;
+}
+
+#textclock, #clock {
+
+}
+
+#box-questions {
+    margin: 20px 5px;
+}
+
+#box-questions .pregunta1, #box-questions .pregunta2 {
+    text-align: center;
+}

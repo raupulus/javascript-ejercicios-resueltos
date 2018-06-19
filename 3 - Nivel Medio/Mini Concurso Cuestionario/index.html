@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+ @author Raúl Caro Pastorino
+ @copyright Copyright © 2017 Raúl Caro Pastorino
+ @license https://wwww.gnu.org/licenses/gpl.txt
+-->
+
+<!--
+↓ INSTRUCCIONES DEL EJERCICIO ↓
+El objetivo es simular un concurso, tras abrir la página iniciará un contador
+con 1 minuto de tiempo para lograrlo.
+
+Se mostrará la cuenta atrás y en caso de finalizar el tiempo aparecerá una
+nueva ventana mostrando el texto "¡El tiempo ha terminado!" tras 5 segundos
+se limpiará esta nueva ventana y ahora deberá mostrar el tiempo que se ha
+tardado y la cantidad de respuestas acertadas. En caso de ganar se mostrará
+el mensaje "¡Has ganado!" y posteriormente también el tiempo junto a los
+aciertos.
+
+- La nueva ventana tendrá unas dimensiones de 300x100px mostrándose en la
+esquina inferior derecha de la pantalla.
+
+- La primera pregunta serán 3 números aleatorios entre el 1 y el 100 dónde el
+usuario tendrá que elegir el mayor de entre todos.
+
+- La segunda pregunta será un año generado entre 1970 y el actual para que el
+usuario adivine el número de horas que han pasado desde entonces. Para ello
+ambas fechas generadas tendrán la misma hora, minutos y segundos.
+
+- Todas las entradas de datos se deberán validar.
+
+- Las ventanas con información se generarán desde la ventana principal.
+
+- Las respuestas también serán mostradas por consola ya que es un ejercicio y
+permitirá comprobar el funcionamiento de una forma rápida al conocer las
+respuestas.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>Mini Concurso Cuestionario</title>
+        <link rel="stylesheet" href="styles.css" />
+        <script src="cookies.js"></script>
+        <script src="limpiarNodos.js"></script>
+        <script src="functions.js"></script>
+    </head>
+
+    <body>
+        <div id="box-title">
+            <h1>Mini Concurso Cuestionario</h1>
+            <h2>Responde las preguntas</h2>
+            <div id="box-clock">
+                <div id="textclock">
+                    <small>Tiempo restante </small>
+                </div>
+                <div id="clock">
+                    60
+                </div>
+            </div>
+        </div>
+
+        <div id="box-questions">
+            <form>
+                Pregunta 1: ¿Cuál es el mayor número?
+                <input class="pregunta1" type="text" readonly size="5" />
+                <input class="pregunta1" type="text" readonly size="5" />
+                <input class="pregunta1" type="text" readonly size="5" />
+                <input class="pregunta1" type="text" size="5" />
+
+                <br />
+
+                Pregunta 2: ¿Cuántas horas han pasado desde 1970?
+                <input class="pregunta2" type="text" readonly size="10" />
+                <input class="pregunta2" type="text" size="10" />
+                <br />
+
+                <input type="button" id="btn-test" value="Comprobar" />
+            </form>
+        </div>
+
+        <footer id="box-footer">
+            <script src="scripts.js"></script>
+        </footer>
+    </body>
+</html>

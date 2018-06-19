@@ -21,11 +21,10 @@ Añade 3 botones que realicen:
         <meta name="author" content="Raúl Caro Pastorino" />
 
         <script>
-            var mi_array = new Array(23,345,1,34756,2,3,4,5,6,7,8,9);
+            var mi_array = [23,345,1,34756,2,3,4,5,6,7,8,9];
 
             function pintarLista(nombre, ...valores) {
                 document.getElementById('lista').innerHTML = '';
-                //document.getElementById('lista').name = nombre;
                 for (x of valores) {
                     document.getElementById('lista').innerHTML += '<li>' + x + '</li>';
                 }
@@ -39,7 +38,7 @@ Añade 3 botones que realicen:
                 lista.innerHTML = '';
                 for (x of un_array) {
                     lista.innerHTML += '<li>' + (x * 3) + '</li>';
-                };
+                }
             };
         </script>
     </head>

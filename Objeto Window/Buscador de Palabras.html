@@ -54,13 +54,13 @@ Comprueba que le método existe en el navegador, en caso contrario, avisa al usu
             }
 
             function limpiarCajaBusqueda() {
-                if (busqueda.value == 'Buscar...') {
+                if (busqueda.value === 'Buscar...') {
                     busqueda.value = ''
                 }
             }
 
             function reescribirCajaBusqueda() {
-                if (busqueda.value == '') {
+                if (busqueda.value === '') {
                     busqueda.value = 'Buscar...'
                 }
             }
