@@ -143,7 +143,7 @@ function mostrarResultado(ganador) {
     var victoria;
     var aciertos;
     var resultado = 'Has tardado ' +
-        document.getElementById('clock').innerHTML +
+        (60 - document.getElementById('clock').innerHTML) +
         ' segundos';
 
     if (ganador === true) {
