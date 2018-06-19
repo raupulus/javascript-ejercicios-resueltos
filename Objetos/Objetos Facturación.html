@@ -74,14 +74,11 @@ Realiza una instanciación de Factura y muestra su total.
                 document.write(empresa1[x] + '<br />');
             }
 
-
             // Añado empresa a las facturas
             Factura.prototype.empresa = new Empresa();
 
-
             // Asigno una empresa concreta a una factura
             factura1.empresa = empresa1;
-
 
             // Añado a Factura para calcular total sin IVA
             Factura.prototype.totalsiniva = function() {
@@ -92,14 +89,14 @@ Realiza una instanciación de Factura y muestra su total.
                 }
                 this.total += (this.total * this.base_imponible);
                 return this.total;
-            }
+            };
 
 
             // Añado a Factura para calcular total con IVA
             Factura.prototype.totalconiva = function() {
                 var resultado = this.total + (this.totalsiniva() * 0.21);
                 return resultado;
-            }
+            };
 
 
             // Muestro Factura 1

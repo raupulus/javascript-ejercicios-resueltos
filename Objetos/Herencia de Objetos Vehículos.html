@@ -47,26 +47,26 @@ El  objeto  Furgoneta  tiene  que  añadir  una propiedad  para  indicar  el  n�
                     <br />
                     Cilindrada → ${cilindrada}
                 `);
-            }
+            };
 
             this.acelerar = function(acelerando) {
                 document.write(`<br />Se ha acelerado hasta → ${acelerando}`);
-            }
+            };
 
             this.arrancar = function() {
                 document.write(`<br />El coche ${this.marca}, ${this.modelo}, de color ${this.color} ha arrancado.`)
-            }
+            };
 
             this.frenar = function() {
                 document.write(`<br />El coche ${this.marca}, ${this.modelo}, de color ${this.color} ha parado)`);
-            }
+            };
         }
 
 
         // Creando PseudoClase Hija de Vehiculo
         function Furgoneta(marca, modelo, color, fabricacion, cilindrada, pasajeros) {
             this.pasajeros = pasajeros;
-            //Invocar al constructor de Vehiculo
+            // Invocar al constructor de Vehiculo
             Vehiculo.call(this, marca, modelo, color, fabricacion, cilindrada);
         }
 
@@ -79,7 +79,7 @@ El  objeto  Furgoneta  tiene  que  añadir  una propiedad  para  indicar  el  n�
         // Creando PseudoClase Hija de Vehiculo
         function Todoterreno(marca, modelo, color, fabricacion, cilindrada, traccion) {
             this.traccion = traccion;
-            //Invocar al constructor de Vehiculo
+            // Invocar al constructor de Vehiculo
             Vehiculo.call(this, marca, modelo, color, fabricacion, cilindrada);
         }
 

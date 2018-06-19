@@ -16,6 +16,13 @@ Muestra un menú con las distintas zonas horarias, pide al usuario que indique l
         <meta name="author" content="Raúl Caro Pastorino" />
     </head>
 
+    <style>
+        .red {
+            color: #ff0000;
+            font-size: 1.4em;
+        }
+    </style>
+
     <body>
         <h1 id="titulo1">Ajustar Hora a Zona Horaria</h1>
         <div>
@@ -23,31 +30,31 @@ Muestra un menú con las distintas zonas horarias, pide al usuario que indique l
             <br />
             <h2>Zonas horarias:</h2>
             <ul>
-                <li><span style="color:red;font-size:1.4;">0)</span>UTC -12 : Línea internacional de fecha del oeste</li>
-                <li><span style="color:red;font-size:1.4;">1)</span>UTC -11 : Isla Midway, Samoa</li>
-                <li><span style="color:red;font-size:1.4;">2)</span>UTC -10 : Hawai</li>
-                <li><span style="color:red;font-size:1.4;">3)</span>UTC -9 : Alaska</li>
-                <li><span style="color:red;font-size:1.4;">4)</span>UTC -8 : Hora del pacífico (USA y Canadá)</li>
-                <li><span style="color:red;font-size:1.4;">5)</span>UTC -7 : Hora de las montañas rocosas (USA y Canadá)</li>
-                <li><span style="color:red;font-size:1.4;">6)</span>UTC -6 : América central</li>
-                <li><span style="color:red;font-size:1.4;">7)</span>UTC -5 : Hora central (USA y Canadá)</li>
-                <li><span style="color:red;font-size:1.4;">8)</span>UTC -4 : Hora del Atlántico (Canadá)</li>
-                <li><span style="color:red;font-size:1.4;">99)</span>UTC -3 : Buenos Aires, Asunción, Brasilia, Montevideo</li>
-                <li><span style="color:red;font-size:1.4;">10)</span>UTC -2 : Atlántico central</li>
-                <li><span style="color:red;font-size:1.4;">11)</span>UTC -1 : Azores</li>
-                <li><span style="color:red;font-size:1.4;">12)</span>UTC 0 : Hora del meridiano de Greenwich, Londres, Dublín</li>
-                <li><span style="color:red;font-size:1.4;">13)</span>UTC +1 : París, Madrid, Barcelona, Roma</li>
-                <li><span style="color:red;font-size:1.4;">14)</span>UTC +2 : El Cairo</li>
-                <li><span style="color:red;font-size:1.4;">15)</span>UTC +3 : Nairobi</li>
-                <li><span style="color:red;font-size:1.4;">16)</span>UTC +4 : Bakú</li>
-                <li><span style="color:red;font-size:1.4;">17)</span>UTC +5 : Ekaterimburgo</li>
-                <li><span style="color:red;font-size:1.4;">18)</span>UTC +6 : Astana</li>
-                <li><span style="color:red;font-size:1.4;">19)</span>UTC +7 : Bangkok</li>
-                <li><span style="color:red;font-size:1.4;">20)</span>UTC +8 : Ulán Bator</li>
-                <li><span style="color:red;font-size:1.4;">21)</span>UTC +9 : Tokio</li>
-                <li><span style="color:red;font-size:1.4;">22)</span>UTC +10 : Sidney</li>
-                <li><span style="color:red;font-size:1.4;">23)</span>UTC +11 : Islas Salomón</li>
-                <li><span style="color:red;font-size:1.4;">24)</span>UTC +12 : Wellington</li>
+                <li><span class="red"">0)</span>UTC -12 : Línea internacional de fecha del oeste</li>
+                <li><span class="red"">1)</span>UTC -11 : Isla Midway, Samoa</li>
+                <li><span class="red"">2)</span>UTC -10 : Hawai</li>
+                <li><span class="red"">3)</span>UTC -9 : Alaska</li>
+                <li><span class="red"">4)</span>UTC -8 : Hora del pacífico (USA y Canadá)</li>
+                <li><span class="red"">5)</span>UTC -7 : Hora de las montañas rocosas (USA y Canadá)</li>
+                <li><span class="red"">6)</span>UTC -6 : América central</li>
+                <li><span class="red"">7)</span>UTC -5 : Hora central (USA y Canadá)</li>
+                <li><span class="red"">8)</span>UTC -4 : Hora del Atlántico (Canadá)</li>
+                <li><span class="red"">99)</span>UTC -3 : Buenos Aires, Asunción, Brasilia, Montevideo</li>
+                <li><span class="red"">10)</span>UTC -2 : Atlántico central</li>
+                <li><span class="red"">11)</span>UTC -1 : Azores</li>
+                <li><span class="red"">12)</span>UTC 0 : Hora del meridiano de Greenwich, Londres, Dublín</li>
+                <li><span class="red"">13)</span>UTC +1 : París, Madrid, Barcelona, Roma</li>
+                <li><span class="red"">14)</span>UTC +2 : El Cairo</li>
+                <li><span class="red"">15)</span>UTC +3 : Nairobi</li>
+                <li><span class="red"">16)</span>UTC +4 : Bakú</li>
+                <li><span class="red"">17)</span>UTC +5 : Ekaterimburgo</li>
+                <li><span class="red"">18)</span>UTC +6 : Astana</li>
+                <li><span class="red"">19)</span>UTC +7 : Bangkok</li>
+                <li><span class="red"">20)</span>UTC +8 : Ulán Bator</li>
+                <li><span class="red"">21)</span>UTC +9 : Tokio</li>
+                <li><span class="red"">22)</span>UTC +10 : Sidney</li>
+                <li><span class="red"">23)</span>UTC +11 : Islas Salomón</li>
+                <li><span class="red"">24)</span>UTC +12 : Wellington</li>
             </ul>
         </div>
 
@@ -70,7 +77,7 @@ Muestra un menú con las distintas zonas horarias, pide al usuario que indique l
                 }
 
                 var ahora = new Date();
-                var zonas = new Array();
+                var zonas = [];
 
                 for (let i=(-12), j=0; i<=12; i++, j++) {
                     zonas[j] = i;

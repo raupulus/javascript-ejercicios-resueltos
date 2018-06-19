@@ -29,7 +29,7 @@ Muestra los meses, días y años que tienes, haciendo uso de los métodos que ex
             var meses = hoy.getMonth() - nacimiento.getMonth();
             var dias = hoy.getDate() - nacimiento.getDate();
 
-            //Comprobar si meses es anterior al actual para restar 1 al año
+            // Comprobar si meses es anterior al actual para restar 1 al año
             if (meses < 0 || (meses === 0 && hoy.getDate() < nacimiento.getDate())) {
                 edad--;
             }
