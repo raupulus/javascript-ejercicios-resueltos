@@ -11,6 +11,11 @@ Mantengo algunas cosas que no serían lo más óptimo en producción porque me h
 
 Puedes modificar aquellos ejercicios que consideres más pesados u orientados de una forma que no te guste, recuerda que disfrutar puede aumentar el aprendizaje.
 
+Recuerda que estas actividades las he realizado mientras estudiaba y pueden
+estar mal, incompletas o simplemente ser ineficientes pero pueden tomarse como
+base para plantearte actividades, resolverte dudas e incluso ayudar a corregir
+estas mismas actividades mejorándolas para que otra persona pueda sacar mejor
+uso que nosotros.
 
 ## División por nivel y objetivos
 
