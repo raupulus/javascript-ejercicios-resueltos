@@ -3,7 +3,7 @@
 Ejercicios ya resueltos de javascript con los que he practicado durante mis estudios y los comparto para que puedas utilizarlo como base.
 
 Este repositorio se encuentra alojado en:
-https://gitlab.com/fryntiz/typescript-ejercicios-resueltos
+https://gitlab.com/raupulus/javascript-ejercicios-resueltos
 
 
 ## Modo de plantear ejercicios
@@ -42,7 +42,7 @@ Si encuentras algún error o quieres mejorar algo puedes contactar directamente 
 
 Nombre  |  GitLab   |  GitHub  |   Web
 :-------|:----------|:---------|:---------
-Raúl Caro Pastorino | [@fryntiz](https://gitlab.com/fryntiz) | [@fryntiz](https://github.com/fryntiz) | [https://fryntiz.es](https://fryntiz.es)
+Raúl Caro Pastorino | [@raupulus](https://gitlab.com/raupulus) | [@raupulus](https://github.com/raupulus) | [https://raupulus.es](https://raupulus.es)
 
 Cuando contribuyas al repositorio, ¡recuerda añadir tus datos como autor!
 
@@ -51,4 +51,4 @@ Cuando contribuyas al repositorio, ¡recuerda añadir tus datos como autor!
 
 Este repositorio incluye material libre con el que puedes hacer lo que prefieras correspondiendo con la licencia GPLv3 y respetando autoría/s
 
-Puedes consultar la licencia en el archivo adjunto [LICENSE](https://gitlab.com/fryntiz/javascript-ejercicios-resueltos/blob/master/LICENSE)
+Puedes consultar la licencia en el archivo adjunto [LICENSE](https://gitlab.com/raupulus/javascript-ejercicios-resueltos/blob/master/LICENSE)
