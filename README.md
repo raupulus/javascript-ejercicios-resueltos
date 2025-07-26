@@ -42,7 +42,7 @@ Si encuentras algún error o quieres mejorar algo puedes contactar directamente 
 
 Nombre  |  GitLab   |  GitHub  |   Web
 :-------|:----------|:---------|:---------
-Raúl Caro Pastorino | [@raupulus](https://gitlab.com/raupulus) | [@raupulus](https://github.com/raupulus) | [https://raupulus.es](https://raupulus.es)
+Raúl Caro Pastorino | [@raupulus](https://gitlab.com/raupulus) | [@raupulus](https://github.com/raupulus) | [https://raupulus.dev](https://raupulus.dev)
 
 Cuando contribuyas al repositorio, ¡recuerda añadir tus datos como autor!
 
